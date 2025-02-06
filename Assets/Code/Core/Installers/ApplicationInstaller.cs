@@ -2,7 +2,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace FPSShooter.Core
+namespace FPSShooter.Core.Installers
 {
     public class ApplicationInstaller : LifetimeScope
     {
