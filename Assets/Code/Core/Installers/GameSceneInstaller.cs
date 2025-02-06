@@ -2,6 +2,7 @@ using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay;
 using KinematicCharacterController;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
@@ -14,7 +15,7 @@ namespace FPSShooter.Core.Installers
         
         [Header("Player")]
         [SerializeField] private Player _player;
-        [SerializeField] private MovementControllerData _motor;
+        [SerializeField] private MovementData _movementData;
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -27,7 +28,7 @@ namespace FPSShooter.Core.Installers
         private void ConfigurePlayer(IContainerBuilder builder)
         {
             builder.RegisterInstance(_player).AsSelf().AsImplementedInterfaces();
-            builder.RegisterInstance(_motor);
+            builder.RegisterInstance(_movementData);
             
             builder.Register<MovementController>(Lifetime.Scoped).AsImplementedInterfaces();
         }

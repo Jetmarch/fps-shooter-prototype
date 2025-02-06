@@ -8,7 +8,7 @@ namespace FPSShooter.Gameplay
     [Serializable]
     public sealed class MovementController : ICharacterController, IInitializable
     {
-        [SerializeField] private MovementControllerData _data;
+        [SerializeField] private MovementData _data;
         [Space]
         [SerializeField] private float _airSpeed = 15f;
         [SerializeField] private float _airAcceleration = 70f;
@@ -17,12 +17,6 @@ namespace FPSShooter.Gameplay
         [SerializeField] private float _coyoteTime = 0.2f;
         [SerializeField] private float _gravity = -90f;
         [SerializeField, Range(0f, 1f)] private float _jumpSustainGravity = 0.4f;
-        [Space]
-        [SerializeField] private float _slideStartSpeed = 25f;
-        [SerializeField] private float _slideEndSpeed = 15f;
-        [SerializeField] private float _slideFriction = 0.8f;
-        [SerializeField] private float _slideSteerAcceleration = 5f;
-        [SerializeField] private float _slideGravity = -90f;
         [Space]
         [SerializeField] private float _standHeight = 2.5f;
         [SerializeField] private float _crouchHeight = 1f;
@@ -39,7 +33,6 @@ namespace FPSShooter.Gameplay
         private bool _requestedJump;
         private bool _requestedSustainedJump;
         private bool _requestedCrouch;
-        private bool _requestedCrouchInAir;
 
         private float _timeSinceUngrounded;
         private float _timeSinceJumpRequest;
@@ -47,7 +40,7 @@ namespace FPSShooter.Gameplay
 
         private Collider[] _uncrouchOverlapResults;
 
-        public MovementController(MovementControllerData data)
+        public MovementController(MovementData data)
         {
             _data = data;
             _state.Stance = Stance.Stand;
@@ -110,25 +103,17 @@ namespace FPSShooter.Gameplay
 
         public void RequestCrouch(CrouchInput crouchInput)
         {
-            var wasRequestingCrouch = _requestedCrouch;
             _requestedCrouch = crouchInput switch
                 {
                     CrouchInput.Toggle => !_requestedCrouch,
                     CrouchInput.None => _requestedCrouch,
                     _ => _requestedCrouch
                 };
-            if(_requestedCrouch && !wasRequestingCrouch)
-            {
-                _requestedCrouchInAir = !_state.Grounded;
-            }
-            else if(!_requestedCrouch && wasRequestingCrouch)
-            {
-                _requestedCrouchInAir = false;
-            }
         }
 
         public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
         {
+            
             var forward = Vector3.ProjectOnPlane(_requestedRotation * Vector3.forward, _data.Motor.CharacterUp);
 
             if (forward != Vector3.zero)
@@ -139,6 +124,7 @@ namespace FPSShooter.Gameplay
 
         public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
         {
+            
             _state.Acceleration = Vector3.zero;
 
             //if grounded
@@ -148,38 +134,6 @@ namespace FPSShooter.Gameplay
                 _undergroundedDueToJump = false;
 
                 var groundedMovement = _data.Motor.GetDirectionTangentToSurface(_requestedMovement, _data.Motor.GroundingStatus.GroundNormal) * _requestedMovement.magnitude;
-                //Slide
-                {
-                    var moving = groundedMovement.sqrMagnitude > 0f;
-                    var crouching = _state.Stance is Stance.Crouch;
-                    var wasStanding = _lastState.Stance is Stance.Stand;
-                    var wasInAir = !_lastState.Grounded;
-
-
-                    if(moving && crouching && (wasStanding || wasInAir))
-                    {
-                        _state.Stance = Stance.Slide;
-
-                        //When landingon stable ground the character motor projects the velocity onto a flat ground plane
-                        //See: KinematicCharacterMotor.HandleVelocityProjection()
-                        //This is normally good, because under normal circumstances the player shouldn't slide when landing on the ground
-                        //In this case, we want the player to slide
-                        //Reproject the last frames (falling) velocity onto the ground normal to slide
-                        if(wasInAir)
-                        {
-                            currentVelocity = Vector3.ProjectOnPlane(_lastState.Velocity, _data.Motor.GroundingStatus.GroundNormal);
-                        }
-
-                        var effectiveSlideStartSpeed = _slideStartSpeed;
-                        if (!_lastState.Grounded && !_requestedCrouchInAir)
-                        {
-                            effectiveSlideStartSpeed = 0f;
-                            _requestedCrouchInAir = false;
-                        }
-                        var slideSpeed = Mathf.Max(effectiveSlideStartSpeed, currentVelocity.magnitude);
-                        currentVelocity = _data.Motor.GetDirectionTangentToSurface(currentVelocity, _data.Motor.GroundingStatus.GroundNormal) * slideSpeed;
-                    }
-                }
                 //Move
                 if(_state.Stance is Stance.Stand or Stance.Crouch)
                 {
@@ -192,37 +146,6 @@ namespace FPSShooter.Gameplay
                     _state.Acceleration = (moveVelocity - currentVelocity) / deltaTime;
 
                     currentVelocity = moveVelocity;
-                }
-                //Continue sliding
-                else
-                {
-                    //Friction
-                    currentVelocity -= currentVelocity * (_slideFriction * deltaTime);
-
-                    //Slope
-                    {
-                        var force = Vector3.ProjectOnPlane(-_data.Motor.CharacterUp, _data.Motor.GroundingStatus.GroundNormal) * _slideGravity;
-
-                        currentVelocity -= force * deltaTime;
-                    }
-
-                    //Steer
-                    {
-                        var currentSpeed = currentVelocity.magnitude;
-                        var targetVelocity = groundedMovement * currentSpeed;
-                        var steerVelocity = currentVelocity;
-                        var steerForce = (targetVelocity - steerVelocity) * _slideSteerAcceleration * deltaTime;
-                        steerVelocity += steerForce;
-                        steerVelocity = Vector3.ClampMagnitude(steerVelocity, currentSpeed);
-
-                        _state.Acceleration = (steerVelocity - currentVelocity) / deltaTime;
-                        currentVelocity = steerVelocity;
-                    }
-
-                    if(currentVelocity.magnitude < _slideEndSpeed)
-                    {
-                        _state.Stance = Stance.Crouch;
-                    }
                 }
             }
             //Air
@@ -288,7 +211,6 @@ namespace FPSShooter.Gameplay
                 {
                     _requestedJump = false;
                     _requestedCrouch = false;
-                    _requestedCrouchInAir = false;
 
                     _data.Motor.ForceUnground(0f);
                     _undergroundedDueToJump = true;
@@ -327,15 +249,10 @@ namespace FPSShooter.Gameplay
             _state.Velocity = _data.Motor.Velocity;
             _lastState = _tempState;
         }
-
-       
-
+        
         public void PostGroundingUpdate(float deltaTime)
         {
-            if(!_data.Motor.GroundingStatus.IsStableOnGround && _state.Stance is Stance.Slide)
-            {
-                _state.Stance = Stance.Crouch;
-            }
+            
         }
 
         public void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FPSShooter.Gameplay
 {
     [Serializable]
-    public sealed class MovementControllerData
+    public sealed class MovementData
     {
         public KinematicCharacterMotor Motor;
         public Transform CameraTarget;
