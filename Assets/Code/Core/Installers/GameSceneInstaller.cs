@@ -1,8 +1,7 @@
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay;
-using KinematicCharacterController;
+using FPSShooter.Observers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
@@ -19,10 +18,14 @@ namespace FPSShooter.Core.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
-            
-            builder.RegisterInstance(_gameLoopManager);
+            ConfigureGameLoop(builder);
             
             ConfigurePlayer(builder);
+        }
+        
+        private void ConfigureGameLoop(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_gameLoopManager);
         }
 
         private void ConfigurePlayer(IContainerBuilder builder)
@@ -31,6 +34,7 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_movementData);
             
             builder.Register<MovementController>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<PlayerInputObserver>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }
