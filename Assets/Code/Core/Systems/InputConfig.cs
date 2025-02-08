@@ -11,8 +11,8 @@ namespace FPSShooter.Core.Systems
         [SerializeField] private KeyCode _moveRight = KeyCode.D;
         [SerializeField] private KeyCode _moveLeft = KeyCode.A;
         [SerializeField] private KeyCode _jump = KeyCode.Space;
-        [SerializeField] private string _horizontalAxis = "Horizontal";
-        [SerializeField] private string _verticalAxis = "Vertical";
+        [SerializeField] private string _mouseX = "Mouse X";
+        [SerializeField] private string _mouseY = "Mouse Y";
         
         public KeyCode Fire => _fire;
         public KeyCode MoveForward => _moveForward;
@@ -20,7 +20,7 @@ namespace FPSShooter.Core.Systems
         public KeyCode MoveRight => _moveRight;
         public KeyCode MoveLeft => _moveLeft;
         public KeyCode Jump => _jump;
-        public string HorizontalAxis => _horizontalAxis;
-        public string VerticalAxis => _verticalAxis;
+        public string MouseX => _mouseX;
+        public string MouseY => _mouseY;
     }
 }

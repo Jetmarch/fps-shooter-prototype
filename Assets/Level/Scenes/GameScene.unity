@@ -237,19 +237,17 @@ MonoBehaviour:
       CrouchSpeed: 7
       WalkResponce: 25
       CrouchResponce: 25
-    _airSpeed: 0
-    _airAcceleration: 0
-    _jumpSpeed: 0
-    _coyoteTime: 0
-    _gravity: 0
-    _jumpSustainGravity: 0
-    _standHeight: 0
-    _crouchHeight: 0
-    _crouchHeightResponce: 0
-    _standCameraTargetHeight: 0
-    _crouchCameraTargetHeight: 0
-  _playerCamera: {fileID: 1208956234}
-  _cameraSensitivity: 0.1
+      AirSpeed: 15
+      AirAcceleration: 70
+      JumpSpeed: 20
+      CoyoteTime: 0.2
+      Gravity: -90
+      JumpSustainGravity: 0.4
+      StandHeight: 2
+      CrouchHeight: 1
+      CrouchHeightResponce: 15
+      StandCameraTargetHeight: 0.9
+      CrouchCameraTargetHeight: 0.7
 --- !u!54 &202961626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -637,6 +635,19 @@ MonoBehaviour:
     CrouchSpeed: 7
     WalkResponce: 25
     CrouchResponce: 25
+    AirSpeed: 15
+    AirAcceleration: 70
+    JumpSpeed: 20
+    CoyoteTime: 0.2
+    Gravity: -90
+    JumpSustainGravity: 0.4
+    StandHeight: 2
+    CrouchHeight: 1
+    CrouchHeightResponce: 15
+    StandCameraTargetHeight: 0.9
+    CrouchCameraTargetHeight: 0.7
+  _camera: {fileID: 1208956233}
+  _fpsCameraSettings: {fileID: 11400000, guid: 718a58147ddc9d14c9e07d9a7ffecf62, type: 2}
 --- !u!1 &1102704894
 GameObject:
   m_ObjectHideFlags: 0

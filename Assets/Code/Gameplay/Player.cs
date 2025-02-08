@@ -1,4 +1,5 @@
 using FPSShooter.Core.Managers;
+using FPSShooter.Gameplay.FPSCamera;
 using KinematicCharacterController;
 using UnityEngine;
 using VContainer;
@@ -8,27 +9,22 @@ namespace FPSShooter.Gameplay
     public sealed class Player : MonoBehaviour, IUpdateListener
     {
         [SerializeField, ReadOnly] private MovementController _movementController;
-
-        [Header("Camera Settings")]
-        [SerializeField] private Transform _playerCamera;
-        [SerializeField] private float _cameraSensitivity = 0.1f;
-        [SerializeField, ReadOnly] private Vector3 _cameraEulerAngles;
-
+        [SerializeField] private FPSCameraController _fpsCamera;
         private Vector2 _movementDirection;
-        private Vector2 _previousLookDirection;
         
         //private WeaponHolder _weaponHolder;
 
         [Inject]
-        private void Construct(MovementController movementController)
+        private void Construct(MovementController movementController, FPSCameraController fpsCamera)
         {
             _movementController = movementController;
+            _fpsCamera = fpsCamera;
         }
         
         public void RequestFire()
         {
             Debug.Log("RequestFire");
-            //_weaponHolder.RequestFire();
+            //_weaponHolder.RequestFire();a 
         }
 
         public void Move(Vector2 movementVector)
@@ -36,22 +32,18 @@ namespace FPSShooter.Gameplay
             var characterInput = new CharacterInput
             {
                 Move = movementVector,
-                Rotation = _playerCamera.rotation,
+                Rotation = _fpsCamera.Rotation,
             };
             _movementController.UpdateInput(characterInput);
         }
 
         public void Look(Vector2 lookVector)
         {
-            var deltaLookVector = lookVector - _previousLookDirection;
-            _cameraEulerAngles += new Vector3(-deltaLookVector.y, deltaLookVector.x) * _cameraSensitivity;
-            _playerCamera.eulerAngles = _cameraEulerAngles;
-            _previousLookDirection = lookVector;
+            _fpsCamera.Look(lookVector);
         }
 
         public void RequestJump()
         {
-            Debug.Log("RequestJump");
             _movementController.RequestJump();
         }
 

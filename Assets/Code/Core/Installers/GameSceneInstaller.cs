@@ -1,5 +1,7 @@
+using System;
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay;
+using FPSShooter.Gameplay.FPSCamera;
 using FPSShooter.Observers;
 using UnityEngine;
 using VContainer;
@@ -16,12 +18,19 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private Player _player;
         [SerializeField] private MovementData _movementData;
         
+        [Header("Camera")]
+        [SerializeField] private Camera _camera;
+        [SerializeField] private FPSCameraSettings _fpsCameraSettings;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             ConfigureGameLoop(builder);
             ConfigurePlayer(builder);
+            ConfigureCamera(builder);
+            
+            builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
         }
-        
+
         private void ConfigureGameLoop(IContainerBuilder builder)
         {
             builder.RegisterInstance(_gameLoopManager);
@@ -40,5 +49,19 @@ namespace FPSShooter.Core.Installers
             builder.Register<PlayerInputObserver>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
+        
+        private void ConfigureCamera(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_camera);
+            builder.Register<FPSCameraController>(Lifetime.Scoped)
+                .WithParameter(_fpsCameraSettings);
+        }
+        
+        #if UNITY_EDITOR
+        private void OnValidate()
+        {
+            _camera = Camera.main;
+        }
+#endif
     }
 }
