@@ -83,9 +83,7 @@ namespace FPSShooter.Core.Systems
 
         private void LookInput()
         {
-            var horizontalAxis = Input.GetAxis(_inputConfig.HorizontalAxis);
-            var verticalAxis = Input.GetAxis(_inputConfig.VerticalAxis);
-            var lookVector = new Vector2(horizontalAxis, verticalAxis);
+            var lookVector = Input.mousePosition;
             OnLook?.Invoke(lookVector);
         }
 

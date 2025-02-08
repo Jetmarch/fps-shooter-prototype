@@ -15,7 +15,7 @@ namespace FPSShooter.Gameplay
         [SerializeField, ReadOnly] private Vector3 _cameraEulerAngles;
 
         private Vector2 _movementDirection;
-        private Quaternion _lookDirection;
+        private Vector2 _previousLookDirection;
         
         //private WeaponHolder _weaponHolder;
 
@@ -36,17 +36,17 @@ namespace FPSShooter.Gameplay
             var characterInput = new CharacterInput
             {
                 Move = movementVector,
-                Rotation = _lookDirection,
+                Rotation = _playerCamera.rotation,
             };
             _movementController.UpdateInput(characterInput);
         }
 
         public void Look(Vector2 lookVector)
         {
-            _lookDirection = Quaternion.Euler(lookVector);
-            
-            _cameraEulerAngles += new Vector3(lookVector.x, lookVector.y) * _cameraSensitivity;
-            _playerCamera.eulerAngles = _lookDirection.eulerAngles;
+            var deltaLookVector = lookVector - _previousLookDirection;
+            _cameraEulerAngles += new Vector3(-deltaLookVector.y, deltaLookVector.x) * _cameraSensitivity;
+            _playerCamera.eulerAngles = _cameraEulerAngles;
+            _previousLookDirection = lookVector;
         }
 
         public void RequestJump()
