@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using VContainer;
 
@@ -129,5 +130,30 @@ namespace FPSShooter.Core.Managers
         {
             _gameState = GameState.Finished;
         }
+        
+#if UNITY_EDITOR
+        private void OnGUI()
+        {
+            GUI.color = Color.green;
+            GUI.Label(new Rect(10, 10, 300, 30), $"Game state: {_gameState}", new GUIStyle()
+            {
+                fontStyle = FontStyle.Bold,
+                fontSize = 28,
+                
+            });
+            
+            if(GUI.Button(new Rect(330, 10, 300, 30), "Toggle game"))
+            {
+                if (_gameState == GameState.Running)
+                {
+                    PauseGame();
+                }
+                else
+                {
+                    ResumeGame();
+                }
+            }
+        }
+#endif
     }
 }

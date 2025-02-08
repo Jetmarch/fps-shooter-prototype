@@ -12,7 +12,7 @@ namespace FPSShooter.Gameplay
         [Header("Camera Settings")]
         [SerializeField] private Transform _playerCamera;
         [SerializeField] private float _cameraSensitivity = 0.1f;
-        private Vector3 _cameraEulerAngles;
+        [SerializeField, ReadOnly] private Vector3 _cameraEulerAngles;
 
         private Vector2 _movementDirection;
         private Quaternion _lookDirection;
@@ -57,8 +57,6 @@ namespace FPSShooter.Gameplay
 
         public void OnUpdate(float deltaTime)
         {
-            
-            
             _movementController.UpdateBody(deltaTime);
         }
     }
