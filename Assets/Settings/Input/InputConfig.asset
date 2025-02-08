@@ -15,8 +15,8 @@ MonoBehaviour:
   _fire: 323
   _moveForward: 119
   _moveBackward: 115
-  _moveRight: 97
-  _moveLeft: 100
+  _moveRight: 100
+  _moveLeft: 97
   _jump: 32
   _horizontalAxis: Horizontal
   _verticalAxis: Vertical

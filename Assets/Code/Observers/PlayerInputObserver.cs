@@ -5,6 +5,7 @@ using VContainer.Unity;
 
 namespace FPSShooter.Observers
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class PlayerInputObserver : IInitializable, IDisposable
     {
         private readonly InputSystem _inputSystem;

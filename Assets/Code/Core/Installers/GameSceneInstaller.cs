@@ -19,7 +19,6 @@ namespace FPSShooter.Core.Installers
         protected override void Configure(IContainerBuilder builder)
         {
             ConfigureGameLoop(builder);
-            
             ConfigurePlayer(builder);
         }
         
@@ -30,11 +29,16 @@ namespace FPSShooter.Core.Installers
 
         private void ConfigurePlayer(IContainerBuilder builder)
         {
-            builder.RegisterInstance(_player).AsSelf().AsImplementedInterfaces();
-            builder.RegisterInstance(_movementData);
+            builder.RegisterInstance(_player)
+                .AsSelf()
+                .AsImplementedInterfaces();
             
-            builder.Register<MovementController>(Lifetime.Scoped).AsImplementedInterfaces();
-            builder.Register<PlayerInputObserver>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<MovementController>(Lifetime.Scoped)
+                .WithParameter(_movementData)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            builder.Register<PlayerInputObserver>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
         }
     }
 }

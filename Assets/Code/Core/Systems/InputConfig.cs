@@ -8,8 +8,8 @@ namespace FPSShooter.Core.Systems
         [SerializeField] private KeyCode _fire = KeyCode.Mouse0;
         [SerializeField] private KeyCode _moveForward = KeyCode.W;
         [SerializeField] private KeyCode _moveBackward = KeyCode.S;
-        [SerializeField] private KeyCode _moveRight = KeyCode.A;
-        [SerializeField] private KeyCode _moveLeft = KeyCode.D;
+        [SerializeField] private KeyCode _moveRight = KeyCode.D;
+        [SerializeField] private KeyCode _moveLeft = KeyCode.A;
         [SerializeField] private KeyCode _jump = KeyCode.Space;
         [SerializeField] private string _horizontalAxis = "Horizontal";
         [SerializeField] private string _verticalAxis = "Vertical";

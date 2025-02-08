@@ -18,7 +18,9 @@ namespace FPSShooter.Core.Installers
         private void ConfigureInputSystem(IContainerBuilder builder)
         {
             builder.RegisterInstance(_inputConfig);
-            builder.Register<InputSystem>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
+            builder.Register<InputSystem>(Lifetime.Singleton)
+                .AsSelf()
+                .AsImplementedInterfaces();
         }
     }
 }
