@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef9f93e4a3e469ca91e44a773e8f48d, type: 3}
   m_Name: FPSCameraSettings
   m_EditorClassIdentifier: 
-  _playerCamera: {fileID: 0}
   _cameraSensitivity: 1
   _cameraMaxVerticalAngle: 90
   _cameraMinVerticalAngle: -90
+  _springMotionSettings:
+    _halfLife: 0.075
+    _frequency: 20
+    _angularDisplacement: 2
+    _linearDisplacement: 0.05

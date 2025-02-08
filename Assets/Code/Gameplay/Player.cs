@@ -20,7 +20,7 @@ namespace FPSShooter.Gameplay
             _movementController = movementController;
             _fpsCamera = fpsCamera;
         }
-        
+
         public void RequestFire()
         {
             Debug.Log("RequestFire");

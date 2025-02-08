@@ -54,7 +54,9 @@ namespace FPSShooter.Core.Installers
         {
             builder.RegisterInstance(_camera);
             builder.Register<FPSCameraController>(Lifetime.Scoped)
-                .WithParameter(_fpsCameraSettings);
+                .WithParameter(_fpsCameraSettings)
+                .AsSelf()
+                .AsImplementedInterfaces();
         }
         
         #if UNITY_EDITOR

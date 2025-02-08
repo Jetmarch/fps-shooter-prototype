@@ -1,3 +1,4 @@
+using FPSShooter.Gameplay.Utils;
 using UnityEngine;
 
 namespace FPSShooter.Gameplay.FPSCamera
@@ -9,8 +10,11 @@ namespace FPSShooter.Gameplay.FPSCamera
         [SerializeField] private float _cameraMaxVerticalAngle = 90f;
         [SerializeField] private float _cameraMinVerticalAngle = -90f;
         
+        [SerializeField] private SpringMotionSettings _springMotionSettings;
+        
         public float CameraSensitivity => _cameraSensitivity;
         public float CameraMaxVerticalAngle => _cameraMaxVerticalAngle;
         public float CameraMinVerticalAngle => _cameraMinVerticalAngle;
+        public SpringMotionSettings SpringMotionSettings => _springMotionSettings;
     }
 }
