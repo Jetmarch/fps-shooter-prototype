@@ -2,6 +2,7 @@ using System;
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay;
 using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Gameplay.Weapons;
 using FPSShooter.Observers;
 using UnityEngine;
 using VContainer;

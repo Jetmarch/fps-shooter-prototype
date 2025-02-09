@@ -1198,6 +1198,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponConfig: {fileID: 11400000, guid: 384aac20ca0318e4fa7d35490548998a, type: 2}
   _shootPoint: {fileID: 2024761372}
+  _weapon:
+    _reloadMechanic:
+      rid: -2
+    _shootMechanic:
+      rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &1796125909
 GameObject:
   m_ObjectHideFlags: 0

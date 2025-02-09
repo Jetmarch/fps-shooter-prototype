@@ -16,11 +16,13 @@ MonoBehaviour:
     _reloadMechanic:
       rid: 1161063603341885441
     _shootMechanic:
-      rid: 1161063603341885442
+      rid: 1161063603341885445
   references:
     version: 2
     RefIds:
     - rid: 1161063603341885441
       type: {class: ReloadAllMechanic, ns: FPSShooter.Gameplay.Weapons, asm: Game}
-    - rid: 1161063603341885442
-      type: {class: RaycastShootMechanic, ns: FPSShooter.Gameplay.Weapons, asm: Game}
+    - rid: 1161063603341885445
+      type: {class: ProjectileShootMechanic, ns: FPSShooter.Gameplay.Weapons, asm: Game}
+      data:
+        _projectilePrefab: {fileID: 6968183971612725951, guid: 1e6fb73dde272d04988ecc4917a4b0c1, type: 3}
