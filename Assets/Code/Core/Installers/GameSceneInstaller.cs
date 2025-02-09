@@ -2,6 +2,7 @@ using System;
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay;
 using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Gameplay.Utils;
 using FPSShooter.Gameplay.Weapons;
 using FPSShooter.Observers;
 using UnityEngine;
@@ -23,13 +24,34 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private Camera _camera;
         [SerializeField] private FPSCameraSettings _fpsCameraSettings;
         
+        [Header("Weapons")]
+        [SerializeField] private WeaponConfig[] _weaponConfigs;
+        
+        [Header("Utils")]
+        [SerializeField] private GameObject _projectilePrefab;
+        [SerializeField] private Transform _projectileParent;
+        [SerializeField] private int _projectilePoolSize;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             ConfigureGameLoop(builder);
             ConfigurePlayer(builder);
             ConfigureCamera(builder);
+            ConfigureWeapons(builder);
             
             builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
+            
+            builder.Register<GameObjectPool>(Lifetime.Scoped)
+                .WithParameter(_projectilePrefab)
+                .WithParameter(_projectileParent)
+                .WithParameter(_projectilePoolSize)
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
+
+        private void ConfigureWeapons(IContainerBuilder builder)
+        {
+            
         }
 
         private void ConfigureGameLoop(IContainerBuilder builder)

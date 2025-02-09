@@ -1,7 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace FPSShooter.Gameplay.Weapons
+namespace FPSShooter.Gameplay.Utils
 {
     [Serializable]
     public sealed class BaseItemMetadata
@@ -16,7 +16,7 @@ namespace FPSShooter.Gameplay.Weapons
         
         public BaseItemMetadata(BaseItemMetadata metadata)
         {
-            _id = metadata.Id;
+            _id = Guid.NewGuid();
             _name = metadata.Name;
             _description = metadata.Description;
         }

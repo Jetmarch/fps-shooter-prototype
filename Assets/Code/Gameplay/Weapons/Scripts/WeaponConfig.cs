@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 namespace FPSShooter.Gameplay.Weapons
 {
@@ -7,9 +8,11 @@ namespace FPSShooter.Gameplay.Weapons
     {
         [SerializeField] private Weapon _weapon;
 
-        public Weapon GetClone()
+        public Weapon GetClone(IObjectResolver objectResolver)
         {
-            return _weapon.Clone();
+            var weaponClone = _weapon.Clone();
+            objectResolver.Inject(weaponClone);
+            return weaponClone;
         }
     }
 }
