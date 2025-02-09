@@ -1,5 +1,6 @@
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Gameplay.Weapons;
 using KinematicCharacterController;
 using UnityEngine;
 using VContainer;
@@ -10,9 +11,10 @@ namespace FPSShooter.Gameplay
     {
         [SerializeField, ReadOnly] private MovementController _movementController;
         [SerializeField] private FPSCameraController _fpsCamera;
-        private Vector2 _movementDirection;
+
+        [SerializeField] private WeaponView _currentWeapon;
         
-        //private WeaponHolder _weaponHolder;
+        private Vector2 _movementDirection;
 
         [Inject]
         private void Construct(MovementController movementController, FPSCameraController fpsCamera)
@@ -23,8 +25,7 @@ namespace FPSShooter.Gameplay
 
         public void RequestFire()
         {
-            Debug.Log("RequestFire");
-            //_weaponHolder.RequestFire();a 
+            _currentWeapon.Shoot();
         }
 
         public void Move(Vector2 movementVector)
