@@ -26,7 +26,8 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private FPSCameraSettings _fpsCameraSettings;
         
         [Header("Weapons")]
-        [SerializeField] private WeaponConfig[] _weaponConfigs;
+        [SerializeField] private WeaponConfig _pistolConfig;
+        [SerializeField] private WeaponView _pistolView;
         
         [Header("Utils")]
         [SerializeField] private GameObject _projectilePrefab;
@@ -52,7 +53,15 @@ namespace FPSShooter.Core.Installers
 
         private void ConfigureWeapons(IContainerBuilder builder)
         {
-            
+            var pistolWeapon = _pistolConfig.CreateWeapon();
+            // builder.RegisterInstance(pistolWeapon);
+            // builder.RegisterInstance(_pistolView);
+
+            builder.Register<ProjectileWeaponPresenter>(Lifetime.Scoped)
+                .WithParameter(pistolWeapon)
+                .WithParameter(_pistolView)
+                .AsSelf()
+                .AsImplementedInterfaces();
         }
 
         private void ConfigureGameLoop(IContainerBuilder builder)

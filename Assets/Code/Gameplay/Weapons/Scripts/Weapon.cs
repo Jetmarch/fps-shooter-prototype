@@ -33,6 +33,7 @@ namespace FPSShooter.Gameplay.Weapons
             _shootDelay = weapon.ShootDelay;
             _reloadDuration = weapon.ReloadDuration;
             _reloadMechanic = weapon.ReloadMechanic;
+            _projectilePrefab = weapon.ProjectilePrefab;
 
             _reloadMechanic.SetOwner(this);
         }
