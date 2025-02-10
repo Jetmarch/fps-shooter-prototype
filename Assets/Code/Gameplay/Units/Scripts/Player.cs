@@ -5,7 +5,7 @@ using KinematicCharacterController;
 using UnityEngine;
 using VContainer;
 
-namespace FPSShooter.Gameplay
+namespace FPSShooter.Gameplay.Units
 {
     public sealed class Player : MonoBehaviour, IUpdateListener
     {

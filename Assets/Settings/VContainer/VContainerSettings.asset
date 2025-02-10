@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VContainerSettings
   m_EditorClassIdentifier: 
   RootLifetimeScope: {fileID: 5989142153793766388, guid: 1f1986f31468ca345805f6650cdecb51, type: 3}
-  EnableDiagnostics: 0
+  EnableDiagnostics: 1
   DisableScriptModifier: 0
-  RemoveClonePostfix: 0
+  RemoveClonePostfix: 1

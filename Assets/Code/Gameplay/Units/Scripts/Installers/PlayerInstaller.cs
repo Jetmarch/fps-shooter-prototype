@@ -1,0 +1,48 @@
+using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Observers;
+using UnityEngine;
+using VContainer;
+using VContainer.Unity;
+
+namespace FPSShooter.Gameplay.Units.Installers
+{
+    public class PlayerInstaller : LifetimeScope
+    {
+        [Header("Player")]
+        [SerializeField] private MovementData _movementData;
+        
+        [Header("Camera")]
+        [SerializeField] private FPSCameraSettings _fpsCameraSettings;
+        
+        protected override void Configure(IContainerBuilder builder)
+        {
+            builder.RegisterComponentInHierarchy<Player>();
+            ConfigureMovement(builder);
+            ConfigureCamera(builder);
+            ConfigureInput(builder);
+        }
+
+        private void ConfigureInput(IContainerBuilder builder)
+        {
+            builder.Register<PlayerInputObserver>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
+        }
+
+        private void ConfigureMovement(IContainerBuilder builder)
+        {
+            builder.Register<MovementController>(Lifetime.Scoped)
+                .WithParameter(_movementData)
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
+        
+        private void ConfigureCamera(IContainerBuilder builder)
+        {
+            builder.Register<FPSCameraController>(Lifetime.Scoped)
+                .WithParameter(_fpsCameraSettings)
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
+        
+    }
+}

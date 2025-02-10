@@ -7,7 +7,7 @@ namespace FPSShooter.Gameplay.Weapons
     public sealed class WeaponManager : MonoBehaviour
     {
         [Inject]
-        private void Configure(IEnumerable<Weapon> weapons)
+        private void Configure()
         {
             
         }

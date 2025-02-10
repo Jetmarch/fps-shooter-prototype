@@ -9,7 +9,6 @@ namespace FPSShooter.Gameplay
     public sealed class MovementController : ICharacterController, IInitializable
     {
         [SerializeField] private MovementData _data;
-        
 
         private CharacterState _state;
         private CharacterState _lastState;

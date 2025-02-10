@@ -1,6 +1,7 @@
 using System;
 using FPSShooter.Core.Systems;
 using FPSShooter.Gameplay;
+using FPSShooter.Gameplay.Units;
 using VContainer.Unity;
 
 namespace FPSShooter.Observers
@@ -10,7 +11,6 @@ namespace FPSShooter.Observers
     {
         private readonly InputSystem _inputSystem;
         private readonly Player _player;
-
         public PlayerInputObserver(InputSystem inputSystem, Player player)
         {
             _inputSystem = inputSystem;
