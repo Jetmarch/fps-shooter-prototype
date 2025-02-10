@@ -16,14 +16,12 @@ namespace FPSShooter.Gameplay.Units
         
         private Player _player;
         private GameLoopManager _gameLoopManager;
-        private IObjectResolver _objectResolver;
         
         //TODO: player config
         [Inject]
-        private void Configure(GameLoopManager gameLoopManager, IObjectResolver objectResolver)
+        private void Configure(GameLoopManager gameLoopManager)
         {
             _gameLoopManager = gameLoopManager;
-            _objectResolver = objectResolver;
         }
 
         private void Start()

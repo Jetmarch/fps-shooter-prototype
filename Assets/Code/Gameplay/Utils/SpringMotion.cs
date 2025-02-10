@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 // ReSharper disable ClassNeverInstantiated.Global
 
 namespace FPSShooter.Gameplay.Utils
@@ -8,30 +10,32 @@ namespace FPSShooter.Gameplay.Utils
     public sealed class SpringMotion
     {
         [SerializeField] private Transform _target;
+        [SerializeField] private Transform _follower;
         
         private SpringMotionSettings _springMotionSettings;
         private Vector3 _springPosition;
         private Vector3 _springVelocity;
 
-        public SpringMotion(Transform target, SpringMotionSettings springMotionSettings)
+        public SpringMotion(Transform target, Transform follower, SpringMotionSettings springMotionSettings)
         {
             _target = target;
+            _follower = follower;
             _springMotionSettings = springMotionSettings;
-            _springPosition = _target.position;
+            _springPosition = _follower.position;
             _springVelocity = Vector3.zero;
         }
 
         public void UpdateSpring(float deltaTime, Vector3 up)
         {
-            _target.localPosition = Vector3.zero;
+            _follower.position = _target.position;
 
             Spring(ref _springPosition, ref _springVelocity, _target.position, _springMotionSettings.HalfLife, _springMotionSettings.Frequency, deltaTime);
 
-            var localSpringPosition = _springPosition - _target.position;
-            var springHeight = Vector3.Dot(localSpringPosition, up);
-            var xRot = _target.localEulerAngles.x + -springHeight * _springMotionSettings.AngularDisplacement;
-            _target.localEulerAngles = new Vector3(xRot, _target.localEulerAngles.y, _target.localEulerAngles.z);
-            _target.localPosition = localSpringPosition * _springMotionSettings.LinearDisplacement;
+            var springPositionDiff = _springPosition - _target.position;
+            var springHeight = Vector3.Dot(springPositionDiff, up);
+            var xRot = _follower.eulerAngles.x + -springHeight * _springMotionSettings.AngularDisplacement;
+            _follower.eulerAngles += new Vector3(xRot, _follower.eulerAngles.y, _follower.eulerAngles.z);
+            _follower.position += springPositionDiff * _springMotionSettings.LinearDisplacement;
         }
 
         // https://allenchou.net/2015/04/game-math-more-on-numeric-springing/

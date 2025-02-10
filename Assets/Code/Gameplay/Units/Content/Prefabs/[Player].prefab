@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7451834302067092049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -340,7 +340,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _movementData:
     Motor: {fileID: 7451834302067092050}
-    CameraTarget: {fileID: 7451834301061033423}
+    CameraTarget: {fileID: 7451834302105840410}
     Root: {fileID: 7451834302067092048}
     WalkSpeed: 20
     CrouchSpeed: 7
@@ -355,9 +355,10 @@ MonoBehaviour:
     StandHeight: 2
     CrouchHeight: 1
     CrouchHeightResponce: 15
-    StandCameraTargetHeight: 0.9
-    CrouchCameraTargetHeight: 0.7
+    StandCameraTargetHeight: 0.5
+    CrouchCameraTargetHeight: 0.418
   _fpsCameraSettings: {fileID: 11400000, guid: 718a58147ddc9d14c9e07d9a7ffecf62, type: 2}
+  _cameraTarget: {fileID: 7451834301061033423}
 --- !u!1 &7451834302105840411
 GameObject:
   m_ObjectHideFlags: 0

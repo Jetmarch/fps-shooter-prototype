@@ -8,11 +8,12 @@ namespace FPSShooter.Gameplay.Units.Installers
 {
     public class PlayerInstaller : LifetimeScope
     {
-        [Header("Player")]
+        [Header("Movement")]
         [SerializeField] private MovementData _movementData;
         
         [Header("Camera")]
         [SerializeField] private FPSCameraSettings _fpsCameraSettings;
+        [SerializeField] private Transform _cameraTarget;
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -40,6 +41,7 @@ namespace FPSShooter.Gameplay.Units.Installers
         {
             builder.Register<FPSCameraController>(Lifetime.Scoped)
                 .WithParameter(_fpsCameraSettings)
+                .WithParameter(_cameraTarget)
                 .AsSelf()
                 .AsImplementedInterfaces();
         }

@@ -1,12 +1,11 @@
 using System;
-using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay.Utils;
 using UnityEngine;
 
 namespace FPSShooter.Gameplay.FPSCamera
 {
     [Serializable]
-    public sealed class FPSCameraController : ILateUpdateListener
+    public sealed class FPSCameraController 
     {
         public Quaternion Rotation => _camera.transform.rotation;
         private readonly Camera _camera;
@@ -18,11 +17,11 @@ namespace FPSShooter.Gameplay.FPSCamera
 
         private Vector3 _lookRotation;
 
-        public FPSCameraController(FPSCameraSettings settings, Camera camera)
+        public FPSCameraController(FPSCameraSettings settings, Camera camera, Transform cameraTarget)
         {
             _settings = settings;
             _camera = camera;
-            _springMotion = new SpringMotion(_camera.transform, _settings.SpringMotionSettings);
+            _springMotion = new SpringMotion(cameraTarget, _camera.transform, _settings.SpringMotionSettings);
         }
 
         public void Look(Vector2 lookVector)

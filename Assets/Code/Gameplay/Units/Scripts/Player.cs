@@ -7,15 +7,12 @@ using VContainer;
 
 namespace FPSShooter.Gameplay.Units
 {
-    public sealed class Player : MonoBehaviour, IUpdateListener
+    public sealed class Player : MonoBehaviour, IUpdateListener, ILateUpdateListener
     {
         [SerializeField, ReadOnly] private MovementController _movementController;
         [SerializeField] private FPSCameraController _fpsCamera;
 
         [SerializeField] private WeaponView _currentWeapon;
-        
-        private Vector2 _movementDirection;
-
         [Inject]
         private void Construct(MovementController movementController, FPSCameraController fpsCamera)
         {
@@ -50,7 +47,12 @@ namespace FPSShooter.Gameplay.Units
 
         public void OnUpdate(float deltaTime)
         {
-            _movementController.UpdateBody(deltaTime);
+             _movementController.UpdateBody(deltaTime);
+        }
+
+        public void OnLateUpdate(float deltaTime)
+        {
+            _fpsCamera.OnLateUpdate(deltaTime);
         }
     }
 }

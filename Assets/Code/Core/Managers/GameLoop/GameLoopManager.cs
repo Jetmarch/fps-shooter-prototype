@@ -25,17 +25,20 @@ namespace FPSShooter.Core.Managers
 
         public void AddListener(IGameLoopListener listener)
         {
-            switch (listener)
+            // ReSharper disable once ConvertIfStatementToSwitchStatement
+            if (listener is IUpdateListener updateListener)
             {
-                case IUpdateListener updateListener:
-                    _updateListeners.Add(updateListener);
-                    break;
-                case IFixedUpdateListener fixedUpdateListener:
-                    _fixedUpdateListeners.Add(fixedUpdateListener);
-                    break;
-                case ILateUpdateListener lateUpdateListener:
-                    _lateUpdateListeners.Add(lateUpdateListener);
-                    break;
+                _updateListeners.Add(updateListener);
+            }
+
+            if (listener is IFixedUpdateListener fixedUpdateListener)
+            {
+                _fixedUpdateListeners.Add(fixedUpdateListener);
+            }
+
+            if (listener is ILateUpdateListener lateUpdateListener)
+            {
+                _lateUpdateListeners.Add(lateUpdateListener);
             }
 
             _gameLoopListeners.Add(listener);
