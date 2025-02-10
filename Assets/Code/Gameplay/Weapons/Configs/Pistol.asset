@@ -15,14 +15,8 @@ MonoBehaviour:
   _weapon:
     _reloadMechanic:
       rid: 1161063608996069377
-    _shootMechanic:
-      rid: 1161063608996069378
   references:
     version: 2
     RefIds:
     - rid: 1161063608996069377
       type: {class: ReloadAllMechanic, ns: FPSShooter.Gameplay.Weapons, asm: Game}
-    - rid: 1161063608996069378
-      type: {class: ProjectileShootMechanic, ns: FPSShooter.Gameplay.Weapons, asm: Game}
-      data:
-        _projectileType: 0

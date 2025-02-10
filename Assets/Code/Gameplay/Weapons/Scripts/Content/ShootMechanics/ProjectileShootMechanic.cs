@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace FPSShooter.Gameplay.Weapons
 {
-    [Serializable]
+    [Serializable, Obsolete]
     public sealed class ProjectileShootMechanic : BaseShootMechanic
     {
-        public event Action<Transform, ProjectileType> OnProjectileShoot;
-        
         [SerializeField] private ProjectileType _projectileType;
         
         public override void Shoot(Transform shootPoint)

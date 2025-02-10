@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FPSShooter.Gameplay.Weapons
 {
-    [Serializable]
+    [Serializable, Obsolete]
     public abstract class BaseShootMechanic
     {
         [ShowInInspector] protected uint AmmoOnShot = 1;

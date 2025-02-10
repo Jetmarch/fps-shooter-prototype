@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FPSShooter.Gameplay.Weapons
 {
-    [Serializable]
+    [Serializable, Obsolete]
     public sealed class RaycastShootMechanic : BaseShootMechanic
     {
         [ShowInInspector] private float _maxRayDistance = 100f;

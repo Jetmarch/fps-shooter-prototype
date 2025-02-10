@@ -8,11 +8,9 @@ namespace FPSShooter.Gameplay.Weapons
     {
         [SerializeField] private Weapon _weapon;
 
-        public Weapon GetClone(IObjectResolver objectResolver)
+        public Weapon CreateWeapon()
         {
-            var weaponClone = _weapon.Clone();
-            objectResolver.Inject(weaponClone);
-            return weaponClone;
+            return  _weapon.Clone();
         }
     }
 }

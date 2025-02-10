@@ -5,32 +5,26 @@ namespace FPSShooter.Gameplay.Weapons
 {
     public sealed class WeaponView : MonoBehaviour
     {
-        [SerializeField] private WeaponConfig _weaponConfig;
         [SerializeField] private Transform _shootPoint;
 
-        [SerializeField] private Weapon _weapon;
-
-        private IObjectResolver _objectResolver;
+        public Transform ShootPoint => _shootPoint;
         
-        [Inject]
-        private void Configure(IObjectResolver resolver)
-        {
-            _objectResolver = resolver;
-        }
+        private IWeaponPresenter _presenter;
 
-        private void Start()
+        [Inject]
+        public void Configure(IWeaponPresenter presenter)
         {
-            _weapon = _weaponConfig.GetClone(_objectResolver);
+            _presenter = presenter;
         }
 
         public void Shoot()
         {
-            _weapon.TryShoot(_shootPoint);
+            _presenter.Shoot();
         }
         
         public void Reload()
         {
-            _weapon.TryReload();
+            _presenter.Reload();
         }
     }
 }

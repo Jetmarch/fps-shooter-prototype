@@ -1,4 +1,5 @@
 using System;
+using FPSShooter.Gameplay.Projectiles;
 using FPSShooter.Gameplay.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,12 +10,12 @@ namespace FPSShooter.Gameplay.Weapons
     public class Weapon
     {
         [ShowInInspector] private BaseItemMetadata _itemMetadata;
-        [ShowInInspector] private uint _maxAmmo = 100;
-        [ShowInInspector] private uint _currentAmmo = 100;
-        [ShowInInspector] private float _shootDelay = 0.5f;
-        [ShowInInspector] private float _reloadDuration = 0.7f;
+        [ShowInInspector] private uint _maxAmmo;
+        [ShowInInspector] private uint _currentAmmo;
+        [ShowInInspector] private float _shootDelay;
+        [ShowInInspector] private float _reloadDuration;
         [SerializeReference] private BaseReloadMechanic _reloadMechanic;
-        [SerializeReference] private BaseShootMechanic _shootMechanic;
+        [ShowInInspector] private Projectile _projectilePrefab;
         
         public BaseItemMetadata ItemMetadata => _itemMetadata;
         public uint MaxAmmo => _maxAmmo;
@@ -22,7 +23,7 @@ namespace FPSShooter.Gameplay.Weapons
         public float ShootDelay => _shootDelay;
         public float ReloadDuration => _reloadDuration;
         public BaseReloadMechanic ReloadMechanic => _reloadMechanic;
-        public BaseShootMechanic ShootMechanic => _shootMechanic;
+        public Projectile ProjectilePrefab => _projectilePrefab;
 
         public Weapon(Weapon weapon)
         {
@@ -32,17 +33,13 @@ namespace FPSShooter.Gameplay.Weapons
             _shootDelay = weapon.ShootDelay;
             _reloadDuration = weapon.ReloadDuration;
             _reloadMechanic = weapon.ReloadMechanic;
-            _shootMechanic = weapon.ShootMechanic;
 
             _reloadMechanic.SetOwner(this);
-            _shootMechanic.SetOwner(this);
         }
 
-        public bool TryShoot(Transform shootPoint)
+        public bool CanShoot()
         {
-            if (!_shootMechanic.CanShoot()) return false;
-            _shootMechanic.Shoot(shootPoint);
-            return true;
+            return _currentAmmo > 0;
         }
 
         public bool TryReload()
