@@ -12,6 +12,8 @@ namespace FPSShooter.Core.Systems
         public event Action<Vector2> OnMove;
         public event Action<Vector2> OnLook;
         public event Action OnJump;
+        public event Action OnMouseWheelUp;
+        public event Action OnMouseWheelDown;
         
         private readonly InputConfig _inputConfig;
 
@@ -36,6 +38,7 @@ namespace FPSShooter.Core.Systems
             MoveInput();
             JumpInput();
             LookInput();
+            MouseWheelInput();
         }
 
         private void FireInput()
@@ -90,6 +93,20 @@ namespace FPSShooter.Core.Systems
             OnLook?.Invoke(lookVector);
         }
 
-        
+        private void MouseWheelInput()
+        {
+            var mouseScrollDelta = Input.GetAxis("Mouse ScrollWheel");
+            if (mouseScrollDelta > 0)
+            {
+                Debug.Log($"mouse wheel up {mouseScrollDelta}");
+                OnMouseWheelUp?.Invoke();
+            }
+
+            if (mouseScrollDelta < 0)
+            {
+                Debug.Log($"mouse wheel down {mouseScrollDelta}");
+                OnMouseWheelDown?.Invoke();
+            }
+        }
     }
 }

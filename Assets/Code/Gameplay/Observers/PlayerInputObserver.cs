@@ -10,27 +10,31 @@ namespace FPSShooter.Observers
     public sealed class PlayerInputObserver : IInitializable, IDisposable
     {
         private readonly InputSystem _inputSystem;
-        private readonly Player _player;
-        public PlayerInputObserver(InputSystem inputSystem, Player player)
+        private readonly PlayerView _playerView;
+        public PlayerInputObserver(InputSystem inputSystem, PlayerView playerView)
         {
             _inputSystem = inputSystem;
-            _player = player;
+            _playerView = playerView;
         }
 
         public void Initialize()
         {
-            _inputSystem.OnFire += _player.RequestFire;
-            _inputSystem.OnJump += _player.RequestJump;
-            _inputSystem.OnMove += _player.Move;
-            _inputSystem.OnLook += _player.Look;
+            _inputSystem.OnFire += _playerView.RequestFire;
+            _inputSystem.OnJump += _playerView.RequestJump;
+            _inputSystem.OnMove += _playerView.Move;
+            _inputSystem.OnLook += _playerView.Look;
+            _inputSystem.OnMouseWheelUp += _playerView.SetNextWeapon;
+            _inputSystem.OnMouseWheelDown += _playerView.SetPreviousWeapon;
         }
 
         public void Dispose()
         {
-            _inputSystem.OnFire -= _player.RequestFire;
-            _inputSystem.OnJump -= _player.RequestJump;
-            _inputSystem.OnMove -= _player.Move;
-            _inputSystem.OnLook -= _player.Look;
+            _inputSystem.OnMouseWheelDown -= _playerView.SetPreviousWeapon;
+            _inputSystem.OnMouseWheelUp -= _playerView.SetNextWeapon;
+            _inputSystem.OnLook -= _playerView.Look;
+            _inputSystem.OnMove -= _playerView.Move;
+            _inputSystem.OnJump -= _playerView.RequestJump;
+            _inputSystem.OnFire -= _playerView.RequestFire;
         }
     }
 }

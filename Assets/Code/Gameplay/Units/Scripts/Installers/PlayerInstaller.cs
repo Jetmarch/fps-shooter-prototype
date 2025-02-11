@@ -17,10 +17,12 @@ namespace FPSShooter.Gameplay.Units.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<Player>();
+            builder.RegisterComponentInHierarchy<PlayerView>();
             ConfigureMovement(builder);
             ConfigureCamera(builder);
             ConfigureInput(builder);
+
+            builder.Register<DebugPlayerWeaponLoader>(Lifetime.Scoped).AsImplementedInterfaces();
         }
 
         private void ConfigureInput(IContainerBuilder builder)
@@ -45,6 +47,5 @@ namespace FPSShooter.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
         }
-        
     }
 }

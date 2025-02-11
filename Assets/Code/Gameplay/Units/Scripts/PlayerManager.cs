@@ -14,7 +14,7 @@ namespace FPSShooter.Gameplay.Units
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform _playerContainer;
         
-        private Player _player;
+        private PlayerView _playerView;
         private GameLoopManager _gameLoopManager;
         
         //TODO: player config
@@ -32,15 +32,15 @@ namespace FPSShooter.Gameplay.Units
         private void CreatePlayer()
         {
             var playerGameObject = Instantiate(_playerPrefab, _playerContainer.position, _playerContainer.rotation, _playerContainer);
-            _player = playerGameObject.GetComponent<Player>();
-            _gameLoopManager.AddListener(_player);
+            _playerView = playerGameObject.GetComponent<PlayerView>();
+            _gameLoopManager.AddListener(_playerView);
             
             PlayerCreated?.Invoke();
         }
 
-        public Player GetPlayer()
+        public PlayerView GetPlayer()
         {
-            return _player;
+            return _playerView;
         }
     }
 }

@@ -1,17 +1,29 @@
 using UnityEngine;
+using VContainer.Unity;
+
 // ReSharper disable ClassNeverInstantiated.Global
 
 namespace FPSShooter.Core.Managers
 {
-    public sealed class CursorToggler : IUpdateListener
+    public sealed class CursorToggler : IInitializable, IUpdateListener
     {
+        public CursorToggler()
+        {
+        }
+        
+        public void Initialize()
+        {
+        }
+        
         public void OnUpdate(float deltaTime)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
+            { 
+                Debug.Log("Cursor toggled");
                 Cursor.visible = !Cursor.visible;
                 Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
             }
         }
+
     }
 }

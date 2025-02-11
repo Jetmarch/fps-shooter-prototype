@@ -9,13 +9,20 @@ namespace FPSShooter.Core.Installers
 {
     public class GameSceneInstaller : LifetimeScope
     {
+        [SerializeField] private WeaponPack _weaponPack;
+        [SerializeField] private GameLoopManager _gameLoopManager;
+        [SerializeField] private PlayerManager _playerManager;
+        [SerializeField] private WeaponManager _weaponManager;
+        [SerializeField] private Camera _camera;
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.RegisterInstance(_gameLoopManager);
+            builder.RegisterInstance(_playerManager);
+            builder.RegisterInstance(_weaponManager);
+            builder.RegisterInstance(_camera);
+            builder.RegisterInstance(_weaponPack);
+            
             builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
-            builder.RegisterComponentInHierarchy<PlayerManager>();
-            builder.RegisterComponentInHierarchy<WeaponManager>();
-            builder.RegisterComponentInHierarchy<GameLoopManager>();
-            builder.RegisterComponentInHierarchy<Camera>();
         }
     }
 }
