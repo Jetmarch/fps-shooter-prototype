@@ -1,4 +1,4 @@
-using UnityEngine;
+using FPSShooter.Gameplay.Projectiles;
 
 namespace FPSShooter.Gameplay.Weapons
 {
@@ -7,12 +7,13 @@ namespace FPSShooter.Gameplay.Weapons
     {
         private readonly WeaponView _view;
         private readonly Weapon _model;
-        //private ProjectileFactory _projectileFactory;
-
-        public ProjectileWeaponPresenter(WeaponView view, Weapon model)
+        private readonly IProjectileManager _projectileManager;
+        
+        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager)
         {
             _view = view;
             _model = model;
+            _projectileManager = projectileManager;
         }
         
         public void Shoot()
@@ -23,8 +24,11 @@ namespace FPSShooter.Gameplay.Weapons
                 return;
             }
             
-            //TODO: use _projectileFactory
-            var newProjectile = Object.Instantiate(_model.ProjectilePrefab, _view.ShootPoint.position, _view.ShootPoint.rotation);
+            //TODO: pass impactRequest, position and rotation to projectileManager
+            var newProjectile = _projectileManager.GetProjectile();
+            newProjectile.transform.position = _view.ShootPoint.position;
+            newProjectile.transform.rotation = _view.ShootPoint.rotation;
+            //newProjectile.SetImpactRequest(_model.ImpactRequest);
         }
 
         public void Reload()

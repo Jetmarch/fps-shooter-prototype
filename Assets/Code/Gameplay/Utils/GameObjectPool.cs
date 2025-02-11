@@ -11,7 +11,7 @@ namespace FPSShooter.Gameplay.Utils
         [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private int _poolSize;
-        
+
         private Queue<GameObject> _pool;
 
         public GameObjectPool(GameObject prefab, Transform parent, int poolSize)
@@ -19,11 +19,11 @@ namespace FPSShooter.Gameplay.Utils
             _prefab = prefab;
             _parent = parent;
             _poolSize = poolSize;
-            _pool = new Queue<GameObject>();
         }
         
         public void Initialize()
         {
+            _pool = new Queue<GameObject>();
             for (int i = 0; i < _poolSize; i++)
             {
                 var gameObject = UnityEngine.Object.Instantiate(_prefab, _parent);
