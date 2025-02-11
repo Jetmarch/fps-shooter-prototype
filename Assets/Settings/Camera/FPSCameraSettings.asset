@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FPSCameraSettings
   m_EditorClassIdentifier: 
   _cameraSensitivity: 1
-  _cameraMaxVerticalAngle: 90
-  _cameraMinVerticalAngle: -90
+  _cameraMaxVerticalAngle: 45
+  _cameraMinVerticalAngle: -45
   _springMotionSettings:
     _halfLife: 0.075
     _frequency: 20

@@ -504,6 +504,7 @@ MonoBehaviour:
   _gameLoopManager: {fileID: 1102704896}
   _playerManager: {fileID: 1711386301}
   _weaponManager: {fileID: 1037512487}
+  _projectileManager: {fileID: 1114867401}
   _camera: {fileID: 636769605}
 --- !u!1 &1102704894
 GameObject:
