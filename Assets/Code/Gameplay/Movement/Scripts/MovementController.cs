@@ -1,6 +1,8 @@
 using System;
+using FPSShooter.Gameplay.Movement;
 using KinematicCharacterController;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer.Unity;
 
 namespace FPSShooter.Gameplay
@@ -8,7 +10,8 @@ namespace FPSShooter.Gameplay
     [Serializable]
     public sealed class MovementController : ICharacterController, IInitializable
     {
-        [SerializeField] private MovementData _data;
+        [SerializeField] private MovementParams _movementParams;
+        [FormerlySerializedAs("_data")] [SerializeField] private MovementConfig _config;
 
         private CharacterState _state;
         private CharacterState _lastState;
@@ -26,13 +29,14 @@ namespace FPSShooter.Gameplay
 
         private Collider[] _uncrouchOverlapResults;
 
-        public MovementController(MovementData data)
+        public MovementController(MovementParams movementParams, MovementConfig config)
         {
-            _data = data;
+            _config = config;
+            _movementParams = movementParams;
             _state.Stance = Stance.Stand;
             _lastState = _state;
             _uncrouchOverlapResults = new Collider[10];
-            _data.Motor.CharacterController = this;
+            _movementParams.Motor.CharacterController = this;
         }
 
         public void Initialize()
@@ -50,25 +54,25 @@ namespace FPSShooter.Gameplay
 
         public void UpdateBody(float delta)
         {
-            var currentHeight = _data.Motor.Capsule.height;
-            var normalizeHeight = currentHeight / _data.StandHeight;
-            var cameraTargetHeight = currentHeight * (_state.Stance is Stance.Stand ? _data.StandCameraTargetHeight : _data.CrouchCameraTargetHeight);
+            var currentHeight = _movementParams.Motor.Capsule.height;
+            var normalizeHeight = currentHeight / _config.StandHeight;
+            var cameraTargetHeight = currentHeight * (_state.Stance is Stance.Stand ? _config.StandCameraTargetHeight : _config.CrouchCameraTargetHeight);
 
             var rootTargetScale = new Vector3(1f, normalizeHeight, 1f);
 
-            _data.CameraTarget.localPosition = Vector3.Lerp
+            _movementParams.CameraTarget.localPosition = Vector3.Lerp
                 (
-                    _data.CameraTarget.localPosition,
+                    _movementParams.CameraTarget.localPosition,
                     new Vector3(0f, cameraTargetHeight, 0f),
                     //Much framerate independent formule for lerp
-                    1f - Mathf.Exp(-_data.CrouchHeightResponce * delta)
+                    1f - Mathf.Exp(-_config.CrouchHeightResponce * delta)
                 );
 
-            _data.Root.localScale = Vector3.Lerp
+            _movementParams.Root.localScale = Vector3.Lerp
                 (
-                    _data.Root.localScale,
+                    _movementParams.Root.localScale,
                     rootTargetScale,
-                    1f - Mathf.Exp(-_data.CrouchHeightResponce * delta)
+                    1f - Mathf.Exp(-_config.CrouchHeightResponce * delta)
                 );
         }
 
@@ -100,11 +104,11 @@ namespace FPSShooter.Gameplay
         public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
         {
             
-            var forward = Vector3.ProjectOnPlane(_requestedRotation * Vector3.forward, _data.Motor.CharacterUp);
+            var forward = Vector3.ProjectOnPlane(_requestedRotation * Vector3.forward, _movementParams.Motor.CharacterUp);
 
             if (forward != Vector3.zero)
             {
-                currentRotation = Quaternion.LookRotation(forward, _data.Motor.CharacterUp);
+                currentRotation = Quaternion.LookRotation(forward, _movementParams.Motor.CharacterUp);
             }
         }
 
@@ -114,17 +118,17 @@ namespace FPSShooter.Gameplay
             _state.Acceleration = Vector3.zero;
 
             //if grounded
-            if (_data.Motor.GroundingStatus.IsStableOnGround)
+            if (_movementParams.Motor.GroundingStatus.IsStableOnGround)
             {
                 _timeSinceUngrounded = 0f;
                 _undergroundedDueToJump = false;
 
-                var groundedMovement = _data.Motor.GetDirectionTangentToSurface(_requestedMovement, _data.Motor.GroundingStatus.GroundNormal) * _requestedMovement.magnitude;
+                var groundedMovement = _movementParams.Motor.GetDirectionTangentToSurface(_requestedMovement, _movementParams.Motor.GroundingStatus.GroundNormal) * _requestedMovement.magnitude;
                 //Move
                 if(_state.Stance is Stance.Stand or Stance.Crouch)
                 {
-                    var speed = _state.Stance is Stance.Stand ? _data.WalkSpeed : _data.CrouchSpeed;
-                    var response = _state.Stance is Stance.Stand ? _data.WalkResponce : _data.CrouchResponce;
+                    var speed = _state.Stance is Stance.Stand ? _config.WalkSpeed : _config.CrouchSpeed;
+                    var response = _state.Stance is Stance.Stand ? _config.WalkResponce : _config.CrouchResponce;
 
                     var targetVelocity = groundedMovement * speed;
 
@@ -141,17 +145,17 @@ namespace FPSShooter.Gameplay
 
                 if(_requestedMovement.sqrMagnitude > 0f)
                 {
-                    var planarMovement = Vector3.ProjectOnPlane(_requestedMovement, _data.Motor.CharacterUp) * _requestedMovement.magnitude;
+                    var planarMovement = Vector3.ProjectOnPlane(_requestedMovement, _movementParams.Motor.CharacterUp) * _requestedMovement.magnitude;
 
-                    var currentPlanarVelocity = Vector3.ProjectOnPlane(currentVelocity, _data.Motor.CharacterUp);
+                    var currentPlanarVelocity = Vector3.ProjectOnPlane(currentVelocity, _movementParams.Motor.CharacterUp);
 
-                    var movementForce = planarMovement * _data.AirAcceleration * deltaTime;
+                    var movementForce = planarMovement * _config.AirAcceleration * deltaTime;
 
-                    if (currentPlanarVelocity.magnitude < _data.AirSpeed)
+                    if (currentPlanarVelocity.magnitude < _config.AirSpeed)
                     {
                         var targetPlanarVelocity = currentPlanarVelocity + movementForce;
 
-                        targetPlanarVelocity = Vector3.ClampMagnitude(targetPlanarVelocity, _data.AirSpeed);
+                        targetPlanarVelocity = Vector3.ClampMagnitude(targetPlanarVelocity, _config.AirSpeed);
 
                         movementForce = targetPlanarVelocity - currentPlanarVelocity;
                     }
@@ -163,11 +167,11 @@ namespace FPSShooter.Gameplay
                     }
 
                     //Prevent air-climbing steep slopes
-                    if(_data.Motor.GroundingStatus.FoundAnyGround)
+                    if(_movementParams.Motor.GroundingStatus.FoundAnyGround)
                     {
                         if(Vector3.Dot(movementForce, currentVelocity + movementForce) > 0f)
                         {
-                            var obstructionNormal = Vector3.Cross(_data.Motor.CharacterUp, Vector3.Cross(_data.Motor.CharacterUp, _data.Motor.GroundingStatus.GroundNormal)).normalized;
+                            var obstructionNormal = Vector3.Cross(_movementParams.Motor.CharacterUp, Vector3.Cross(_movementParams.Motor.CharacterUp, _movementParams.Motor.GroundingStatus.GroundNormal)).normalized;
 
                             movementForce = Vector3.ProjectOnPlane(movementForce, obstructionNormal);
                         }
@@ -178,38 +182,38 @@ namespace FPSShooter.Gameplay
 
 
                 //Gravity
-                var effectiveGravity = _data.Gravity;
-                var verticalSpeed = Vector3.Dot(currentVelocity, _data.Motor.CharacterUp);
+                var effectiveGravity = _config.Gravity;
+                var verticalSpeed = Vector3.Dot(currentVelocity, _movementParams.Motor.CharacterUp);
                 if(_requestedSustainedJump && verticalSpeed > 0f)
                 {
-                      effectiveGravity *= _data.JumpSustainGravity;
+                      effectiveGravity *= _config.JumpSustainGravity;
                 }
 
-                currentVelocity += _data.Motor.CharacterUp * effectiveGravity * deltaTime;
+                currentVelocity += _movementParams.Motor.CharacterUp * effectiveGravity * deltaTime;
             }
 
             if(_requestedJump)
             {
-                var grounded = _data.Motor.GroundingStatus.IsStableOnGround;
-                var canCoyoteJump = _timeSinceUngrounded < _data.CoyoteTime && !_undergroundedDueToJump;
+                var grounded = _movementParams.Motor.GroundingStatus.IsStableOnGround;
+                var canCoyoteJump = _timeSinceUngrounded < _config.CoyoteTime && !_undergroundedDueToJump;
 
                 if (grounded || canCoyoteJump)
                 {
                     _requestedJump = false;
                     _requestedCrouch = false;
 
-                    _data.Motor.ForceUnground(0f);
+                    _movementParams.Motor.ForceUnground(0f);
                     _undergroundedDueToJump = true;
 
-                    var currentVerticalSpeed = Vector3.Dot(currentVelocity, _data.Motor.CharacterUp);
-                    var targetVerricalSpeed = Mathf.Max(currentVerticalSpeed, _data.JumpSpeed);
-                    currentVelocity += _data.Motor.CharacterUp * (targetVerricalSpeed - currentVerticalSpeed);
+                    var currentVerticalSpeed = Vector3.Dot(currentVelocity, _movementParams.Motor.CharacterUp);
+                    var targetVerricalSpeed = Mathf.Max(currentVerticalSpeed, _config.JumpSpeed);
+                    currentVelocity += _movementParams.Motor.CharacterUp * (targetVerricalSpeed - currentVerticalSpeed);
                 }
                 else
                 {
                     _timeSinceJumpRequest += deltaTime;
 
-                    var canJumpLater = _timeSinceJumpRequest < _data.CoyoteTime;
+                    var canJumpLater = _timeSinceJumpRequest < _config.CoyoteTime;
                     _requestedJump = canJumpLater;
                 }
             }
@@ -220,7 +224,7 @@ namespace FPSShooter.Gameplay
             if (_requestedCrouch && _state.Stance is Stance.Stand)
             {
                 _state.Stance = Stance.Crouch;
-                _data.Motor.SetCapsuleDimensions(_data.Motor.Capsule.radius, _data.CrouchHeight, _data.CrouchHeight * 0.5f);
+                _movementParams.Motor.SetCapsuleDimensions(_movementParams.Motor.Capsule.radius, _config.CrouchHeight, _config.CrouchHeight * 0.5f);
             }
         }
 
@@ -231,8 +235,8 @@ namespace FPSShooter.Gameplay
                 Uncrouch();
             }
 
-            _state.Grounded = _data.Motor.GroundingStatus.IsStableOnGround;
-            _state.Velocity = _data.Motor.Velocity;
+            _state.Grounded = _movementParams.Motor.GroundingStatus.IsStableOnGround;
+            _state.Velocity = _movementParams.Motor.Velocity;
             _lastState = _tempState;
         }
         
@@ -245,14 +249,14 @@ namespace FPSShooter.Gameplay
         {
         }
 
-        public Transform GetCameraTarget() => _data.CameraTarget;
+        public Transform GetCameraTarget() => _movementParams.CameraTarget;
 
         public void SetPosition(Vector3 position, bool killVelocity = true)
         {
-            _data.Motor.SetPosition(position);
+            _movementParams.Motor.SetPosition(position);
             if (killVelocity)
             {
-                _data.Motor.BaseVelocity = Vector3.zero;
+                _movementParams.Motor.BaseVelocity = Vector3.zero;
             }
         }
 
@@ -262,18 +266,18 @@ namespace FPSShooter.Gameplay
         private void Crouch()
         {
             _state.Stance = Stance.Crouch;
-            _data.Motor.SetCapsuleDimensions(_data.Motor.Capsule.radius, _data.CrouchHeight, _data.CrouchHeight * 0.5f);
+            _movementParams.Motor.SetCapsuleDimensions(_movementParams.Motor.Capsule.radius, _config.CrouchHeight, _config.CrouchHeight * 0.5f);
         }
 
         private void Uncrouch()
         {
-            _data.Motor.SetCapsuleDimensions(_data.Motor.Capsule.radius, _data.StandHeight, _data.StandHeight * 0.5f);
+            _movementParams.Motor.SetCapsuleDimensions(_movementParams.Motor.Capsule.radius, _config.StandHeight, _config.StandHeight * 0.5f);
 
-            if (_data.Motor.CharacterOverlap(
-                    _data.Motor.TransientPosition,
-                    _data.Motor.TransientRotation,
+            if (_movementParams.Motor.CharacterOverlap(
+                    _movementParams.Motor.TransientPosition,
+                    _movementParams.Motor.TransientRotation,
                     _uncrouchOverlapResults,
-                    _data.Motor.CollidableLayers,
+                    _movementParams.Motor.CollidableLayers,
                     QueryTriggerInteraction.Ignore
                     ) > 0)
             {

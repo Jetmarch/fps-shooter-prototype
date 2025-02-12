@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64f7934d9b6a7458b17c74be4388f4, type: 3}
+  m_Name: PlayerConfig
+  m_EditorClassIdentifier: 
+  _movementConfig: {fileID: 11400000, guid: 901e4afeda850364587c0592200679d5, type: 2}
+  _fpsCameraSettings: {fileID: 11400000, guid: 718a58147ddc9d14c9e07d9a7ffecf62, type: 2}
+  _handsWobbleAnimationData:
+    _wobbleSpeed: 2.5
+    _positionWobbleStrength: 0.05
+    _rotationWobbleStrength: 0.5
+    _wobbleSmoothness: 5
+  _handsFollowCameraLookData:
+    _handsFollowSpeed: 25

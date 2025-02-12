@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7b82293f964de8aee7470f285e352f, type: 3}
+  m_Name: MovementConfig
+  m_EditorClassIdentifier: 
+  _walkSpeed: 20
+  _crouchSpeed: 7
+  _walkResponce: 25
+  _crouchResponce: 25
+  _airSpeed: 15
+  _airAcceleration: 70
+  _jumpSpeed: 20
+  _coyoteTime: 0.2
+  _gravity: -90
+  _jumpSustainGravity: 0.4
+  _standHeight: 2
+  _crouchHeight: 1
+  _crouchHeightResponce: 15
+  _standCameraTargetHeight: 0.9
+  _crouchCameraTargetHeight: 0.7

@@ -301,36 +301,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementController:
-    _data:
-      Motor: {fileID: 0}
-      CameraTarget: {fileID: 0}
-      Root: {fileID: 0}
-      WalkSpeed: 20
-      CrouchSpeed: 7
-      WalkResponce: 25
-      CrouchResponce: 25
-      AirSpeed: 15
-      AirAcceleration: 70
-      JumpSpeed: 20
-      CoyoteTime: 0.2
-      Gravity: -90
-      JumpSustainGravity: 0.4
-      StandHeight: 2
-      CrouchHeight: 1
-      CrouchHeightResponce: 15
-      StandCameraTargetHeight: 0.9
-      CrouchCameraTargetHeight: 0.7
+    _movementParams:
+      _motor: {fileID: 0}
+      _cameraTarget: {fileID: 0}
+      _root: {fileID: 0}
+    _config: {fileID: 0}
   _cameraTarget: {fileID: 7451834302105840410}
   _hands:
     _weaponParent: {fileID: 7451834300700945597}
     _currentWeaponIndex: 0
-  _wobbleAnimation:
-    _playerHands: {fileID: 0}
-    _wobbleTime: 0
-    _wobbleSpeed: 2.5
-    _positionWobbleStrength: 0.05
-    _rotationWobbleStrength: 0.5
-    _wobbleSmoothness: 5
 --- !u!114 &202961627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,29 +326,14 @@ MonoBehaviour:
     TypeName: FPSShooter.Core.Installers.GameSceneInstaller
   autoRun: 1
   autoInjectGameObjects: []
-  _movementData:
-    Motor: {fileID: 7451834302067092050}
-    CameraTarget: {fileID: 7451834302105840410}
-    Root: {fileID: 7451834302067092048}
-    WalkSpeed: 20
-    CrouchSpeed: 7
-    WalkResponce: 25
-    CrouchResponce: 25
-    AirSpeed: 15
-    AirAcceleration: 70
-    JumpSpeed: 20
-    CoyoteTime: 0.2
-    Gravity: -90
-    JumpSustainGravity: 0.4
-    StandHeight: 2
-    CrouchHeight: 1
-    CrouchHeightResponce: 15
-    StandCameraTargetHeight: 0.5
-    CrouchCameraTargetHeight: 0.418
-  _fpsCameraSettings: {fileID: 11400000, guid: 718a58147ddc9d14c9e07d9a7ffecf62, type: 2}
+  _config: {fileID: 11400000, guid: 4fd4643acb7b7b34886ed7e1a9af59fd, type: 2}
+  _movementParams:
+    _motor: {fileID: 7451834302067092050}
+    _cameraTarget: {fileID: 7451834301061033423}
+    _root: {fileID: 7451834302067092048}
   _cameraTarget: {fileID: 7451834301061033423}
-  _handsFollowSpeed: 25
   _playerHands: {fileID: 7451834300700945597}
+  _weaponParent: {fileID: 7451834300700945597}
 --- !u!1 &7451834302105840411
 GameObject:
   m_ObjectHideFlags: 0

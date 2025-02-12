@@ -1,3 +1,4 @@
+using System;
 using FPSShooter.Gameplay.FPSCamera;
 using UnityEngine;
 
@@ -7,19 +8,26 @@ namespace FPSShooter.Gameplay.Units
     public sealed class HandsFollowCameraLook
     {
         private readonly Transform _hands;
-        private readonly float _handsFollowSpeed;
+        private readonly HandsFollowCameraLookData _data;
         private readonly  FPSCameraController _fpsCamera;
 
-        public HandsFollowCameraLook(Transform hands, float handsFollowSpeed, FPSCameraController fpsCamera)
+        public HandsFollowCameraLook(Transform hands, HandsFollowCameraLookData data, FPSCameraController fpsCamera)
         {
             _hands = hands;
-            _handsFollowSpeed = handsFollowSpeed;
+            _data = data;
             _fpsCamera = fpsCamera;
         }
         
         public void Update(float deltaTime)
         {
-            _hands.rotation = Quaternion.Slerp(_hands.rotation, _fpsCamera.Rotation, deltaTime * _handsFollowSpeed);
+            _hands.rotation = Quaternion.Slerp(_hands.rotation, _fpsCamera.Rotation, deltaTime * _data.HandsFollowSpeed);
         }
+    }
+
+    [Serializable]
+    public sealed class HandsFollowCameraLookData
+    {
+        [SerializeField] private float _handsFollowSpeed = 25;
+        public float HandsFollowSpeed => _handsFollowSpeed;
     }
 }

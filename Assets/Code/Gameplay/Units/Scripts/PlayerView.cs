@@ -13,8 +13,8 @@ namespace FPSShooter.Gameplay.Units
         [SerializeField] private FPSCameraController _fpsCamera;
         [SerializeField] private Transform _cameraTarget;
         
-        [SerializeField] private PlayerHands _hands;
-        [SerializeField] private HandsWobbleAnimation _wobbleAnimation;
+        private PlayerHands _hands;
+        private HandsWobbleAnimation _wobbleAnimation;
         private HandsFollowCameraLook _handsFollowCameraLook;
 
         private CharacterInput _lastCharacterInput;
@@ -22,12 +22,14 @@ namespace FPSShooter.Gameplay.Units
         [Inject]
         private void Construct(MovementController movementController, FPSCameraController fpsCamera,
             HandsFollowCameraLook handsFollowCameraLook,
-            HandsWobbleAnimation wobbleAnimation)
+            HandsWobbleAnimation wobbleAnimation,
+            PlayerHands hands)
         {
             _movementController = movementController;
             _fpsCamera = fpsCamera;
             _handsFollowCameraLook = handsFollowCameraLook;
             _wobbleAnimation = wobbleAnimation;
+            _hands = hands;
         }
 
         public void Shoot()

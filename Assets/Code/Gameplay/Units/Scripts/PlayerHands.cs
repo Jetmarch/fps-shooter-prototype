@@ -10,9 +10,15 @@ namespace FPSShooter.Gameplay.Units
     public sealed class PlayerHands
     {
         [SerializeField] private Transform _weaponParent;
-        [ShowInInspector] private List<IWeapon> _weapons = new();
-        [ShowInInspector] private IWeapon _currentWeapon;
         [SerializeField] private int _currentWeaponIndex;
+        private IWeapon _currentWeapon;
+        private List<IWeapon> _weapons;
+
+        public PlayerHands(Transform weaponParent)
+        {
+            _weaponParent = weaponParent;
+            _weapons = new List<IWeapon>();
+        }
         
         public void Shoot()
         {
@@ -74,7 +80,5 @@ namespace FPSShooter.Gameplay.Units
             _currentWeapon.Rotation = _weaponParent.rotation;
             weapon.SetParent(_weaponParent);
         }
-        
-        
     }
 }

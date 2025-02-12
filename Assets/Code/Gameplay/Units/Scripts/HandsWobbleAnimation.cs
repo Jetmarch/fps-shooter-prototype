@@ -8,20 +8,17 @@ namespace FPSShooter.Gameplay.Units
     public sealed class HandsWobbleAnimation
     {
         [SerializeField] private Transform _playerHands;
-        [SerializeField] private float _wobbleTime;
-        [SerializeField] private float _wobbleSpeed = 1;
-        [SerializeField] private float _positionWobbleStrength = 0.1f;
-        [SerializeField] private float _rotationWobbleStrength = 0.5f;
-        [SerializeField] private float _wobbleSmoothness = 5f;
+        private HandsWobbleAnimationData _data;
 
+        private float _wobbleTime;
         private Vector3 _lastPlayerMoveInput;
-        
         private Vector3 _initialHandsPosition;
         private Quaternion _initialHandsRotation;
 
-        public HandsWobbleAnimation(Transform playerHands)
+        public HandsWobbleAnimation(Transform playerHands, HandsWobbleAnimationData data)
         {
             _playerHands = playerHands;
+            _data = data;
             _initialHandsPosition = _playerHands.localPosition;
             _initialHandsRotation = _playerHands.localRotation;
         }
@@ -42,12 +39,12 @@ namespace FPSShooter.Gameplay.Units
 
             if (isMoving)
             {
-                _wobbleTime += deltaTime * _wobbleSpeed;
+                _wobbleTime += deltaTime * _data.WobbleSpeed;
 
                 var inputMagnitude = _lastPlayerMoveInput.magnitude;
                 
-                var currentPositionWobbleStrength = _positionWobbleStrength * inputMagnitude;
-                var currentRotationWobbleStrength = _rotationWobbleStrength * inputMagnitude;
+                var currentPositionWobbleStrength = _data.PositionWobbleStrength * inputMagnitude;
+                var currentRotationWobbleStrength = _data.RotationWobbleStrength * inputMagnitude;
 
                 var positionWobble = new Vector3(
                     Mathf.Sin(_wobbleTime * 2f) * currentPositionWobbleStrength,
@@ -59,16 +56,30 @@ namespace FPSShooter.Gameplay.Units
                     Mathf.Sin(_wobbleTime * 0.5f) * currentRotationWobbleStrength,
                     Mathf.Cos(_wobbleTime) * currentRotationWobbleStrength);
 
-                _playerHands.localPosition = Vector3.Lerp(_playerHands.localPosition, _initialHandsPosition + positionWobble, _wobbleSmoothness * deltaTime);
+                _playerHands.localPosition = Vector3.Lerp(_playerHands.localPosition, _initialHandsPosition + positionWobble, _data.WobbleSmoothness * deltaTime);
                 // _cameraTarget.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(rotationWobble) * _initialHandsRotation, _wobbleSmoothnes * deltaTime);
             }
             else
             {
-                _playerHands.localPosition = Vector3.Lerp(_playerHands.localPosition, _initialHandsPosition, _wobbleSmoothness * deltaTime);
+                _playerHands.localPosition = Vector3.Lerp(_playerHands.localPosition, _initialHandsPosition, _data.WobbleSmoothness * deltaTime);
                 _wobbleTime = 0f;
             }
         }
 
         
+    }
+
+    [Serializable]
+    public sealed class HandsWobbleAnimationData
+    {
+        [SerializeField] private float _wobbleSpeed = 1;
+        [SerializeField] private float _positionWobbleStrength = 0.1f;
+        [SerializeField] private float _rotationWobbleStrength = 0.5f;
+        [SerializeField] private float _wobbleSmoothness = 5f;
+        
+        public float WobbleSpeed => _wobbleSpeed;
+        public float PositionWobbleStrength => _positionWobbleStrength;
+        public float RotationWobbleStrength => _rotationWobbleStrength;
+        public float WobbleSmoothness => _wobbleSmoothness;
     }
 }

@@ -1,5 +1,7 @@
 using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Gameplay.Movement;
 using FPSShooter.Observers;
+using KinematicCharacterController;
 using UnityEngine;
 using UnityEngine.XR;
 using VContainer;
@@ -9,16 +11,19 @@ namespace FPSShooter.Gameplay.Units.Installers
 {
     public class PlayerInstaller : LifetimeScope
     {
+        [SerializeField] private PlayerConfig _config;
+        
         [Header("Movement")]
-        [SerializeField] private MovementData _movementData;
+        [SerializeField] private MovementParams _movementParams;
         
         [Header("Camera")]
-        [SerializeField] private FPSCameraSettings _fpsCameraSettings;
         [SerializeField] private Transform _cameraTarget;
         
         [Header("Hands")]
-        [SerializeField] private float _handsFollowSpeed = 25f;
         [SerializeField] private Transform _playerHands;
+
+        [Header("Weapons")] 
+        [SerializeField] private Transform _weaponParent;
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -40,7 +45,8 @@ namespace FPSShooter.Gameplay.Units.Installers
         private void ConfigureMovement(IContainerBuilder builder)
         {
             builder.Register<MovementController>(Lifetime.Scoped)
-                .WithParameter(_movementData)
+                .WithParameter(_config.MovementConfig)
+                .WithParameter(_movementParams)
                 .AsSelf()
                 .AsImplementedInterfaces();
         }
@@ -48,7 +54,7 @@ namespace FPSShooter.Gameplay.Units.Installers
         private void ConfigureCamera(IContainerBuilder builder)
         {
             builder.Register<FPSCameraController>(Lifetime.Scoped)
-                .WithParameter(_fpsCameraSettings)
+                .WithParameter(_config.FPSCameraSettings)
                 .WithParameter(_cameraTarget)
                 .AsSelf()
                 .AsImplementedInterfaces();
@@ -56,11 +62,14 @@ namespace FPSShooter.Gameplay.Units.Installers
 
         private void ConfigurePlayerHands(IContainerBuilder builder)
         {
+            builder.Register<PlayerHands>(Lifetime.Scoped)
+                .WithParameter(_weaponParent);
             builder.Register<HandsFollowCameraLook>(Lifetime.Scoped)
                 .WithParameter(_cameraTarget)
-                .WithParameter(_handsFollowSpeed);
+                .WithParameter(_config.HandsFollowCameraLookData);
             builder.Register<HandsWobbleAnimation>(Lifetime.Scoped)
-                .WithParameter(_playerHands);
+                .WithParameter(_playerHands)
+                .WithParameter(_config.HandsWobbleAnimationData);
         }
     }
 }

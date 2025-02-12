@@ -3,6 +3,7 @@ using VContainer.Unity;
 
 namespace FPSShooter.Gameplay.Units
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class DebugPlayerWeaponLoader : IInitializable
     {
         private readonly PlayerView _playerView;

@@ -1,0 +1,20 @@
+using FPSShooter.Gameplay.FPSCamera;
+using FPSShooter.Gameplay.Movement;
+using UnityEngine;
+
+namespace FPSShooter.Gameplay.Units
+{
+    [CreateAssetMenu(fileName = "PlayerConfig", menuName = "FPS Shooter/Units/Player Config")]
+    public sealed class PlayerConfig : ScriptableObject
+    {
+        [SerializeField] private MovementConfig _movementConfig;
+        [SerializeField] private FPSCameraSettings _fpsCameraSettings;
+        [SerializeField] private HandsWobbleAnimationData _handsWobbleAnimationData;
+        [SerializeField] private HandsFollowCameraLookData _handsFollowCameraLookData;
+        
+        public MovementConfig MovementConfig => _movementConfig;
+        public FPSCameraSettings FPSCameraSettings => _fpsCameraSettings;
+        public HandsWobbleAnimationData HandsWobbleAnimationData => _handsWobbleAnimationData;
+        public HandsFollowCameraLookData HandsFollowCameraLookData => _handsFollowCameraLookData;
+    }
+}
