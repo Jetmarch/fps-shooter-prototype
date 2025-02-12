@@ -1,20 +1,30 @@
 using System;
+using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay.Utils;
 using UnityEngine;
+using VContainer;
 
 namespace FPSShooter.Gameplay.Projectiles
 {
     public sealed class ProjectileManager : MonoBehaviour, IProjectileManager
     {
         [SerializeField] private GameObjectPool _projectilePool;
+        [SerializeField] private GameLoopManager _gameLoopManager;
+
+        [Inject]
+        private void Configure(GameLoopManager gameLoopManager)
+        {
+            _gameLoopManager = gameLoopManager;
+        }
         
         private void Start()
         {
             _projectilePool.Initialize();
         }
 
-        public Projectile GetProjectile()
+        public Projectile CreateProjectile(Transform shootPoint)
         {
+            //TODO: projectile factory
             var projectileObject = _projectilePool.GetObject();
             if (!projectileObject)
             {
@@ -26,13 +36,16 @@ namespace FPSShooter.Gameplay.Projectiles
             {
                 throw new MissingComponentException("Projectile object is missing a Projectile component.");
             }
-            
-            //projectile.OnDestroy += ReturnProjectile;
+            projectile.transform.position = shootPoint.position;
+            projectile.transform.rotation = shootPoint.rotation;
+            projectile.OnProjectileDestroyed += ReturnProjectile;
+            _gameLoopManager.AddListener(projectile);
             return projectile;
         }
 
-        public void ReturnProjectile(Projectile projectile)
+        private void ReturnProjectile(Projectile projectile)
         {
+            _gameLoopManager.RemoveListener(projectile);
             _projectilePool.ReturnObject(projectile.gameObject);
         }
     }

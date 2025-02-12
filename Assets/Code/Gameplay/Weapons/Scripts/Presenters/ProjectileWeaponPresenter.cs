@@ -1,4 +1,5 @@
 using FPSShooter.Gameplay.Projectiles;
+using UnityEngine;
 
 namespace FPSShooter.Gameplay.Weapons
 {
@@ -21,13 +22,12 @@ namespace FPSShooter.Gameplay.Weapons
             if (!_model.CanShoot())
             {
                 //TODO: click sound
+                Debug.Log("Weapon cannot shoot");
                 return;
             }
             
             //TODO: pass impactRequest, position and rotation to projectileManager
-            var newProjectile = _projectileManager.GetProjectile();
-            newProjectile.transform.position = _view.ShootPoint.position;
-            newProjectile.transform.rotation = _view.ShootPoint.rotation;
+            _projectileManager.CreateProjectile(_view.ShootPoint);
             //newProjectile.SetImpactRequest(_model.ImpactRequest);
         }
 
