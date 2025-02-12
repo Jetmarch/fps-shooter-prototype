@@ -321,16 +321,16 @@ MonoBehaviour:
       StandCameraTargetHeight: 0.9
       CrouchCameraTargetHeight: 0.7
   _cameraTarget: {fileID: 7451834302105840410}
-  _handsFollowSpeed: 25
-  _weaponParent: {fileID: 7451834300700945597}
-  _weapons: []
-  _currentWeapon: {fileID: 0}
-  _currentWeaponIndex: 0
-  _wobbleTime: 0
-  _wobbleSpeed: 2.5
-  _positionWobbleStrength: 0.05
-  _rotationWobbleStrength: 0.5
-  _wobbleSmoothnes: 5
+  _hands:
+    _weaponParent: {fileID: 7451834300700945597}
+    _currentWeaponIndex: 0
+  _wobbleAnimation:
+    _playerHands: {fileID: 0}
+    _wobbleTime: 0
+    _wobbleSpeed: 2.5
+    _positionWobbleStrength: 0.05
+    _rotationWobbleStrength: 0.5
+    _wobbleSmoothness: 5
 --- !u!114 &202961627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +368,8 @@ MonoBehaviour:
     CrouchCameraTargetHeight: 0.418
   _fpsCameraSettings: {fileID: 11400000, guid: 718a58147ddc9d14c9e07d9a7ffecf62, type: 2}
   _cameraTarget: {fileID: 7451834301061033423}
+  _handsFollowSpeed: 25
+  _playerHands: {fileID: 7451834300700945597}
 --- !u!1 &7451834302105840411
 GameObject:
   m_ObjectHideFlags: 0

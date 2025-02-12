@@ -4,8 +4,20 @@ using VContainer;
 
 namespace FPSShooter.Gameplay.Weapons
 {
-    public sealed class WeaponView : MonoBehaviour
+    public sealed class WeaponView : MonoBehaviour, IWeapon
     {
+        public Vector3 Position { get => transform.position; set => transform.position = value; }
+        public Quaternion Rotation { get => transform.rotation; set => transform.rotation = value; }
+        public void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
+        }
+
+        public void SetParent(Transform parent)
+        {
+            transform.SetParent(parent);
+        }
+
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private ProceduralRecoilAnimationController _proceduralRecoil;
@@ -19,12 +31,12 @@ namespace FPSShooter.Gameplay.Weapons
             _presenter = presenter;
         }
 
-        public void Shoot()
+        public void RequestShoot()
         {
             _presenter.Shoot();
         }
         
-        public void Reload()
+        public void RequestReload()
         {
             _presenter.Reload();
         }

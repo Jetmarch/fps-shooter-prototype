@@ -1,6 +1,7 @@
 using FPSShooter.Gameplay.FPSCamera;
 using FPSShooter.Observers;
 using UnityEngine;
+using UnityEngine.XR;
 using VContainer;
 using VContainer.Unity;
 
@@ -15,12 +16,17 @@ namespace FPSShooter.Gameplay.Units.Installers
         [SerializeField] private FPSCameraSettings _fpsCameraSettings;
         [SerializeField] private Transform _cameraTarget;
         
+        [Header("Hands")]
+        [SerializeField] private float _handsFollowSpeed = 25f;
+        [SerializeField] private Transform _playerHands;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<PlayerView>();
             ConfigureMovement(builder);
             ConfigureCamera(builder);
             ConfigureInput(builder);
+            ConfigurePlayerHands(builder);
 
             builder.Register<DebugPlayerWeaponLoader>(Lifetime.Scoped).AsImplementedInterfaces();
         }
@@ -46,6 +52,15 @@ namespace FPSShooter.Gameplay.Units.Installers
                 .WithParameter(_cameraTarget)
                 .AsSelf()
                 .AsImplementedInterfaces();
+        }
+
+        private void ConfigurePlayerHands(IContainerBuilder builder)
+        {
+            builder.Register<HandsFollowCameraLook>(Lifetime.Scoped)
+                .WithParameter(_cameraTarget)
+                .WithParameter(_handsFollowSpeed);
+            builder.Register<HandsWobbleAnimation>(Lifetime.Scoped)
+                .WithParameter(_playerHands);
         }
     }
 }

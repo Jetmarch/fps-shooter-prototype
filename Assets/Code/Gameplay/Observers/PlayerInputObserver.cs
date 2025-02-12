@@ -19,7 +19,7 @@ namespace FPSShooter.Observers
 
         public void Initialize()
         {
-            _inputSystem.OnFire += _playerView.RequestFire;
+            _inputSystem.OnFire += _playerView.Shoot;
             _inputSystem.OnJump += _playerView.RequestJump;
             _inputSystem.OnMove += _playerView.Move;
             _inputSystem.OnLook += _playerView.Look;
@@ -34,7 +34,7 @@ namespace FPSShooter.Observers
             _inputSystem.OnLook -= _playerView.Look;
             _inputSystem.OnMove -= _playerView.Move;
             _inputSystem.OnJump -= _playerView.RequestJump;
-            _inputSystem.OnFire -= _playerView.RequestFire;
+            _inputSystem.OnFire -= _playerView.Shoot;
         }
     }
 }
