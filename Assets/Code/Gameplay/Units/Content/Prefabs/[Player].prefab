@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7451834300700945586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.022, y: 0, z: 0.173}
+  m_LocalPosition: {x: 0, y: -0.337, z: 0.507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7451834302067092048}
-  m_RootOrder: 2
+  m_Father: {fileID: 7451834301061033423}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7451834301061033410
 GameObject:
@@ -58,7 +58,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7451834300700945597}
   m_Father: {fileID: 7451834302105840410}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -212,7 +213,6 @@ Transform:
   m_Children:
   - {fileID: 7451834302105840410}
   - {fileID: 7451834301239825951}
-  - {fileID: 7451834300700945597}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -320,6 +320,7 @@ MonoBehaviour:
       CrouchHeightResponce: 15
       StandCameraTargetHeight: 0.9
       CrouchCameraTargetHeight: 0.7
+  _cameraTarget: {fileID: 7451834302105840410}
   _weaponParent: {fileID: 7451834300700945597}
   _weapons: []
   _currentWeapon: {fileID: 0}

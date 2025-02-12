@@ -26,10 +26,14 @@ namespace FPSShooter.Gameplay.Projectiles
         private const float AirDensity = 1.225f; 
         private const float DragCoefficient = 0.3f; 
         private const float Area = 0.0001f;
-    
-        private void Start()
+
+        private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        public void Initialize()
+        {
             _rigidbody.mass = _mass;
             _rigidbody.drag = _drag;
             _rigidbody.velocity = transform.forward * _initialSpeed;

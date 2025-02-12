@@ -12,6 +12,7 @@ namespace FPSShooter.Gameplay.Units
     {
         [SerializeField, ReadOnly] private MovementController _movementController;
         [SerializeField] private FPSCameraController _fpsCamera;
+        [SerializeField] private Transform _cameraTarget;
 
         [SerializeField] private Transform _weaponParent;
         [SerializeField] private List<WeaponView> _weapons;
@@ -53,9 +54,6 @@ namespace FPSShooter.Gameplay.Units
         public void AddWeapon(WeaponView weapon)
         {
             if (_weapons.Contains(weapon)) return;
-            
-            weapon.transform.SetParent(_weaponParent);
-            
             _weapons.Add(weapon);
             SetCurrentWeapon(weapon);
         }
@@ -82,21 +80,21 @@ namespace FPSShooter.Gameplay.Units
             SetCurrentWeapon(_currentWeaponIndex);
         }
 
-        public void SetCurrentWeapon(int weaponIndex)
+        private void SetCurrentWeapon(int weaponIndex)
         {
             if (weaponIndex >= _weapons.Count || weaponIndex < 0) return;
 
             PrepareNewWeapon(_weapons[weaponIndex]);
         }
 
-        public void SetCurrentWeapon(WeaponView weapon)
+        private void SetCurrentWeapon(WeaponView weapon)
         {
             if (!_weapons.Contains(weapon)) return;
             
             PrepareNewWeapon(weapon);
         }
 
-        public void PrepareNewWeapon(WeaponView weapon)
+        private void PrepareNewWeapon(WeaponView weapon)
         {
             if (_currentWeapon)
             {
@@ -106,6 +104,7 @@ namespace FPSShooter.Gameplay.Units
             _currentWeapon.gameObject.SetActive(true);
             _currentWeapon.transform.position = _weaponParent.position;
             _currentWeapon.transform.rotation = _weaponParent.rotation;
+            weapon.transform.SetParent(_weaponParent);
         }
 
         public void OnUpdate(float deltaTime)
@@ -116,6 +115,7 @@ namespace FPSShooter.Gameplay.Units
         public void OnLateUpdate(float deltaTime)
         {
             _fpsCamera.OnLateUpdate(deltaTime);
+            _cameraTarget.rotation = _fpsCamera.Rotation;
         }
     }
 }

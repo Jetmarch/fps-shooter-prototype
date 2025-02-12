@@ -39,6 +39,7 @@ namespace FPSShooter.Gameplay.Projectiles
             projectile.transform.position = shootPoint.position;
             projectile.transform.rotation = shootPoint.rotation;
             projectile.OnProjectileDestroyed += ReturnProjectile;
+            projectile.Initialize();
             _gameLoopManager.AddListener(projectile);
             return projectile;
         }

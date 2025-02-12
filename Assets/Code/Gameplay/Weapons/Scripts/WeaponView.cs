@@ -6,7 +6,7 @@ namespace FPSShooter.Gameplay.Weapons
     public sealed class WeaponView : MonoBehaviour
     {
         [SerializeField] private Transform _shootPoint;
-
+        [SerializeField] private float _rotationSpeed;
         public Transform ShootPoint => _shootPoint;
         
         private IWeaponPresenter _presenter;
