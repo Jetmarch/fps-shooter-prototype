@@ -1,3 +1,4 @@
+using FPSShooter.Code.Gameplay.Weapons;
 using UnityEngine;
 using VContainer;
 
@@ -7,6 +8,7 @@ namespace FPSShooter.Gameplay.Weapons
     {
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private float _rotationSpeed;
+        [SerializeField] private ProceduralRecoilAnimationController _proceduralRecoil;
         public Transform ShootPoint => _shootPoint;
         
         private IWeaponPresenter _presenter;
@@ -25,6 +27,11 @@ namespace FPSShooter.Gameplay.Weapons
         public void Reload()
         {
             _presenter.Reload();
+        }
+
+        public void Recoil()
+        {
+            _proceduralRecoil.Recoil();
         }
     }
 }

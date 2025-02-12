@@ -17,6 +17,6 @@ MonoBehaviour:
   _cameraMinVerticalAngle: -45
   _springMotionSettings:
     _halfLife: 0.075
-    _frequency: 20
+    _frequency: 10
     _angularDisplacement: 2
     _linearDisplacement: 0.05

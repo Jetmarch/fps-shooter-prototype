@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451834300700945597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: '[WeaponHolder]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7451834300700945586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.337, z: 0.507}
+  m_LocalPosition: {x: 0.296, y: -0.337, z: 0.683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451834301061033423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraTarget
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451834301239825951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7451834301884718919}
   - component: {fileID: 7451834301884718912}
   - component: {fileID: 7451834301884718913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7451834302067092050}
   - component: {fileID: 7451834302067092060}
   - component: {fileID: 202961627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: '[Player]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,10 +321,16 @@ MonoBehaviour:
       StandCameraTargetHeight: 0.9
       CrouchCameraTargetHeight: 0.7
   _cameraTarget: {fileID: 7451834302105840410}
+  _handsFollowSpeed: 25
   _weaponParent: {fileID: 7451834300700945597}
   _weapons: []
   _currentWeapon: {fileID: 0}
   _currentWeaponIndex: 0
+  _wobbleTime: 0
+  _wobbleSpeed: 2.5
+  _positionWobbleStrength: 0.05
+  _rotationWobbleStrength: 0.5
+  _wobbleSmoothnes: 5
 --- !u!114 &202961627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451834302105840410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -40,8 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590651346712451550}
-  - component: {fileID: 6590651346712451551}
   - component: {fileID: 6359317642189549075}
+  - component: {fileID: 6590651346712451551}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -66,20 +66,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6590651346712451551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590651346712451549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88457354cf8c14949818171d3a21fa5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 6590651346079821604}
-  _rotationSpeed: 1
 --- !u!114 &6359317642189549075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +85,21 @@ MonoBehaviour:
   - {fileID: 6590651346712451549}
   _pistolConfig: {fileID: 11400000, guid: 2499d5b8d41e9c2418ca7deb3cb6e34a, type: 2}
   _view: {fileID: 6590651346712451551}
+--- !u!114 &6590651346712451551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590651346712451549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88457354cf8c14949818171d3a21fa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootPoint: {fileID: 6590651346079821604}
+  _rotationSpeed: 1
+  _proceduralRecoil: {fileID: 480073900583445321}
 --- !u!1 &6590651346974536451
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590651347556796682}
+  - component: {fileID: 480073900583445321}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -214,3 +216,51 @@ Transform:
   m_Father: {fileID: 6590651346712451550}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &480073900583445321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590651347556796681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d66eca7d494a3394e2acffb533fade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recoilSpeed: 0.1
+  _recoilDuration: 0.1
+  _returnSpeed: 5
+  _recoilCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.00044979015
+      value: 0.93082386
+      inSlope: 0.99895936
+      outSlope: 0.99895936
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.075419895
+    - serializedVersion: 3
+      time: 0.074909076
+      value: 19.980637
+      inSlope: -2.3926313
+      outSlope: -2.3926313
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.02952577
+    - serializedVersion: 3
+      time: 0.14935303
+      value: 0.026301384
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -10,12 +10,12 @@ namespace FPSShooter.Gameplay.Weapons
     public class Weapon
     {
         [ShowInInspector] private BaseItemMetadata _itemMetadata;
-        [ShowInInspector] private uint _maxAmmo;
-        [ShowInInspector] private uint _currentAmmo;
-        [ShowInInspector] private float _shootDelay;
-        [ShowInInspector] private float _reloadDuration;
+        [SerializeField] private uint _maxAmmo;
+        [SerializeField] private uint _currentAmmo;
+        [SerializeField] private float _shootDelay;
+        [SerializeField] private float _reloadDuration;
         [SerializeReference] private BaseReloadMechanic _reloadMechanic;
-        [ShowInInspector] private Projectile _projectilePrefab;
+        [SerializeField] private Projectile _projectilePrefab;
         
         public BaseItemMetadata ItemMetadata => _itemMetadata;
         public uint MaxAmmo => _maxAmmo;
