@@ -307,9 +307,6 @@ MonoBehaviour:
       _root: {fileID: 0}
     _config: {fileID: 0}
   _cameraTarget: {fileID: 7451834302105840410}
-  _hands:
-    _weaponParent: {fileID: 7451834300700945597}
-    _currentWeaponIndex: 0
 --- !u!114 &202961627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +329,7 @@ MonoBehaviour:
     _cameraTarget: {fileID: 7451834301061033423}
     _root: {fileID: 7451834302067092048}
   _cameraTarget: {fileID: 7451834301061033423}
-  _playerHands: {fileID: 7451834300700945597}
+  _playerHands: {fileID: 7451834302105840410}
   _weaponParent: {fileID: 7451834300700945597}
 --- !u!1 &7451834302105840411
 GameObject:

@@ -23,7 +23,7 @@ namespace FPSShooter.Gameplay.Units
             _initialHandsRotation = _playerHands.localRotation;
         }
         
-        public void OnPlayerMove(Vector2 movementVector)
+        public void UpdateInput(Vector2 movementVector)
         {
             _lastPlayerMoveInput = movementVector;
         }

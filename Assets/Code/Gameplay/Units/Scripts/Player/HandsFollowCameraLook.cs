@@ -20,7 +20,14 @@ namespace FPSShooter.Gameplay.Units
         
         public void Update(float deltaTime)
         {
-            _hands.rotation = Quaternion.Slerp(_hands.rotation, _fpsCamera.Rotation, deltaTime * _data.HandsFollowSpeed);
+            var desiredRotation = Quaternion.Slerp(_hands.rotation, _fpsCamera.Rotation, 1f - Mathf.Exp(-_data.HandsFollowSpeed * deltaTime));
+            // desiredRotation.y = _fpsCamera.Rotation.y;
+            desiredRotation = _fpsCamera.Rotation;
+            _hands.rotation = desiredRotation;
+            // _hands.localRotation = Quaternion.Euler(Vector3.zero);
+            // _hands.rotation = Quaternion.Euler(Vector3.zero);
+            
+            // _hands.rotation = Quaternion.RotateTowards(_hands.rotation, _fpsCamera.Rotation, Time.deltaTime * _data.HandsFollowSpeed);
         }
     }
 

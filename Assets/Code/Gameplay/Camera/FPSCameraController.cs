@@ -32,10 +32,14 @@ namespace FPSShooter.Gameplay.FPSCamera
             _lookRotation = new Vector3(_xRotation, _yRotation) * _settings.CameraSensitivity;
         }
 
-        public void OnLateUpdate(float deltaTime)
+        public void UpdatePosition(float deltaTime)
         {
-            _camera.transform.eulerAngles = _lookRotation;
             _springMotion.UpdateSpring(deltaTime, _camera.transform.up);
+        }
+
+        public void UpdateRotation(float deltaTime)
+        {
+            _camera.transform.rotation = Quaternion.Euler(_lookRotation);
         }
     }
 }

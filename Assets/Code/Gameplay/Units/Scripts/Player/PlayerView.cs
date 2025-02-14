@@ -7,7 +7,7 @@ using VContainer;
 
 namespace FPSShooter.Gameplay.Units
 {
-    public sealed class PlayerView : MonoBehaviour, IUpdateListener, ILateUpdateListener
+    public sealed class PlayerView : MonoBehaviour, IUpdateListener, ILateUpdateListener, IFixedUpdateListener
     {
         [SerializeField, ReadOnly] private MovementController _movementController;
         [SerializeField] private FPSCameraController _fpsCamera;
@@ -45,7 +45,7 @@ namespace FPSShooter.Gameplay.Units
                 Rotation = _fpsCamera.Rotation,
             };
             _movementController.UpdateInput(_lastCharacterInput);
-            _wobbleAnimation.OnPlayerMove(movementVector);
+            _wobbleAnimation.UpdateInput(movementVector);
         }
 
         public void Look(Vector2 lookVector)
@@ -75,14 +75,21 @@ namespace FPSShooter.Gameplay.Units
 
         public void OnUpdate(float deltaTime)
         {
-             _movementController.UpdateBody(deltaTime);
+            _movementController.UpdateBody(deltaTime);
+            
         }
 
         public void OnLateUpdate(float deltaTime)
         {
-            _fpsCamera.OnLateUpdate(deltaTime);
+            _fpsCamera.UpdatePosition(deltaTime);
+            _fpsCamera.UpdateRotation(deltaTime);
             _handsFollowCameraLook.Update(deltaTime);
             _wobbleAnimation.Update(deltaTime);
+        }
+
+        public void OnFixedUpdate(float deltaTime)
+        {
+            
         }
     }
 }
