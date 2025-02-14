@@ -5006,8 +5006,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveVFX: {fileID: 673613485924929012}
   _hitVFX: {fileID: 673613485924929012}
-  _initialSpeed: 800
-  _mass: 0.01
-  _drag: 0.1
-  _gravityMultiplier: 1
+  _projectileConfig: {fileID: 11400000, guid: e6644fe1846053340874db6690d3e611, type: 2}
   _velocity: {x: 0, y: 0, z: 0}
+  _rigidbody: {fileID: 6494788567603705275}

@@ -1,17 +1,18 @@
+using System;
 using UnityEngine;
 
-namespace FPSShooter.Gameplay.Impact
+namespace FPSShooter.Gameplay.ImpactSystem
 {
     public struct Impact 
     {
         public readonly int HealthDelta;
-        public readonly float Impulse;
+        public readonly float ImpulseForce;
         public readonly Vector3 ImpulseVector;
 
-        public Impact(int healthDelta, float impulse, Vector3 impulseVector)
+        public Impact(int healthDelta, float impulseForce, Vector3 impulseVector)
         {
             HealthDelta = healthDelta;
-            Impulse = impulse;
+            ImpulseForce = impulseForce;
             ImpulseVector = impulseVector;
         }
     }
@@ -20,7 +21,11 @@ namespace FPSShooter.Gameplay.Impact
     {
         public static void AffectTarget(GameObject target, GameObject affector, Impact impact)
         {
-            if (!target.TryGetComponent<ObjectStateComponent>(out var objectState)) return;
+            if (!target.TryGetComponent<ObjectStateComponent>(out var objectState))
+            {
+                Debug.LogWarning("Target object cannot be affected by impact");
+                return;
+            }
             
             objectState.Affect(impact);
         }
