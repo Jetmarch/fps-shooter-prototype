@@ -20,4 +20,4 @@ MonoBehaviour:
     _rotationWobbleStrength: 0.5
     _wobbleSmoothness: 5
   _handsFollowCameraLookData:
-    _handsFollowSpeed: 25
+    _handsFollowSpeed: 100

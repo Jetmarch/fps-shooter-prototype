@@ -70,6 +70,9 @@ namespace FPSShooter.Gameplay.Units.Installers
             builder.Register<HandsWobbleAnimation>(Lifetime.Scoped)
                 .WithParameter(_playerHands)
                 .WithParameter(_config.HandsWobbleAnimationData);
+            builder.Register<WeaponSwayEffect>(Lifetime.Scoped)
+                .WithParameter(_weaponParent)
+                .WithParameter(_config.WeaponSwayEffectData);
         }
     }
 }

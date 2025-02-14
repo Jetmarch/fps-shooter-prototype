@@ -12,6 +12,8 @@ namespace FPSShooter.Gameplay.Units
         [SerializeField, ReadOnly] private MovementController _movementController;
         [SerializeField] private FPSCameraController _fpsCamera;
         [SerializeField] private Transform _cameraTarget;
+
+        private WeaponSwayEffect _weaponSwayEffect;
         
         private PlayerHands _hands;
         private HandsWobbleAnimation _wobbleAnimation;
@@ -23,13 +25,15 @@ namespace FPSShooter.Gameplay.Units
         private void Construct(MovementController movementController, FPSCameraController fpsCamera,
             HandsFollowCameraLook handsFollowCameraLook,
             HandsWobbleAnimation wobbleAnimation,
-            PlayerHands hands)
+            PlayerHands hands,
+            WeaponSwayEffect weaponSwayEffect)
         {
             _movementController = movementController;
             _fpsCamera = fpsCamera;
             _handsFollowCameraLook = handsFollowCameraLook;
             _wobbleAnimation = wobbleAnimation;
             _hands = hands;
+            _weaponSwayEffect = weaponSwayEffect;
         }
 
         public void Shoot()
@@ -51,6 +55,7 @@ namespace FPSShooter.Gameplay.Units
         public void Look(Vector2 lookVector)
         {
             _fpsCamera.Look(lookVector);
+            _weaponSwayEffect.UpdateInput(lookVector);
         }
 
         public void RequestJump()
@@ -85,6 +90,8 @@ namespace FPSShooter.Gameplay.Units
             _fpsCamera.UpdateRotation(deltaTime);
             _handsFollowCameraLook.Update(deltaTime);
             _wobbleAnimation.Update(deltaTime);
+            
+            _weaponSwayEffect.Update(deltaTime);
         }
 
         public void OnFixedUpdate(float deltaTime)

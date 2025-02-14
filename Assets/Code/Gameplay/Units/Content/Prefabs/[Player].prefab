@@ -307,6 +307,10 @@ MonoBehaviour:
       _root: {fileID: 0}
     _config: {fileID: 0}
   _cameraTarget: {fileID: 7451834302105840410}
+  _weaponSwayEffect:
+    _hands: {fileID: 7451834300700945597}
+    _smooth: 8
+    _swayMultiplier: 2
 --- !u!114 &202961627
 MonoBehaviour:
   m_ObjectHideFlags: 0

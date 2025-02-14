@@ -65,8 +65,6 @@ namespace FPSShooter.Gameplay.Units
                 _wobbleTime = 0f;
             }
         }
-
-        
     }
 
     [Serializable]
