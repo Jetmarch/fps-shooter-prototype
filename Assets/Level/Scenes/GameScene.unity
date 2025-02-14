@@ -599,6 +599,7 @@ MonoBehaviour:
     _prefab: {fileID: 6968183971612725951, guid: 1e6fb73dde272d04988ecc4917a4b0c1, type: 3}
     _parent: {fileID: 1216600872}
     _poolSize: 10
+  _gameLoopManager: {fileID: 0}
 --- !u!1 &1174878313
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

@@ -9,7 +9,7 @@ namespace FPSShooter.Gameplay.Weapons
     [Serializable]
     public class Weapon
     {
-        [ShowInInspector] private BaseItemMetadata _itemMetadata;
+        [SerializeField] private BaseItemMetadata _itemMetadata;
         [SerializeField] private uint _maxAmmo;
         [SerializeField] private uint _currentAmmo;
         [SerializeField] private float _shootDelay;

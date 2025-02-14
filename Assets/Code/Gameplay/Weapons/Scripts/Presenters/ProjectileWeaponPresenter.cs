@@ -29,6 +29,7 @@ namespace FPSShooter.Gameplay.Weapons
             //TODO: pass impactRequest, position and rotation to projectileManager
             _projectileManager.CreateProjectile(_view.ShootPoint);
             _view.Recoil();
+            _view.ShotVFX();
             //newProjectile.SetImpactRequest(_model.ImpactRequest);
         }
 

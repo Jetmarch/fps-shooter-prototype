@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   _weapon:
+    _maxAmmo: 15
+    _currentAmmo: 15
+    _shootDelay: 0.2
+    _reloadDuration: 0.2
     _reloadMechanic:
       rid: 1161063608996069377
+    _projectilePrefab: {fileID: 0}
   references:
     version: 2
     RefIds:

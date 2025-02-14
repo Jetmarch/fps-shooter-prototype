@@ -7,6 +7,9 @@ namespace FPSShooter.Gameplay.Projectiles
     public sealed class Projectile : MonoBehaviour, IFixedUpdateListener
     {
         public event Action<Projectile> OnProjectileDestroyed;
+
+        [SerializeField] private ParticleSystem _moveVFX;
+        [SerializeField] private ParticleSystem _hitVFX;
         
         [Header("Ballistics")]
         public float _initialSpeed = 800f; 
@@ -37,8 +40,8 @@ namespace FPSShooter.Gameplay.Projectiles
             _rigidbody.mass = _mass;
             _rigidbody.drag = _drag;
             _rigidbody.velocity = transform.forward * _initialSpeed;
-            
             // _damageables = new Collider[_maxAffectedDamageables];
+            _moveVFX.Play();
         }
         
         public void OnFixedUpdate(float deltaTime)
@@ -74,6 +77,7 @@ namespace FPSShooter.Gameplay.Projectiles
             //     }
             // }
             Debug.Log($"Collision with {other.gameObject.name}. Projectile destroyed");
+            _hitVFX.Play();
             OnProjectileDestroyed?.Invoke(this);
         }
     }
