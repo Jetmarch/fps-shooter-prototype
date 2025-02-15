@@ -6,6 +6,7 @@ namespace FPSShooter.Core.Systems
     public sealed class InputConfig : ScriptableObject
     {
         [SerializeField] private KeyCode _fire = KeyCode.Mouse0;
+        [SerializeField] private KeyCode _reload = KeyCode.R;
         [SerializeField] private KeyCode _moveForward = KeyCode.W;
         [SerializeField] private KeyCode _moveBackward = KeyCode.S;
         [SerializeField] private KeyCode _moveRight = KeyCode.D;
@@ -22,5 +23,6 @@ namespace FPSShooter.Core.Systems
         public KeyCode Jump => _jump;
         public string MouseX => _mouseX;
         public string MouseY => _mouseY;
+        public KeyCode Reload => _reload;
     }
 }

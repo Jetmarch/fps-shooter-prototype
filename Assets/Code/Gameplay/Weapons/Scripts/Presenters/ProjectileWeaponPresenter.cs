@@ -9,6 +9,7 @@ namespace FPSShooter.Gameplay.Weapons
         private readonly WeaponView _view;
         private readonly Weapon _model;
         private readonly IProjectileManager _projectileManager;
+        private bool _isAutomaticFire;
         
         public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager)
         {
@@ -19,18 +20,41 @@ namespace FPSShooter.Gameplay.Weapons
         
         public void Shoot()
         {
-            if (!_model.CanShoot())
+            if (_model.IsDelayBetweenShots())
             {
-                //TODO: click sound
-                Debug.Log("Weapon cannot shoot");
                 return;
             }
             
-            //TODO: pass impactRequest, position and rotation to projectileManager
+            if (_model.IsReloading())
+            {
+                return;
+            }
+            
+            if (_model.NeedToReload())
+            {
+                //TODO: click sound
+                Reload();
+                return;
+            }
+
             _projectileManager.CreateProjectile(_view.ShootPoint);
             _view.Recoil();
-            _view.ShotVFX();
-            //newProjectile.SetImpactRequest(_model.ImpactRequest);
+            _view.PlayShotVFX();
+            
+            _model.SetCurrentAmmo(_model.CurrentAmmo - 1);
+            _model.SetShootDelay();
+        }
+
+        public void StartShootAutomatic()
+        {
+            _isAutomaticFire = true;
+            Debug.Log("Start automatic fire");
+        }
+
+        public void EndShootAutomatic()
+        {
+            _isAutomaticFire = false;
+            Debug.Log("End automatic fire");
         }
 
         public void Reload()
@@ -38,6 +62,17 @@ namespace FPSShooter.Gameplay.Weapons
             if (!_model.TryReload()) return;
             //TODO: show reload animation
             //_view.Reload();
+        }
+
+        public void Update(float deltaTime)
+        {
+            _model.UpdateShootDelay(deltaTime);
+            _model.UpdateReloadDelay(deltaTime);
+
+            if (_isAutomaticFire)
+            {
+                Shoot();
+            }
         }
     }
 }

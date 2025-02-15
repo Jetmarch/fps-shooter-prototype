@@ -9,6 +9,9 @@ namespace FPSShooter.Core.Systems
     public sealed class InputSystem : IUpdateListener, IInitializable
     {
         public event Action OnFire;
+        public event Action OnStartAutomaticFire;
+        public event Action OnEndAutomaticFire;
+        public event Action OnReload;
         public event Action<Vector2> OnMove;
         public event Action<Vector2> OnLook;
         public event Action OnJump;
@@ -35,6 +38,8 @@ namespace FPSShooter.Core.Systems
         private void ProcessInput()
         {
             FireInput();
+            AutomaticFireInput();
+            ReloadInput();
             MoveInput();
             JumpInput();
             LookInput();
@@ -46,6 +51,27 @@ namespace FPSShooter.Core.Systems
             if (Input.GetKeyDown(_inputConfig.Fire))
             {
                 OnFire?.Invoke();
+            }
+        }
+
+        private void AutomaticFireInput()
+        {
+            if (Input.GetKeyDown(_inputConfig.Fire))
+            {
+                OnStartAutomaticFire?.Invoke();
+            }
+            
+            if (Input.GetKeyUp(_inputConfig.Fire))
+            {
+                OnEndAutomaticFire?.Invoke();
+            }
+        }
+
+        private void ReloadInput()
+        {
+            if (Input.GetKeyDown(_inputConfig.Reload))
+            {
+                OnReload?.Invoke();
             }
         }
 

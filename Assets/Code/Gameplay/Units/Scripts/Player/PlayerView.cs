@@ -38,7 +38,22 @@ namespace FPSShooter.Gameplay.Units
 
         public void Shoot()
         {
-            _hands.Shoot();
+            _hands.ShootCurrentWeapon();
+        }
+
+        public void ShootStartAutomatic()
+        {
+            _hands.StartShootAutomaticCurrentWeapon();
+        }
+
+        public void ShootEndAutomatic()
+        {
+            _hands.EndShotAutomaticCurrentWeapon();
+        }
+
+        public void Reload()
+        {
+            _hands.ReloadCurrentWeapon();
         }
 
         public void Move(Vector2 movementVector)

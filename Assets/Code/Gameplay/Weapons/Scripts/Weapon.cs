@@ -1,7 +1,7 @@
 using System;
+using FPSShooter.Core.Utils;
 using FPSShooter.Gameplay.Projectiles;
 using FPSShooter.Gameplay.Utils;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FPSShooter.Gameplay.Weapons
@@ -10,49 +10,83 @@ namespace FPSShooter.Gameplay.Weapons
     public class Weapon
     {
         [SerializeField] private BaseItemMetadata _itemMetadata;
-        [SerializeField] private uint _maxAmmo;
-        [SerializeField] private uint _currentAmmo;
-        [SerializeField] private float _shootDelay;
-        [SerializeField] private float _reloadDuration;
+        [SerializeField] private ClampedIntValue _ammo;
+        [SerializeField] private ClampedFloatValue _shootDelay;
+        [SerializeField] private ClampedFloatValue _reloadDelay;
         [SerializeReference] private BaseReloadMechanic _reloadMechanic;
+        [SerializeField] private bool _isAutomatic;
         [SerializeField] private Projectile _projectilePrefab;
         
         public BaseItemMetadata ItemMetadata => _itemMetadata;
-        public uint MaxAmmo => _maxAmmo;
-        public uint CurrentAmmo => _currentAmmo;
-        public float ShootDelay => _shootDelay;
-        public float ReloadDuration => _reloadDuration;
+        public int MaxAmmo => _ammo.MaxValue;
+        public int CurrentAmmo => _ammo.CurrentValue;
+        public ClampedIntValue Ammo => _ammo;
+        public ClampedFloatValue ShootDelay => _shootDelay;
+        public ClampedFloatValue ReloadDelay => _reloadDelay;
         public BaseReloadMechanic ReloadMechanic => _reloadMechanic;
         public Projectile ProjectilePrefab => _projectilePrefab;
 
         public Weapon(Weapon weapon)
         {
             _itemMetadata = new BaseItemMetadata(weapon.ItemMetadata);
-            _maxAmmo = weapon.MaxAmmo;
-            _currentAmmo = weapon.CurrentAmmo;
-            _shootDelay = weapon.ShootDelay;
-            _reloadDuration = weapon.ReloadDuration;
+            _ammo = new ClampedIntValue(weapon.Ammo);
+            _shootDelay = new ClampedFloatValue(weapon.ShootDelay);
+            _reloadDelay = new ClampedFloatValue(weapon.ReloadDelay);
             _reloadMechanic = weapon.ReloadMechanic;
             _projectilePrefab = weapon.ProjectilePrefab;
 
             _reloadMechanic.SetOwner(this);
         }
 
-        public bool CanShoot()
+        public bool NeedToReload()
         {
-            return _currentAmmo > 0;
+            return _ammo.CurrentValue <= _ammo.MinValue;
+        }
+
+        public bool IsDelayBetweenShots()
+        {
+            return _shootDelay.CurrentValue > _shootDelay.MinValue;
+        }
+
+        public bool IsReloading()
+        {
+            return _reloadDelay.CurrentValue > _reloadDelay.MinValue;
         }
 
         public bool TryReload()
         {
             if(!_reloadMechanic.CanReload()) return false;
+            Debug.Log("Reloading");
             _reloadMechanic.Reload();
+            _reloadDelay.CurrentValue = _reloadDelay.MaxValue;
             return true;
         }
 
-        public void SetCurrentAmmo(uint ammo)
+        public void SetCurrentAmmo(int ammo)
         {
-            _currentAmmo = ammo;
+            _ammo.CurrentValue = ammo;
+        }
+
+        //TODO: rename it
+        public void SetShootDelay()
+        {
+            _shootDelay.CurrentValue = _shootDelay.MaxValue;
+        }
+
+        public void UpdateShootDelay(float deltaTime)
+        {
+            if (_shootDelay.CurrentValue > _shootDelay.MinValue)
+            {
+                _shootDelay.CurrentValue -= deltaTime;
+            }
+        }
+
+        public void UpdateReloadDelay(float deltaTime)
+        {
+            if (_reloadDelay.CurrentValue > _reloadDelay.MinValue)
+            {
+                _reloadDelay.CurrentValue -= deltaTime;
+            }
         }
 
         public Weapon Clone()

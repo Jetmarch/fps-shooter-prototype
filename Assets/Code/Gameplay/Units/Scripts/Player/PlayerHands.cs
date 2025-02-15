@@ -20,9 +20,24 @@ namespace FPSShooter.Gameplay.Units
             _weapons = new List<IWeapon>();
         }
         
-        public void Shoot()
+        public void ShootCurrentWeapon()
         {
             _currentWeapon.RequestShoot();
+        }
+
+        public void StartShootAutomaticCurrentWeapon()
+        {
+            _currentWeapon.RequestStartAutomaticShoot();
+        }
+
+        public void EndShotAutomaticCurrentWeapon()
+        {
+            _currentWeapon.RequestEndAutomaticShoot();
+        }
+
+        public void ReloadCurrentWeapon()
+        {
+            _currentWeapon.RequestReload();
         }
         
         public void AddWeapon(IWeapon weapon)

@@ -1,10 +1,11 @@
 using FPSShooter.Code.Gameplay.Weapons;
+using FPSShooter.Core.Managers;
 using UnityEngine;
 using VContainer;
 
 namespace FPSShooter.Gameplay.Weapons
 {
-    public sealed class WeaponView : MonoBehaviour, IWeapon
+    public sealed class WeaponView : MonoBehaviour, IWeapon, IUpdateListener
     {
         public Vector3 Position { get => transform.position; set => transform.position = value; }
         public Quaternion Rotation { get => transform.rotation; set => transform.rotation = value; }
@@ -27,10 +28,25 @@ namespace FPSShooter.Gameplay.Weapons
         {
             _presenter.Shoot();
         }
+
+        public void RequestStartAutomaticShoot()
+        {
+            _presenter.StartShootAutomatic();
+        }
+
+        public void RequestEndAutomaticShoot()
+        {
+            _presenter.EndShootAutomatic();
+        }
         
         public void RequestReload()
         {
             _presenter.Reload();
+        }
+
+        public void PlayEmptyMagazineSound()
+        {
+            
         }
 
         public void Recoil()
@@ -38,7 +54,7 @@ namespace FPSShooter.Gameplay.Weapons
             _proceduralRecoil.Recoil();
         }
 
-        public void ShotVFX()
+        public void PlayShotVFX()
         {
             _shotEffect.Play();
         }
@@ -51,6 +67,11 @@ namespace FPSShooter.Gameplay.Weapons
         public void SetParent(Transform parent)
         {
             transform.SetParent(parent);
+        }
+
+        public void OnUpdate(float deltaTime)
+        {
+            _presenter.Update(deltaTime);
         }
     }
 }

@@ -1,9 +1,10 @@
+using FPSShooter.Core.Managers;
 using UnityEngine;
 using VContainer.Unity;
 
 // ReSharper disable ClassNeverInstantiated.Global
 
-namespace FPSShooter.Core.Managers
+namespace FPSShooter.Core.Utils
 {
     public sealed class CursorToggler : IInitializable, IUpdateListener
     {
