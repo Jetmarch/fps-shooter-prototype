@@ -5,7 +5,7 @@ using VContainer.Unity;
 
 namespace FPSShooter.Core.Installers
 {
-    public class ApplicationInstaller : LifetimeScope
+    public sealed class ApplicationInstaller : LifetimeScope
     {
         [SerializeField] private InputConfig _inputConfig;
         
@@ -23,4 +23,5 @@ namespace FPSShooter.Core.Installers
                 .AsImplementedInterfaces();
         }
     }
+   
 }

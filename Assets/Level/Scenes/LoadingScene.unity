@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 777746127ec1f9f4f9710275d1d39da5, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 1413545264}
   - component: {fileID: 1413545265}
   m_Layer: 0
-  m_Name: ApplicationInstaller
+  m_Name: LoadingSceneInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -708,13 +708,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413545263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a109591981f7b5843b9cfb6066da36ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 0434afafe0cf0f645be7b68c6ea0f4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _loadingTaskConfig: {fileID: 11400000, guid: 585fc061d668e914d8477991e2b91ba5, type: 2}
 --- !u!1 &1677583951
 GameObject:
   m_ObjectHideFlags: 0
