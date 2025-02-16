@@ -18,7 +18,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 15
     _shootDelay:
-      _maxValue: 0.7
+      _maxValue: 0.2
       _minValue: 0
       _currentValue: 0
     _reloadDelay:
@@ -27,6 +27,7 @@ MonoBehaviour:
       _currentValue: 0
     _reloadMechanic:
       rid: 1161063608996069377
+    _isAutomatic: 1
     _projectilePrefab: {fileID: 0}
   references:
     version: 2
