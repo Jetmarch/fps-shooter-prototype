@@ -69,7 +69,7 @@ namespace FPSShooter.Gameplay.Weapons
             _model.UpdateShootDelay(deltaTime);
             _model.UpdateReloadDelay(deltaTime);
 
-            if (_isAutomaticFire)
+            if (_isAutomaticFire && _model.IsAutomatic)
             {
                 Shoot();
             }

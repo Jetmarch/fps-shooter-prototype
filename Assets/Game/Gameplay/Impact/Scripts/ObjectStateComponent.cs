@@ -18,7 +18,7 @@ namespace FPSShooter.Gameplay.ImpactSystem
         public void Affect(Impact impact)
         {
             _objectState.Affect(impact);
-            _particlesManager.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
+            _particlesManager?.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
         }
     }
 }

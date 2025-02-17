@@ -26,6 +26,7 @@ namespace FPSShooter.Gameplay.Weapons
         public ClampedFloatValue ReloadDelay => _reloadDelay;
         public BaseReloadMechanic ReloadMechanic => _reloadMechanic;
         public ProjectileType ProjectileType => _projectileType;
+        public bool IsAutomatic => _isAutomatic;
 
         public Weapon(Weapon weapon)
         {
@@ -33,10 +34,10 @@ namespace FPSShooter.Gameplay.Weapons
             _ammo = new ClampedIntValue(weapon.Ammo);
             _shootDelay = new ClampedFloatValue(weapon.ShootDelay);
             _reloadDelay = new ClampedFloatValue(weapon.ReloadDelay);
-            _reloadMechanic = weapon.ReloadMechanic;
-            _projectileType = weapon.ProjectileType;
-
+            _reloadMechanic = new ReloadAllMechanic();
             _reloadMechanic.SetOwner(this);
+            _projectileType = weapon.ProjectileType;
+            _isAutomatic = weapon.IsAutomatic;
         }
 
         public bool NeedToReload()
