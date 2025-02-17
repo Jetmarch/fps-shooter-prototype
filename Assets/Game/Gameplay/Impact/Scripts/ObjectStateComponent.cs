@@ -1,4 +1,4 @@
-using System;
+using FPSShooter.Core.Managers;
 using UnityEngine;
 
 namespace FPSShooter.Gameplay.ImpactSystem
@@ -6,6 +6,9 @@ namespace FPSShooter.Gameplay.ImpactSystem
     public sealed class ObjectStateComponent : MonoBehaviour
     {
         [SerializeField] private ObjectState _objectState;
+        [SerializeField] private ParticleType _hitParticle;
+        
+        [SerializeField] private ParticlesManager _particlesManager;
 
         private void Start()
         {
@@ -15,6 +18,7 @@ namespace FPSShooter.Gameplay.ImpactSystem
         public void Affect(Impact impact)
         {
             _objectState.Affect(impact);
+            _particlesManager.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
         }
     }
 }

@@ -4957,7 +4957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveVFX: {fileID: 673613485924929012}
   _hitVFX: {fileID: 8133709478395973939}
-  _projectileConfig: {fileID: 11400000, guid: e6644fe1846053340874db6690d3e611, type: 2}
   _rigidbody: {fileID: 6494788567603705275}
 --- !u!114 &5884864621582643400
 MonoBehaviour:
@@ -4972,7 +4971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: 
+    TypeName: FPSShooter.Core.Installers.GameSceneInstaller
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 6968183971612725951}

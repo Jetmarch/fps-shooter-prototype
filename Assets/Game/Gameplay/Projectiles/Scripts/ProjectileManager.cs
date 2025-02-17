@@ -20,7 +20,7 @@ namespace FPSShooter.Gameplay.Projectiles
             _gameLoopManager = gameLoopManager;
         }
         
-        private void Start()
+        private void Awake()
         {
             foreach (var projectilePool in _projectilePools.Values)
             {
@@ -33,7 +33,7 @@ namespace FPSShooter.Gameplay.Projectiles
             //TODO: projectile factory
             if (!_projectilePools.TryGetValue(type, out var pool))
             {
-                throw new Exception($"Projectile pool for {type} could not be retrieved");
+                throw new KeyNotFoundException($"Projectile pool for {type} could not be retrieved");
             }
             
             var projectileObject = pool.GetObject();

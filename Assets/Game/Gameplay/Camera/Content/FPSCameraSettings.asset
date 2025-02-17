@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef9f93e4a3e469ca91e44a773e8f48d, type: 3}
   m_Name: FPSCameraSettings
   m_EditorClassIdentifier: 
-  _cameraSensitivity: 1
-  _cameraMaxVerticalAngle: 45
-  _cameraMinVerticalAngle: -45
+  _cameraSensitivity: 2
+  _cameraMaxVerticalAngle: 50
+  _cameraMinVerticalAngle: -50
   _springMotionSettings:
     _halfLife: 0.075
     _frequency: 15

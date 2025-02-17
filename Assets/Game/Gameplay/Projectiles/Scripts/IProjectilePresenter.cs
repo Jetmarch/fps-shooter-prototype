@@ -6,7 +6,7 @@ namespace FPSShooter.Gameplay.Projectiles
     {
         void Initialize();
         void Update(float deltaTime);
-        void Hit(GameObject target, Vector3 hitPoint);
+        void Hit(GameObject target, Vector3 hitPoint, Vector3 hitNormal);
         ProjectileType GetProjectileType();
     }
 

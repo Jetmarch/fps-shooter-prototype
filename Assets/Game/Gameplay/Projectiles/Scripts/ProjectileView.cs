@@ -26,7 +26,8 @@ namespace FPSShooter.Gameplay.Projectiles
         private void OnCollisionEnter(Collision other)
         {
             var hitPoint = other.contacts[0].point;
-            _presenter.Hit(other.gameObject, hitPoint);
+            var hitNormal = other.contacts[0].normal;
+            _presenter.Hit(other.gameObject, hitPoint, hitNormal);
         }
 
         public void Initialize()
@@ -47,6 +48,11 @@ namespace FPSShooter.Gameplay.Projectiles
         public void PlayMoveVFX()
         {
             _moveVFX.Play();
+        }
+
+        public void PlayHitVFX()
+        {
+            _hitVFX.Play();
         }
     }
 }

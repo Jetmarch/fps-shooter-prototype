@@ -16,6 +16,7 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private WeaponManager _weaponManager;
         [SerializeField] private ProjectileManager _projectileManager;
+        [SerializeField] private ParticlesManager _particlesManager;
         [SerializeField] private Camera _camera;
         protected override void Configure(IContainerBuilder builder)
         {
@@ -24,6 +25,7 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_playerManager);
             builder.RegisterInstance(_weaponManager);
             builder.RegisterInstance(_projectileManager).AsImplementedInterfaces();
+            builder.RegisterInstance(_particlesManager);
             builder.RegisterInstance(_camera);
             
             builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
