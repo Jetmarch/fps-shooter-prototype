@@ -9,7 +9,7 @@ using VContainer.Unity;
 
 namespace FPSShooter.Core.Installers
 {
-    public class GameSceneInstaller : LifetimeScope
+    public sealed class GameSceneInstaller : LifetimeScope
     {
         [SerializeField] private WeaponPack _weaponPack;
         [SerializeField] private GameLoopManager _gameLoopManager;

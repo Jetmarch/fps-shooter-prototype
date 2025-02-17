@@ -4,6 +4,6 @@ namespace FPSShooter.Gameplay.Projectiles
 {
     public interface IProjectileManager
     {
-        Projectile CreateProjectile(Transform shootPoint);
+        ProjectileView CreateProjectile(ProjectileType type, Transform shootPoint);
     }
 }

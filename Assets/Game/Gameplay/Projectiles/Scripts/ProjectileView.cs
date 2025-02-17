@@ -1,17 +1,52 @@
+using System;
 using FPSShooter.Core.Managers;
 using UnityEngine;
+using VContainer;
 
-namespace FPSShooter
+namespace FPSShooter.Gameplay.Projectiles
 {
-    public sealed class ProjectileView : MonoBehaviour
+    public sealed class ProjectileView : MonoBehaviour, IFixedUpdateListener
     {
-        // [SerializeField] private ProjectileConfig _projectileConfig;
-        //
-        // private Projectile _projectile;
-        //
-        // private void Start()
-        // {
-        //      _projectile = _projectileConfig.GetClone();
-        // }
+        public ProjectileType ProjectileType => _presenter.GetProjectileType();
+        public event Action<ProjectileView> OnProjectileDestroyed;
+        public Rigidbody Rigidbody => _rigidbody;
+        
+        [SerializeField] private ParticleSystem _moveVFX;
+        [SerializeField] private ParticleSystem _hitVFX;
+        [SerializeField] private Rigidbody _rigidbody;
+
+        private IProjectilePresenter _presenter;
+
+        [Inject]
+        private void Configure(IProjectilePresenter presenter)
+        {
+            _presenter = presenter;
+        }
+        
+        private void OnCollisionEnter(Collision other)
+        {
+            var hitPoint = other.contacts[0].point;
+            _presenter.Hit(other.gameObject, hitPoint);
+        }
+
+        public void Initialize()
+        {
+            _presenter.Initialize();
+        }
+        
+        public void OnFixedUpdate(float deltaTime)
+        {
+            _presenter.Update(deltaTime);
+        }
+
+        public void NotifyProjectileDestroyed()
+        {
+            OnProjectileDestroyed?.Invoke(this);
+        }
+
+        public void PlayMoveVFX()
+        {
+            _moveVFX.Play();
+        }
     }
 }

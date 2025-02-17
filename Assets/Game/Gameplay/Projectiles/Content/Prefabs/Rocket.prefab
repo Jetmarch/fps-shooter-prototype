@@ -4889,9 +4889,8 @@ GameObject:
   - component: {fileID: 8824629023682511375}
   - component: {fileID: 6494788567603705275}
   - component: {fileID: 8080991885070923632}
-  - component: {fileID: 5884864621582643400}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4958,26 +4957,8 @@ MonoBehaviour:
   _moveVFX: {fileID: 673613485924929012}
   _hitVFX: {fileID: 8133709478395973939}
   _projectileConfig: {fileID: 11400000, guid: e6644fe1846053340874db6690d3e611, type: 2}
+  _velocity: {x: 0, y: 0, z: 0}
   _rigidbody: {fileID: 6494788567603705275}
---- !u!114 &5884864621582643400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968183971612725951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7b6fc3cd08e40918d3eec9d3a3cb2b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentReference:
-    TypeName: 
-  autoRun: 1
-  autoInjectGameObjects:
-  - {fileID: 6968183971612725951}
-  _projectileConfig: {fileID: 11400000, guid: e6644fe1846053340874db6690d3e611, type: 2}
-  _projectileView: {fileID: 8080991885070923632}
 --- !u!1001 &3633462801709297293
 PrefabInstance:
   m_ObjectHideFlags: 0

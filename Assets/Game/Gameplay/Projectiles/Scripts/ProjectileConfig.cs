@@ -1,3 +1,4 @@
+using FPSShooter.Gameplay.Projectiles;
 using UnityEngine;
 
 namespace FPSShooter
@@ -13,6 +14,7 @@ namespace FPSShooter
         [Header("Impact")]
         [SerializeField] private int _damage;
         [SerializeField] private float _impulseForce = 100f;
+        [SerializeField] private ProjectileType _projectileType;
         
         public float InitialSpeed => _initialSpeed;
         public float Mass => _mass;
@@ -20,6 +22,7 @@ namespace FPSShooter
         public float GravityMultiplier => _gravityMultiplier;
         public int Damage => _damage;
         public float ImpulseForce => _impulseForce;
+        public ProjectileType ProjectileType => _projectileType;
 
 #if UNITY_EDITOR
         private void OnValidate()

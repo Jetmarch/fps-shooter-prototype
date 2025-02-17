@@ -37,7 +37,7 @@ namespace FPSShooter.Gameplay.Weapons
                 return;
             }
 
-            _projectileManager.CreateProjectile(_view.ShootPoint);
+            _projectileManager.CreateProjectile(_model.ProjectileType, _view.ShootPoint);
             _view.Recoil();
             _view.PlayShotVFX();
             

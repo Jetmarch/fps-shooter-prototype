@@ -3,6 +3,7 @@ using FPSShooter.Core.Utils;
 using FPSShooter.Gameplay.Projectiles;
 using FPSShooter.Gameplay.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FPSShooter.Gameplay.Weapons
 {
@@ -15,7 +16,7 @@ namespace FPSShooter.Gameplay.Weapons
         [SerializeField] private ClampedFloatValue _reloadDelay;
         [SerializeReference] private BaseReloadMechanic _reloadMechanic;
         [SerializeField] private bool _isAutomatic;
-        [SerializeField] private Projectile _projectilePrefab;
+        [SerializeField] private ProjectileType _projectileType;
         
         public BaseItemMetadata ItemMetadata => _itemMetadata;
         public int MaxAmmo => _ammo.MaxValue;
@@ -24,7 +25,7 @@ namespace FPSShooter.Gameplay.Weapons
         public ClampedFloatValue ShootDelay => _shootDelay;
         public ClampedFloatValue ReloadDelay => _reloadDelay;
         public BaseReloadMechanic ReloadMechanic => _reloadMechanic;
-        public Projectile ProjectilePrefab => _projectilePrefab;
+        public ProjectileType ProjectileType => _projectileType;
 
         public Weapon(Weapon weapon)
         {
@@ -33,7 +34,7 @@ namespace FPSShooter.Gameplay.Weapons
             _shootDelay = new ClampedFloatValue(weapon.ShootDelay);
             _reloadDelay = new ClampedFloatValue(weapon.ReloadDelay);
             _reloadMechanic = weapon.ReloadMechanic;
-            _projectilePrefab = weapon.ProjectilePrefab;
+            _projectileType = weapon.ProjectileType;
 
             _reloadMechanic.SetOwner(this);
         }

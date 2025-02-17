@@ -1,16 +1,19 @@
 using System;
+using System.Collections.Generic;
 using FPSShooter.Core.Managers;
 using FPSShooter.Gameplay.Utils;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 using VContainer;
 
 namespace FPSShooter.Gameplay.Projectiles
 {
-    public sealed class ProjectileManager : MonoBehaviour, IProjectileManager
+    public sealed class ProjectileManager : SerializedMonoBehaviour, IProjectileManager
     {
-        [SerializeField] private GameObjectPool _projectilePool;
-        [SerializeField] private GameLoopManager _gameLoopManager;
-
+        [OdinSerialize] private Dictionary<ProjectileType, GameObjectPool> _projectilePools;
+        private GameLoopManager _gameLoopManager;
+        
         [Inject]
         private void Configure(GameLoopManager gameLoopManager)
         {
@@ -19,23 +22,32 @@ namespace FPSShooter.Gameplay.Projectiles
         
         private void Start()
         {
-            _projectilePool.Initialize();
+            foreach (var projectilePool in _projectilePools.Values)
+            {
+                projectilePool.Initialize();
+            }
         }
 
-        public Projectile CreateProjectile(Transform shootPoint)
+        public ProjectileView CreateProjectile(ProjectileType type, Transform shootPoint)
         {
             //TODO: projectile factory
-            var projectileObject = _projectilePool.GetObject();
+            if (!_projectilePools.TryGetValue(type, out var pool))
+            {
+                throw new Exception($"Projectile pool for {type} could not be retrieved");
+            }
+            
+            var projectileObject = pool.GetObject();
             if (!projectileObject)
             {
                 throw new Exception("Projectile from projectilePool could not be retrieved");
             }
             
-            var projectile = projectileObject.GetComponent<Projectile>();
+            var projectile = projectileObject.GetComponent<ProjectileView>();
             if (!projectile)
             {
                 throw new MissingComponentException("Projectile object is missing a Projectile component.");
             }
+            
             projectile.transform.position = shootPoint.position;
             projectile.transform.rotation = shootPoint.rotation;
             projectile.OnProjectileDestroyed += ReturnProjectile;
@@ -44,10 +56,14 @@ namespace FPSShooter.Gameplay.Projectiles
             return projectile;
         }
 
-        private void ReturnProjectile(Projectile projectile)
+        private void ReturnProjectile(ProjectileView projectileView)
         {
-            _gameLoopManager.RemoveListener(projectile);
-            _projectilePool.ReturnObject(projectile.gameObject);
+            _gameLoopManager.RemoveListener(projectileView);
+            if (!_projectilePools.TryGetValue(projectileView.ProjectileType, out var pool))
+            {
+                throw new Exception($"Projectile pool for {projectileView.ProjectileType} could not be retrieved");
+            }
+            pool.ReturnObject(projectileView.gameObject);
         }
     }
 }
