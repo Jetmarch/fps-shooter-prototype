@@ -51,6 +51,9 @@ namespace FPSShooter.Gameplay.Projectiles
             ImpactUseCases.AffectTarget(other.gameObject, gameObject, new Impact(_projectileConfig.Damage, _projectileConfig.ImpulseForce, impactVector));
             
             _hitVFX.Play();
+            
+            var impactParticles = Instantiate(_hitVFX.gameObject, other.contacts[0].point, Quaternion.identity);
+            Destroy(impactParticles, 2f);
             OnProjectileDestroyed?.Invoke(this);
         }
     }
