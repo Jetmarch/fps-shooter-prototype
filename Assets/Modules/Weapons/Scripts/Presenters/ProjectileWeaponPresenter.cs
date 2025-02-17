@@ -1,5 +1,4 @@
 using FPSShooter.Modules.Gameplay.Projectiles;
-using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
@@ -48,13 +47,11 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public void StartShootAutomatic()
         {
             _isAutomaticFire = true;
-            Debug.Log("Start automatic fire");
         }
 
         public void EndShootAutomatic()
         {
             _isAutomaticFire = false;
-            Debug.Log("End automatic fire");
         }
 
         public void Reload()

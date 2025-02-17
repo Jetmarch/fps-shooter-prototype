@@ -19,9 +19,7 @@ namespace FPSShooter.Modules.Units
         
         public void Update(float deltaTime)
         {
-            var desiredRotation = Quaternion.Slerp(_hands.rotation, _fpsCamera.Rotation, 1f - Mathf.Exp(-_data.HandsFollowSpeed * deltaTime));
-            // desiredRotation = _fpsCamera.Rotation;
-            _hands.rotation = desiredRotation;
+            _hands.rotation = _fpsCamera.Rotation;
         }
     }
 }
