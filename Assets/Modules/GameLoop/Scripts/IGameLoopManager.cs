@@ -1,0 +1,8 @@
+namespace FPSShooter.Modules.Core.GameLoop
+{
+    public interface IGameLoopManager
+    {
+        void AddListener(IGameLoopListener listener);
+        void RemoveListener(IGameLoopListener listener);
+    }
+}

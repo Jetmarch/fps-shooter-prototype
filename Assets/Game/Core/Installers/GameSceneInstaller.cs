@@ -1,8 +1,9 @@
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
-using FPSShooter.Gameplay.Projectiles;
-using FPSShooter.Gameplay.Units;
-using FPSShooter.Gameplay.Weapons;
+using FPSShooter.Modules.Core.GameLoop;
+using FPSShooter.Modules.Gameplay.Projectiles;
+using FPSShooter.Modules.Gameplay.Weapons;
+using FPSShooter.Modules.Units;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -18,14 +19,15 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private ProjectileManager _projectileManager;
         [SerializeField] private ParticlesManager _particlesManager;
         [SerializeField] private Camera _camera;
+
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterInstance(_weaponPack);
-            builder.RegisterInstance(_gameLoopManager);
-            builder.RegisterInstance(_playerManager);
-            builder.RegisterInstance(_weaponManager);
+            builder.RegisterInstance(_gameLoopManager).AsImplementedInterfaces();
+            builder.RegisterInstance(_weaponManager).AsImplementedInterfaces();;
             builder.RegisterInstance(_projectileManager).AsImplementedInterfaces();
-            builder.RegisterInstance(_particlesManager);
+            builder.RegisterInstance(_particlesManager).AsImplementedInterfaces();
+            builder.RegisterInstance(_weaponPack);
+            builder.RegisterInstance(_playerManager);
             builder.RegisterInstance(_camera);
             
             builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();

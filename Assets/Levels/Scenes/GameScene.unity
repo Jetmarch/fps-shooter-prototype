@@ -215,12 +215,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 50
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 2
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!54 &119454476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,6 +249,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!4 &141287495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8971244355432604208, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148423753
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,12 +402,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 50
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 2
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!54 &177389259
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -603,12 +632,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 50
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 2
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!54 &356264810
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -711,12 +752,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!1 &636769603
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,12 +1000,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &678199392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 678199392, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
@@ -1027,6 +1091,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &816197579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d24ab4d209d427b92e4bf9f11732b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &859895470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9007633968349339706, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &952925346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,12 +1304,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 50
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 2
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!65 &1153472251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1480,12 +1572,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &1776066527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7636202567262605927, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
@@ -1601,12 +1704,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 816197579}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 10
+      Data: 0
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
+--- !u!4 &1895776912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6889667524496222115, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943733781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,12 +2753,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!23 &5062470729311714746
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2739,12 +2870,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &5236425074292994754
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,12 +2949,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!33 &5725022445268628008
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2909,12 +3062,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &7222144199345902121
 Transform:
   m_ObjectHideFlags: 0
@@ -2942,12 +3106,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!33 &7243847560713604854
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3068,12 +3243,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!23 &8162711757949238671
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3128,12 +3314,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!1 &8548255515516917307
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,12 +3362,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &8648807169880700031
 Transform:
   m_ObjectHideFlags: 0
@@ -3198,12 +3406,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!4 &8751478972911971990
 Transform:
   m_ObjectHideFlags: 0
@@ -3231,12 +3450,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!1 &8942728252603539527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,12 +3498,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}
 --- !u!1001 &9007633969565907730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3287,59 +3528,27 @@ PrefabInstance:
       objectReference: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 11
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"_particlePools","add_keys":{"$id":0,"$type":"System.Object[],
-        mscorlib","$rlength":2,"$rcontent":[{"$id":1,"$type":"FPSShooter.Core.Managers.ParticleType,
-        Game",1},{"$id":2,"$type":"FPSShooter.Core.Managers.ParticleType, Game",1}]},"remove_keys":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
       value: '"path":"_particlePools.{0es}._parent","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"_particlePools.{1es}._parent","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"_particlePools.{0es}._prefab","value":$eref:1'
+      value: '"path":"_particlePools.{2es}._parent","value":$eref:2'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"_particlePools.{1es}","value":{"$id":0,"$type":"FPSShooter.Gameplay.Utils.GameObjectPool,
-        Game","_prefab":$eref:2,"_parent":$eref:3,"_poolSize":20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"_particlePools.{1es}._parent","value":$eref:3'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"_particlePools.{1es}._poolSize","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[6]
-      value: '"path":"_particlePools.{1es}._prefab","value":$eref:2'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[7]
-      value: '"path":"_particlePools.{2es}._parent","value":$eref:4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[8]
-      value: '"path":"_particlePools.{2es}._prefab","value":$eref:5'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[9]
-      value: '"path":"_particlePools.{3es}._parent","value":$eref:4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[10]
-      value: '"path":"_particlePools.{3es}._prefab","value":$eref:6'
+      value: '"path":"_particlePools.{3es}._parent","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -3348,27 +3557,15 @@ PrefabInstance:
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1260334799937022, guid: 2b28f2fdc5a65964f96ea4d2b9d6ca63, type: 3}
+      objectReference: {fileID: 1776066527}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 1067536016464596, guid: 57e18706e2792ff4bb5561ed74b796e2, type: 3}
+      objectReference: {fileID: 678199392}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 678199392}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 1776066527}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]
-      value: 
-      objectReference: {fileID: 6368018055246518413, guid: c8f15ebffd22e574aab45afa0b3ede9f, type: 3}
-    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[6]
-      value: 
-      objectReference: {fileID: 1879769179923522, guid: 65932b7368590234d8163da03c2055d8, type: 3}
+      objectReference: {fileID: 9007633969565907731}
     - target: {fileID: 9007633967854523823, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: _playerContainer
       value: 
@@ -3427,7 +3624,7 @@ PrefabInstance:
       objectReference: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
@@ -3443,24 +3640,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"_projectilePools.{1es}._prefab","value":$eref:3'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"_projectilePools.{2es}._parent","value":$eref:4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"_projectilePools.{2es}._prefab","value":$eref:5'
+      value: '"path":"_projectilePools.{2es}._parent","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 9007633969565907734}
+      objectReference: {fileID: 859895470}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
@@ -3468,53 +3657,37 @@ PrefabInstance:
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 9007633969565907735}
+      objectReference: {fileID: 141287495}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 6968183971612725951, guid: a30bc4c69bce19e4981ced0aa07d5eaa, type: 3}
-    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 9007633969565907733}
-    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]
-      value: 
-      objectReference: {fileID: 6968183971612725951, guid: 3d0cb06d58ea2d248a80992717f13d73, type: 3}
+      objectReference: {fileID: 1895776912}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 636769605}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: _playerContainer
+      value: 
+      objectReference: {fileID: 211119878}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: autoInjectGameObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: autoInjectGameObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 636769603}
+      objectReference: {fileID: 9007633969565907732}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
---- !u!114 &9007633969565907731 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+--- !u!4 &9007633969565907731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3265198092432793134, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
   m_PrefabInstance: {fileID: 9007633969565907730}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d24ab4d209d427b92e4bf9f11732b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &9007633969565907733 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6889667524496222115, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-  m_PrefabInstance: {fileID: 9007633969565907730}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9007633969565907734 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9007633968349339706, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-  m_PrefabInstance: {fileID: 9007633969565907730}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9007633969565907735 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8971244355432604208, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+--- !u!1 &9007633969565907732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9007633969769245511, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
   m_PrefabInstance: {fileID: 9007633969565907730}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9007633969565907736 stripped
@@ -3576,9 +3749,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555b66c67f5497eba6cfcc7a3ce8726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _particlesManager
+      Entry: 6
+      Data: 
   _objectState:
     _maxHealth: 0
     _minHealth: 0
     _currentHealth: 0
   _hitParticle: 0
-  _particlesManager: {fileID: 9007633969565907731}

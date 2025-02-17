@@ -11,7 +11,6 @@ namespace FPSShooter.Core.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
-            Debug.Log("Application Installer");
             ConfigureInputSystem(builder);
         }
 

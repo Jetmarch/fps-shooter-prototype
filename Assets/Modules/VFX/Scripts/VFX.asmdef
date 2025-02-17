@@ -1,0 +1,16 @@
+{
+    "name": "VFX",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f3002a4759dff084b9557dfe42cefb22"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

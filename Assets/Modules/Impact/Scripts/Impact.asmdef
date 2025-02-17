@@ -1,0 +1,16 @@
+{
+    "name": "Impact",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f22a2752f3eb44a4596dfbf1d3dac64f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
