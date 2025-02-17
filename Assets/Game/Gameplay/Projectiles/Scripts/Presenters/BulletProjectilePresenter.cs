@@ -48,11 +48,9 @@ namespace FPSShooter.Gameplay.Projectiles
         {
             var impactVector = target.transform.position - _view.transform.position;
             ImpactUseCases.AffectTarget(target, _view.gameObject, new Impact(_config.Damage, _config.ImpulseForce, impactVector, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal)));
-            Debug.Log($"Particle look rotation is {Quaternion.LookRotation(hitNormal)}. Euler {Quaternion.LookRotation(hitNormal).eulerAngles}");
-            
             
             _view.PlayHitVFX();
-            _particlesManager.SpawnParticles(ParticleType.BulletImpact, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal));
+            // _particlesManager.SpawnParticles(ParticleType.LittleExplosionImpact, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal));
             //TODO: Call DecalManager
             // if (target.TryGetComponent<IHittable>(out var hittable))
             // {

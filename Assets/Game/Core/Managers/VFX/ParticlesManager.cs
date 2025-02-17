@@ -37,6 +37,7 @@ namespace FPSShooter.Core.Managers
     {
         BulletImpact,
         MetalImpact,
-        BloodImpact
+        BloodImpact,
+        LittleExplosionImpact
     }
 }
