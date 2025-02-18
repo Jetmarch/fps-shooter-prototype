@@ -1,3 +1,4 @@
+using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
 using FPSShooter.Modules.Core.GameLoop;
@@ -31,6 +32,8 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_camera);
             
             builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
+            
+            builder.Register<AudioManager>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

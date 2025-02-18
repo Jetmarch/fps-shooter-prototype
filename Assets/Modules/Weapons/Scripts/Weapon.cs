@@ -14,8 +14,10 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         [SerializeField] private ClampedFloatValue _shootDelay;
         [SerializeField] private ClampedFloatValue _reloadDelay;
         [SerializeReference] private BaseReloadMechanic _reloadMechanic;
-        [SerializeField] private bool _isAutomatic;
         [SerializeField] private ProjectileType _projectileType;
+        [SerializeField] private bool _isAutomatic;
+        [SerializeField] private string _shootSoundName;
+        [SerializeField] private string _reloadSoundName;
         
         public BaseItemMetadata ItemMetadata => _itemMetadata;
         public int MaxAmmo => _ammo.MaxValue;
@@ -26,6 +28,8 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public BaseReloadMechanic ReloadMechanic => _reloadMechanic;
         public ProjectileType ProjectileType => _projectileType;
         public bool IsAutomatic => _isAutomatic;
+        public string ShootSoundName => _shootSoundName;
+        public string ReloadSoundName => _reloadSoundName;
 
         public Weapon(Weapon weapon)
         {
@@ -36,6 +40,8 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _reloadMechanic = new ReloadAllMechanic();
             _reloadMechanic.SetOwner(this);
             _projectileType = weapon.ProjectileType;
+            _shootSoundName = weapon.ShootSoundName;
+            _reloadSoundName = weapon.ReloadSoundName;
             _isAutomatic = weapon.IsAutomatic;
         }
 

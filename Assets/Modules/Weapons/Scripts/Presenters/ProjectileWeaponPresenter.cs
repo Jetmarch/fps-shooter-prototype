@@ -1,4 +1,6 @@
+using Audio;
 using FPSShooter.Modules.Gameplay.Projectiles;
+using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
@@ -39,7 +41,10 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _projectileManager.CreateProjectile(_model.ProjectileType, _view.ShootPoint);
             _view.Recoil();
             _view.PlayShotVFX();
-            
+
+
+            TryPlaySound(_model.ShootSoundName);
+
             _model.SetCurrentAmmo(_model.CurrentAmmo - 1);
             _model.SetShootDelay();
         }
@@ -58,6 +63,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         {
             if (!_model.TryReload()) return;
             //TODO: show reload animation
+            TryPlaySound(_model.ReloadSoundName);
             //_view.Reload();
         }
 
@@ -69,6 +75,14 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             if (_isAutomaticFire && _model.IsAutomatic)
             {
                 Shoot();
+            }
+        }
+        
+        private void TryPlaySound(string soundName)
+        {
+            if (AudioManager.Instance.TryGetAudioClipByName(soundName, out var audioClip))
+            {
+                AudioManager.Instance.PlaySoundOneShot(audioClip, AudioOutput.Master, pitch: UnityEngine.Random.Range(0.7f, 1f));
             }
         }
     }
