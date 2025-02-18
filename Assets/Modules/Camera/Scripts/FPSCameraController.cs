@@ -1,11 +1,12 @@
 using System;
+using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Utils;
 using UnityEngine;
 
 namespace FPSShooter.Modules.FPSCamera
 {
     [Serializable]
-    public sealed class FPSCameraController : IFPSCameraController
+    public sealed class FPSCameraController : IFPSCameraController, ILateUpdateListener
     {
         public Quaternion Rotation => _camera.transform.rotation;
         private readonly Camera _camera;
@@ -32,7 +33,7 @@ namespace FPSShooter.Modules.FPSCamera
             _lookRotation = new Vector3(_xRotation, _yRotation) * _settings.CameraSensitivity;
         }
 
-        public void Update(float deltaTime)
+        public void OnLateUpdate(float deltaTime)
         {
             _camera.transform.rotation = Quaternion.Euler(_lookRotation);
             _springMotion.UpdateSpring(deltaTime, _camera.transform.up);

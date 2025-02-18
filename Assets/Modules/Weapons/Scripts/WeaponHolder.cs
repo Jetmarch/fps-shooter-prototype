@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using FPSShooter.Modules.Gameplay.Weapons;
 using UnityEngine;
 
-namespace FPSShooter.Modules.Units
+namespace FPSShooter.Modules.Gameplay.Weapons
 {
     [Serializable]
     public sealed class WeaponHolder

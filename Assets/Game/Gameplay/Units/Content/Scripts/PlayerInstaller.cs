@@ -1,5 +1,6 @@
 using FPSShooter.Game.Gameplay.Units.Player;
 using FPSShooter.Modules.FPSCamera;
+using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Movement;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -75,7 +76,6 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .WithParameter(_weaponParent);
             builder.Register<HandsFollowCameraLook>(Lifetime.Scoped)
                 .WithParameter(_cameraTarget)
-                .WithParameter(_config.HandsFollowCameraLookData)
                 .AsImplementedInterfaces();
             
             builder.Register<HandsWobbleAnimation>(Lifetime.Scoped)

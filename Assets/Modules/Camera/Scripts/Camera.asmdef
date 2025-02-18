@@ -2,7 +2,8 @@
     "name": "Camera",
     "rootNamespace": "",
     "references": [
-        "GUID:f3002a4759dff084b9557dfe42cefb22"
+        "GUID:f3002a4759dff084b9557dfe42cefb22",
+        "GUID:032df6e929252564fb435c934cb1cd35"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

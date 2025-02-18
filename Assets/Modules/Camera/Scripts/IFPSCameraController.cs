@@ -6,6 +6,5 @@ namespace FPSShooter.Modules.FPSCamera
     {
         Quaternion Rotation { get; }
         void Look(Vector2 lookVector);
-        void Update(float deltaTime);
     }
 }

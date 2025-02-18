@@ -2,20 +2,18 @@ using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Movement;
-using FPSShooter.Modules.Units;
 using Modules.Units.Scripts.Presenters;
 using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Units.Player
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class PlayerPresenter : IUnitPresenter, IUpdateListener, ILateUpdateListener
+    public sealed class PlayerPresenter : IUnitPresenter, IUpdateListener
     {
         private readonly IFPSCameraController _fpsCamera;
         private readonly IMovementController _movementController;
         private readonly WeaponHolder _weaponHolder;
-
-
+        
         public PlayerPresenter(IFPSCameraController fpsCamera, IMovementController movementController, WeaponHolder weaponHolder)
         {
             _fpsCamera = fpsCamera;
@@ -81,11 +79,6 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         public void OnUpdate(float deltaTime)
         {
             _movementController.UpdateBody(deltaTime);
-        }
-
-        public void OnLateUpdate(float deltaTime)
-        {
-            _fpsCamera.Update(deltaTime);
         }
     }
 }
