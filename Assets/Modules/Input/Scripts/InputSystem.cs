@@ -8,6 +8,7 @@ namespace FPSShooter.Core.Systems
     [Serializable]
     public sealed class InputSystem : IInputSystem, IUpdateListener, IInitializable
     {
+        public event Action OnMenu;
         public event Action OnFire;
         public event Action OnStartAutomaticFire;
         public event Action OnEndAutomaticFire;
@@ -44,6 +45,7 @@ namespace FPSShooter.Core.Systems
             JumpInput();
             LookInput();
             MouseWheelInput();
+            MenuInput();
         }
 
         private void FireInput()
@@ -130,6 +132,14 @@ namespace FPSShooter.Core.Systems
             if (mouseScrollDelta < 0)
             {
                 OnMouseWheelDown?.Invoke();
+            }
+        }
+
+        private void MenuInput()
+        {
+            if (Input.GetKeyDown(_inputConfig.MenuKey))
+            {
+                OnMenu?.Invoke();
             }
         }
     }
