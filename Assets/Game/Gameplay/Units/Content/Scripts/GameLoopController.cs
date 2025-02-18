@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using FPSShooter.Modules.Core.GameLoop;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace FPSShooter.Game.Gameplay.Units.Installers

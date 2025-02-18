@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
+// ReSharper disable InconsistentNaming
 
 namespace Audio
 {

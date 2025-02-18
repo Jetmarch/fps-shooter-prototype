@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
 using FPSShooter.Core.Systems.TaskSystem;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 

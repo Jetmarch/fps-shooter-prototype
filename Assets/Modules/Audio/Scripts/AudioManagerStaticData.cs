@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace Audio
 {
     public static class AudioManagerStaticData

@@ -1,7 +1,6 @@
 using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
-using FPSShooter.Game.Gameplay.Units.Installers;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Gameplay.Weapons;
@@ -25,7 +24,7 @@ namespace FPSShooter.Core.Installers
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_gameLoopManager).AsImplementedInterfaces();
-            builder.RegisterInstance(_weaponManager).AsImplementedInterfaces();;
+            builder.RegisterInstance(_weaponManager).AsImplementedInterfaces();
             builder.RegisterInstance(_projectileManager).AsImplementedInterfaces();
             builder.RegisterInstance(_particlesManager).AsImplementedInterfaces();
             builder.RegisterInstance(_weaponPack);

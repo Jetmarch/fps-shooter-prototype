@@ -7,7 +7,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
     public sealed class ObjectState
     {
         [SerializeField] private int _maxHealth;
-        [SerializeField] private int _minHealth = 0;
+        [SerializeField] private int _minHealth;
         [SerializeField] private int _currentHealth;
 
         public void Initialize()

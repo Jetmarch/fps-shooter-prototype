@@ -1,7 +1,6 @@
 using Audio;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
-using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {

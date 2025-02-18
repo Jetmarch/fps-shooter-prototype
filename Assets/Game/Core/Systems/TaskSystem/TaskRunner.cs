@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer.Unity;
@@ -8,7 +7,6 @@ namespace FPSShooter.Core.Systems.TaskSystem
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class TaskRunner : IInitializable
     {
-        public event Action<float> OnProgress;
         private readonly List<IAsyncTask> _tasks;
         
         public TaskRunner(List<IAsyncTask> tasks)

@@ -1,6 +1,4 @@
-using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Weapons;
-using FPSShooter.Modules.Movement;
 using Modules.Units.Scripts.Presenters;
 using UnityEngine;
 using VContainer;

@@ -1,4 +1,3 @@
-using System;
 using FPSShooter.Modules.Core.GameLoop;
 using UnityEngine;
 using VContainer.Unity;
@@ -9,10 +8,6 @@ namespace FPSShooter.Core.Utils
 {
     public sealed class CursorToggler : IInitializable, IUpdateListener
     {
-        public CursorToggler()
-        {
-        }
-        
         public void Initialize()
         {
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace FPSShooter.Core.Systems.TaskSystem
 {
     [Serializable]
+    // ReSharper disable once InconsistentNaming
     public sealed class DummyTask_AsyncTask : IAsyncTask
     {
         public bool _completed;

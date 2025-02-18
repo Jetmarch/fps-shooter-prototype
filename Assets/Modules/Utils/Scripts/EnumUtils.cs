@@ -6,6 +6,7 @@ namespace Utils
     public static class EnumUtils<T> where T : struct, Enum
     {
         public static readonly T[] Values = CalculateValues();
+        // ReSharper disable once InconsistentNaming
         private static readonly Dictionary<T, string> _cachedStrings = new();
 
         public static string ToString(T t)

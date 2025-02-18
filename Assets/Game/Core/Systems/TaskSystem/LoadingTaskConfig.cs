@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using SerializedScriptableObject = Sirenix.OdinInspector.SerializedScriptableObject;

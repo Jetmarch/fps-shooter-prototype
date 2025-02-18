@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer;
 
 namespace FPSShooter.Modules.Core.GameLoop
 {

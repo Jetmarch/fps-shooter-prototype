@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 namespace FPSShooter.Core.Systems.TaskSystem
 {
     [Serializable]
+    // ReSharper disable once InconsistentNaming
     public sealed class LoadScene_AsyncTask : IAsyncTask
     {
         [OdinSerialize] private string _sceneName;

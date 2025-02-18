@@ -37,7 +37,6 @@ namespace FPSShooter.Modules.Units
                 var inputMagnitude = _lastPlayerMoveInput.magnitude;
                 
                 var currentPositionWobbleStrength = _data.PositionWobbleStrength * inputMagnitude;
-                var currentRotationWobbleStrength = _data.RotationWobbleStrength * inputMagnitude;
 
                 var positionWobble = new Vector3(
                     Mathf.Sin(_wobbleTime * 2f) * currentPositionWobbleStrength,

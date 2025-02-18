@@ -8,17 +8,16 @@ using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Units.Player
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class PlayerPresenter : IUnitPresenter, IUpdateListener, ILateUpdateListener
     {
-        private readonly UnitView _view;
         private readonly IFPSCameraController _fpsCamera;
         private readonly IMovementController _movementController;
         private readonly WeaponHolder _weaponHolder;
 
 
-        public PlayerPresenter(UnitView view, IFPSCameraController fpsCamera, IMovementController movementController, WeaponHolder weaponHolder)
+        public PlayerPresenter(IFPSCameraController fpsCamera, IMovementController movementController, WeaponHolder weaponHolder)
         {
-            _view = view;
             _fpsCamera = fpsCamera;
             _movementController = movementController;
             _weaponHolder = weaponHolder;

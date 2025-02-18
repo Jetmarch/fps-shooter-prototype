@@ -1,4 +1,3 @@
-using FPSShooter.Core.Managers;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Projectiles;
@@ -11,15 +10,13 @@ namespace FPSShooter.Game.Gameplay.Projectiles
     {
         private readonly ProjectileView _view;
         private readonly ProjectileConfig _config;
-        private readonly IParticlesManager _particlesManager;
-        
+
         private Vector3 _velocity;
 
-        public BulletProjectilePresenter(ProjectileView view, ProjectileConfig config, IParticlesManager particlesManager)
+        public BulletProjectilePresenter(ProjectileView view, ProjectileConfig config)
         {
             _view = view;
             _config = config;
-            _particlesManager = particlesManager;
         }
 
         public void Initialize()
