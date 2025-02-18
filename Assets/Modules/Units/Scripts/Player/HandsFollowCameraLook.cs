@@ -1,10 +1,11 @@
+using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.FPSCamera;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Units
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class HandsFollowCameraLook
+    public sealed class HandsFollowCameraLook : ILateUpdateListener
     {
         private readonly Transform _hands;
         private readonly HandsFollowCameraLookData _data;
@@ -16,8 +17,8 @@ namespace FPSShooter.Modules.Units
             _data = data;
             _fpsCamera = fpsCamera;
         }
-        
-        public void Update(float deltaTime)
+
+        public void OnLateUpdate(float deltaTime)
         {
             _hands.rotation = _fpsCamera.Rotation;
         }

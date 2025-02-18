@@ -1,4 +1,3 @@
-using System;
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Movement;
 using UnityEngine;

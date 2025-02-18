@@ -1,6 +1,7 @@
 using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
+using FPSShooter.Game.Gameplay.Units.Installers;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Gameplay.Weapons;
@@ -31,9 +32,9 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_playerManager);
             builder.RegisterInstance(_camera);
             
-            builder.Register<CursorToggler>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<CursorToggler>(Lifetime.Singleton).AsImplementedInterfaces();
             
-            builder.Register<AudioManager>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }

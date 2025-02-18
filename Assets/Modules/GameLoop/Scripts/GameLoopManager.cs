@@ -13,34 +13,37 @@ namespace FPSShooter.Modules.Core.GameLoop
 
         private GameState _gameState;
 
-        [Inject]
-        public void Construct(IEnumerable<IGameLoopListener> listeners)
-        {
-            foreach (var listener in listeners)
-            {
-                AddListener(listener);
-            }
-        }
-
         public void AddListener(IGameLoopListener listener)
         {
             // ReSharper disable once ConvertIfStatementToSwitchStatement
             if (listener is IUpdateListener updateListener)
             {
-                _updateListeners.Add(updateListener);
+                if (!_updateListeners.Contains(updateListener))
+                {
+                    _updateListeners.Add(updateListener);
+                }
             }
 
             if (listener is IFixedUpdateListener fixedUpdateListener)
             {
-                _fixedUpdateListeners.Add(fixedUpdateListener);
+                if (!_fixedUpdateListeners.Contains(fixedUpdateListener))
+                {
+                    _fixedUpdateListeners.Add(fixedUpdateListener);
+                }
             }
 
             if (listener is ILateUpdateListener lateUpdateListener)
             {
-                _lateUpdateListeners.Add(lateUpdateListener);
+                if (!_lateUpdateListeners.Contains(lateUpdateListener))
+                {
+                    _lateUpdateListeners.Add(lateUpdateListener);
+                }
             }
 
-            _gameLoopListeners.Add(listener);
+            if (!_gameLoopListeners.Contains(listener))
+            {
+                _gameLoopListeners.Add(listener);
+            }
         }
 
         public void RemoveListener(IGameLoopListener listener)

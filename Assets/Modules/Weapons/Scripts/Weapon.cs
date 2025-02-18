@@ -37,7 +37,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _ammo = new ClampedIntValue(weapon.Ammo);
             _shootDelay = new ClampedFloatValue(weapon.ShootDelay);
             _reloadDelay = new ClampedFloatValue(weapon.ReloadDelay);
-            _reloadMechanic = new ReloadAllMechanic();
+            _reloadMechanic = weapon.ReloadMechanic.Clone();
             _reloadMechanic.SetOwner(this);
             _projectileType = weapon.ProjectileType;
             _shootSoundName = weapon.ShootSoundName;

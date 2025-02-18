@@ -5,7 +5,7 @@ using VContainer;
 
 namespace FPSShooter.Modules.Gameplay.Projectiles
 {
-    public sealed class ProjectileView : MonoBehaviour, IFixedUpdateListener
+    public sealed class ProjectileView : MonoBehaviour
     {
         public ProjectileType ProjectileType => _presenter.GetProjectileType();
         public event Action<ProjectileView> OnProjectileDestroyed;
@@ -33,11 +33,6 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         public void Initialize()
         {
             _presenter.Initialize();
-        }
-        
-        public void OnFixedUpdate(float deltaTime)
-        {
-            _presenter.Update(deltaTime);
         }
 
         public void NotifyProjectileDestroyed()

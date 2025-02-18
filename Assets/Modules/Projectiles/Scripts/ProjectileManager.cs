@@ -5,20 +5,12 @@ using FPSShooter.Modules.Utils;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using VContainer;
 
 namespace FPSShooter.Modules.Gameplay.Projectiles
 {
     public sealed class ProjectileManager : SerializedMonoBehaviour, IProjectileManager
     {
         [OdinSerialize] private Dictionary<ProjectileType, GameObjectPool> _projectilePools;
-        private IGameLoopManager _gameLoopManager;
-        
-        [Inject]
-        private void Configure(IGameLoopManager gameLoopManager)
-        {
-            _gameLoopManager = gameLoopManager;
-        }
         
         private void Awake()
         {
@@ -52,13 +44,11 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
             projectile.transform.rotation = shootPoint.rotation;
             projectile.OnProjectileDestroyed += ReturnProjectile;
             projectile.Initialize();
-            _gameLoopManager.AddListener(projectile);
             return projectile;
         }
 
         private void ReturnProjectile(ProjectileView projectileView)
         {
-            _gameLoopManager.RemoveListener(projectileView);
             if (!_projectilePools.TryGetValue(projectileView.ProjectileType, out var pool))
             {
                 throw new Exception($"Projectile pool for {projectileView.ProjectileType} could not be retrieved");

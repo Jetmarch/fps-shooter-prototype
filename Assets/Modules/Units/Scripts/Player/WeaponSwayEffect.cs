@@ -1,11 +1,11 @@
 using System;
+using FPSShooter.Modules.Core.GameLoop;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FPSShooter.Modules.Units
 {
     [Serializable]
-    public sealed class WeaponSwayEffect
+    public sealed class WeaponSwayEffect : ILateUpdateListener
     {
         [SerializeField] private Transform _weaponHolder;
         [SerializeField] private WeaponSwayEffectData _data;
@@ -18,12 +18,12 @@ namespace FPSShooter.Modules.Units
             _data = data;
         }
 
-        public void UpdateInput(Vector2 mousePosition)
+        public void OnLook(Vector2 mousePosition)
         {
             _mousePosition = mousePosition;
         }
         
-        public void Update(float deltaTime)
+        public void SwayEffect(float deltaTime)
         {
             var rotationX = Quaternion.AngleAxis(-_mousePosition.y * _data.SwayMultiplier, Vector3.right);
             var rotationY = Quaternion.AngleAxis(_mousePosition.x * _data.SwayMultiplier, Vector3.up);
@@ -32,15 +32,10 @@ namespace FPSShooter.Modules.Units
             
             _weaponHolder.localRotation = Quaternion.Slerp(_weaponHolder.localRotation, targetRotation, _data.Smooth * deltaTime);
         }
-    }
 
-    [Serializable]
-    public sealed class WeaponSwayEffectData
-    {
-        [SerializeField] private float _smooth = 8;
-        [SerializeField] private float _swayMultiplier = 2;
-        
-        public float Smooth => _smooth;
-        public float SwayMultiplier => _swayMultiplier;
+        public void OnLateUpdate(float deltaTime)
+        {
+            SwayEffect(deltaTime);
+        }
     }
 }
