@@ -23,14 +23,14 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _tasks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[FPSShooter.Core.Systems.TaskSystem.IAsyncTask,
-        Game]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[FPSShooter.Modules.Core.Tasks.IAsyncTask,
+        Tasks]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 1|FPSShooter.Core.Systems.TaskSystem.DummyTask_AsyncTask, Game
+      Data: 1|FPSShooter.Game.Core.Tasks.DummyTask_AsyncTask, Game
     - Name: _completed
       Entry: 5
       Data: true
@@ -39,7 +39,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 2|FPSShooter.Core.Systems.TaskSystem.LoadScene_AsyncTask, Game
+      Data: 2|FPSShooter.Game.Core.Tasks.LoadScene_AsyncTask, Game
     - Name: _sceneName
       Entry: 1
       Data: GameScene

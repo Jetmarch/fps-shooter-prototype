@@ -1,9 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
+using FPSShooter.Modules.Core.Tasks;
 using Sirenix.Serialization;
 using UnityEngine.SceneManagement;
 
-namespace FPSShooter.Core.Systems.TaskSystem
+namespace FPSShooter.Game.Core.Tasks
 {
     [Serializable]
     // ReSharper disable once InconsistentNaming

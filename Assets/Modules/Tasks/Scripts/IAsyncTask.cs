@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace FPSShooter.Core.Systems.TaskSystem
+namespace FPSShooter.Modules.Core.Tasks
 {
     public interface IAsyncTask
     {

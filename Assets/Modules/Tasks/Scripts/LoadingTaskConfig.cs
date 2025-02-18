@@ -3,7 +3,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using SerializedScriptableObject = Sirenix.OdinInspector.SerializedScriptableObject;
 
-namespace FPSShooter.Core.Systems.TaskSystem
+namespace FPSShooter.Modules.Core.Tasks
 {
     [CreateAssetMenu(fileName = "LoadingTaskConfig", menuName = "FPS Shooter/System/LoadingTaskConfig")]
     public sealed class LoadingTaskConfig : SerializedScriptableObject

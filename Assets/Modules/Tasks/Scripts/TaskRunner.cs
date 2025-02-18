@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer.Unity;
 
-namespace FPSShooter.Core.Systems.TaskSystem
+namespace FPSShooter.Modules.Core.Tasks
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class TaskRunner : IInitializable
+    public sealed class TaskRunner
     {
         private readonly List<IAsyncTask> _tasks;
         
@@ -13,13 +12,8 @@ namespace FPSShooter.Core.Systems.TaskSystem
         {
             _tasks = tasks;
         }
-
-        public void Initialize()
-        {
-            RunTasks();
-        }
         
-        private async void RunTasks()
+        public async void RunTasks()
         {
             foreach (var task in _tasks)
             {

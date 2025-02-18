@@ -1,4 +1,5 @@
-using FPSShooter.Core.Systems.TaskSystem;
+using FPSShooter.Game.Core.Tasks;
+using FPSShooter.Modules.Core.Tasks;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -14,8 +15,9 @@ namespace FPSShooter.Core.Installers
             Debug.Log("Loading Scene Installer");
 
             builder.Register<TaskRunner>(Lifetime.Scoped)
-                .WithParameter(_loadingTaskConfig.Tasks)
-                .AsImplementedInterfaces();
+                .WithParameter(_loadingTaskConfig.Tasks);
+
+            builder.Register<TaskRunnerController>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }
