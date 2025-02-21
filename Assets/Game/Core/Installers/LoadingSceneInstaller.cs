@@ -1,6 +1,7 @@
 using FPSShooter.Game.Core.Tasks;
 using FPSShooter.Modules.Core.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,13 +10,13 @@ namespace FPSShooter.Core.Installers
     public sealed class LoadingSceneInstaller : LifetimeScope
     {
         [SerializeField] private LoadingTaskConfig _loadingTaskConfig;
+        [SerializeField] private Image _backgroundFadeImage;
         
         protected override void Configure(IContainerBuilder builder)
         {
-            Debug.Log("Loading Scene Installer");
-
+            builder.RegisterInstance(_backgroundFadeImage);
             builder.Register<TaskRunner>(Lifetime.Scoped)
-                .WithParameter(_loadingTaskConfig.Tasks);
+                .WithParameter(_loadingTaskConfig);
 
             builder.Register<TaskRunnerController>(Lifetime.Scoped).AsImplementedInterfaces();
         }
