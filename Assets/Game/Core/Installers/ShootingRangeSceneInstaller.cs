@@ -1,18 +1,25 @@
 using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
+using FPSShooter.Game.Core.Tasks;
 using FPSShooter.Modules.Core.GameLoop;
+using FPSShooter.Modules.Core.Tasks;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Units;
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 using VContainer.Unity;
 
 namespace FPSShooter.Core.Installers
 {
-    public sealed class GameSceneInstaller : LifetimeScope
+    public sealed class ShootingRangeSceneInstaller : LifetimeScope
     {
+        
+        [SerializeField] private LoadingTaskConfig _loadingTaskConfig;
+        [SerializeField] private Image _fadeImage;
+        
         [SerializeField] private WeaponPack _weaponPack;
         [SerializeField] private GameLoopManager _gameLoopManager;
         [SerializeField] private PlayerManager _playerManager;
@@ -23,6 +30,21 @@ namespace FPSShooter.Core.Installers
 
         protected override void Configure(IContainerBuilder builder)
         {
+            ConfigureTasks(builder);
+            ConfigureManagers(builder);
+            ConfigureUI(builder);
+        }
+        
+        private void ConfigureTasks(IContainerBuilder builder)
+        {
+            builder.Register<TaskRunner>(Lifetime.Scoped)
+                .WithParameter(_loadingTaskConfig);
+
+            builder.Register<TaskRunnerController>(Lifetime.Scoped).AsImplementedInterfaces();
+        }
+        
+        private void ConfigureManagers(IContainerBuilder builder)
+        {
             builder.RegisterInstance(_gameLoopManager).AsImplementedInterfaces();
             builder.RegisterInstance(_weaponManager).AsImplementedInterfaces();
             builder.RegisterInstance(_projectileManager).AsImplementedInterfaces();
@@ -31,9 +53,15 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_playerManager);
             builder.RegisterInstance(_camera);
             
+            
             builder.Register<CursorToggler>(Lifetime.Singleton).AsImplementedInterfaces();
             
             builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
+        }
+        
+        private void ConfigureUI(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_fadeImage);
         }
     }
 }

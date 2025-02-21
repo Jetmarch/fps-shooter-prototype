@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: FPSShooter.Core.Installers.GameSceneInstaller
+    TypeName: FPSShooter.Core.Installers.ShootingRangeSceneInstaller
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 6968183971612725951}

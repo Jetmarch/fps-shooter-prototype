@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
-using VContainer;
 using SerializedScriptableObject = Sirenix.OdinInspector.SerializedScriptableObject;
 
 namespace FPSShooter.Modules.Core.Tasks

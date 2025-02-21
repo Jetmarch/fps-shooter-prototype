@@ -1,6 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Core.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,30 @@ namespace FPSShooter.Game.Core.Tasks
             Debug.Log("Fade task started");
             await _fadeImage.DOFade(_fadeEndValue, _fadeDuration).ToUniTask();
             Debug.Log("Fade task completed");
+        }
+    }
+
+    [Serializable]
+    // ReSharper disable once InconsistentNaming
+    public sealed class StartGame_AsyncTask : IAsyncTask
+    {
+        private GameLoopManager _gameLoopManager;
+        
+        [Inject]
+        private void Configure(GameLoopManager gameLoopManager)
+        {
+            _gameLoopManager = gameLoopManager;
+        }
+
+        public UniTask ExecuteAsync()
+        {
+            return UniTask.Create(StartGame);
+        }
+
+        private async UniTask StartGame()
+        {
+            _gameLoopManager.StartGame();
+            await UniTask.WaitForSeconds(0.1f);
         }
     }
 }
