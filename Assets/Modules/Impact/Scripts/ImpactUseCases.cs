@@ -6,7 +6,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
     {
         public static void AffectTarget(GameObject target, GameObject affector, Impact impact)
         {
-            if (!target.TryGetComponent<ObjectStateComponent>(out var objectState))
+            if (!target.TryGetComponent<IAffectableObject>(out var objectState))
             {
                 Debug.LogWarning("Target object cannot be affected by impact");
                 return;

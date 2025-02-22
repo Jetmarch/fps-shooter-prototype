@@ -11,6 +11,8 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private ProceduralRecoilAnimationController _proceduralRecoil;
+        
+        //TODO: use particle manager
         [SerializeField] private ParticleSystem _shotEffect;
         public Transform ShootPoint => _shootPoint;
         

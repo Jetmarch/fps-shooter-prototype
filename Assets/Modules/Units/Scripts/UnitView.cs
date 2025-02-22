@@ -1,3 +1,4 @@
+using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;
 using Modules.Units.Scripts.Presenters;
 using UnityEngine;
@@ -5,7 +6,7 @@ using VContainer;
 
 namespace FPSShooter.Modules.Units
 {
-    public sealed class UnitView : MonoBehaviour
+    public sealed class UnitView : MonoBehaviour, IAffectableObject
     {
         private IUnitPresenter _presenter;
 
@@ -63,6 +64,17 @@ namespace FPSShooter.Modules.Units
         public void SetPreviousWeapon()
         {
             _presenter.SetPreviousWeapon();
+        }
+
+        public void Affect(Impact impact)
+        {
+            _presenter.Affect(impact);
+        }
+
+        public void Die()
+        {
+            Debug.Log($"{gameObject} is dead");
+            Destroy(gameObject);
         }
     }
 }

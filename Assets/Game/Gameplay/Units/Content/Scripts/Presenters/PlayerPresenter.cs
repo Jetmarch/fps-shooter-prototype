@@ -1,5 +1,6 @@
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.FPSCamera;
+using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Movement;
 using Modules.Units.Scripts.Presenters;
@@ -74,6 +75,16 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         public void SetPreviousWeapon()
         {
             _weaponHolder.PreviousWeapon();
+        }
+
+        public void Affect(Impact impact)
+        {
+            //Not used
+        }
+
+        public void Die()
+        {
+            //Not used
         }
 
         public void OnUpdate(float deltaTime)

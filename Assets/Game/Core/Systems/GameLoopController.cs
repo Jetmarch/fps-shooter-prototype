@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FPSShooter.Modules.Core.GameLoop;
 using VContainer.Unity;
 
-namespace FPSShooter.Game.Gameplay.Units.Installers
+namespace FPSShooter.Game.Core.GameLoop
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class GameLoopController : IInitializable, IDisposable

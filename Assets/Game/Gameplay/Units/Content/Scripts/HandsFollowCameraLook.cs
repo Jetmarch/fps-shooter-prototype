@@ -2,7 +2,7 @@ using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.FPSCamera;
 using UnityEngine;
 
-namespace FPSShooter.Modules.Units
+namespace FPSShooter.Game.Gameplay.Units
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class HandsFollowCameraLook : ILateUpdateListener

@@ -1,3 +1,4 @@
+using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Game.Gameplay.Units.Player;
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Weapons;
