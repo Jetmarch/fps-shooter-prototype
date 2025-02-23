@@ -46,10 +46,11 @@ namespace FPSShooter.Game.Gameplay.UI
 
         private void FollowTarget()
         {
-            var targetScreenPos = _camera.WorldToScreenPoint(_currentTarget.transform.position);
-            if (IsTargetOnScreen(targetScreenPos))
+            var healthBarPosition = _currentTarget.transform.position + _offsetOnTarget;
+            var healthBarScreenPosition = _camera.WorldToScreenPoint(healthBarPosition);
+            if (IsTargetOnScreen(healthBarScreenPosition))
             {
-                _healthSlider.transform.position = targetScreenPos + _offsetOnTarget;
+                _healthSlider.transform.position = healthBarScreenPosition;
                 _healthSlider.gameObject.SetActive(true);
                 var targetState = _currentTarget.GetObjectStateData();
                 var healthInPercent = (float)targetState.CurrentHealth / (float)targetState.MaxHealth * 100f;
@@ -58,7 +59,7 @@ namespace FPSShooter.Game.Gameplay.UI
             else
             {
                 _healthSlider.gameObject.SetActive(false);
-                _healthSlider.transform.position = ClampToScreenPosition(targetScreenPos);
+                _healthSlider.transform.position = ClampToScreenPosition(healthBarScreenPosition);
             }
         }
         
