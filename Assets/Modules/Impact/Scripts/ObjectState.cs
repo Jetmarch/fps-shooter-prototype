@@ -7,8 +7,10 @@ namespace FPSShooter.Modules.Gameplay.Impact
     [Serializable]
     public sealed class ObjectState
     {
-        public event Action OnHealthChanged;
+        public event Action<ImpactData> OnHealthChanged;
         public event Action OnObjectDestroyed;
+        public int CurrentHealth => _health.CurrentValue;
+        public int MaxHealth => _health.MaxValue;
         [SerializeField] private ClampedIntValue _health;
         [SerializeField] private bool _isDead;
 
@@ -18,11 +20,11 @@ namespace FPSShooter.Modules.Gameplay.Impact
             _isDead = false;
         }
         
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impactData)
         {
             if (_isDead) return;
-            _health.CurrentValue += impact.HealthDelta;
-            OnHealthChanged?.Invoke();
+            _health.CurrentValue += impactData.HealthDelta;
+            OnHealthChanged?.Invoke(impactData);
 
             if (_health.CurrentValue <= _health.MinValue)
             {

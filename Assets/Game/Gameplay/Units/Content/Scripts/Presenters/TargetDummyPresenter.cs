@@ -15,14 +15,19 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         private readonly IParticlesManager _particlesManager;
         private readonly ParticleType _hitParticle;
         private readonly ParticleType _deathParticle = ParticleType.LittleExplosionImpact;
+        
+        private readonly Animator _animator;
+        private readonly int _hitTrigger = Animator.StringToHash("Hit");
+        private readonly int _deathTrigger = Animator.StringToHash("Death");
 
-        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle)
+        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator)
         {
             _view = view;
             _objectState = objectState;
             _particlesManager = particlesManager;
             _hitParticle = hitParticle;
             _objectState.Initialize();
+            _animator = animator;
         }
         
         public void Shoot()
@@ -75,15 +80,23 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             //Not used
         }
 
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impact)
         {
             _objectState.Affect(impact);
             _particlesManager?.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
+            _animator.SetTrigger(_hitTrigger);
         }
 
         public void Die()
         {
+            // Object.Destroy(_view.gameObject);
+            _animator.SetTrigger(_deathTrigger);
+        }
+        
+        public void TearApartDeath()
+        {
             _particlesManager?.SpawnParticles(_deathParticle, _view.transform.position, _view.transform.rotation);
+            _animator.SetTrigger(_deathTrigger);
         }
     }
 }

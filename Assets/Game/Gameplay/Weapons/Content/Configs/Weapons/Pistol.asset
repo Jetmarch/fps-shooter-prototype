@@ -27,7 +27,7 @@ MonoBehaviour:
       _currentValue: 0
     _reloadMechanic:
       rid: 1161063811542679554
-    _projectileType: 0
+    _projectileType: 3
     _isAutomatic: 0
     _shootSoundName: revolverShoot
     _reloadSoundName: revolverReload

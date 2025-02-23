@@ -77,7 +77,12 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _weaponHolder.PreviousWeapon();
         }
 
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impact)
+        {
+            //Not used
+        }
+
+        public void TearApartDeath()
         {
             //Not used
         }

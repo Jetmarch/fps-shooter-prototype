@@ -27,20 +27,12 @@ namespace FPSShooter.Game.Gameplay.Projectiles
             _view.Rigidbody.velocity = _view.transform.forward * _config.InitialSpeed;
         }
 
-        public void Hit(GameObject target, Vector3 hitPoint, Vector3 hitNormal)
+        public void Hit(Collision other)
         {
-            var impactVector = target.transform.position - _view.transform.position;
-            ImpactUseCases.AffectTarget(target, _view.gameObject, new Impact(_config.Damage, _config.ImpulseForce, impactVector, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal)));
-            
-            _view.PlayHitVFX();
-            // _particlesManager.SpawnParticles(ParticleType.LittleExplosionImpact, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal));
-            //TODO: Call DecalManager
-            // if (target.TryGetComponent<IHittable>(out var hittable))
-            // {
-            //     HitEffectsManager.PlayHitEffect(hittable, hitPoint);
-            //     var impactParticles = Instantiate(_hitVFX.gameObject, hitPoint, Quaternion.identity);
-            //     Destroy(impactParticles, 2f);
-            // }
+            var hitPoint = other.contacts[0].point;
+            var hitNormal = other.contacts[0].normal;
+            var impactVector = other.transform.position - _view.transform.position;
+            ImpactUseCases.AffectTarget(other.gameObject, _view.gameObject, new ImpactData(_config.Damage, _config.ImpulseForce, impactVector, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal)));
             
             _view.NotifyProjectileDestroyed();
         }

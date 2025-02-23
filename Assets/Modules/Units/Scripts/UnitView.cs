@@ -66,15 +66,18 @@ namespace FPSShooter.Modules.Units
             _presenter.SetPreviousWeapon();
         }
 
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impactData)
         {
-            _presenter.Affect(impact);
+            _presenter.Affect(impactData);
+        }
+        public void TearApartDeath()
+        {
+            _presenter.TearApartDeath();
         }
 
-        public void Die()
+        public void SimpleDeath()
         {
-            Debug.Log($"{gameObject} is dead");
-            Destroy(gameObject);
+            _presenter.Die();
         }
     }
 }

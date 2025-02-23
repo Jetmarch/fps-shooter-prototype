@@ -1,4 +1,5 @@
 using FPSShooter.Core.Managers;
+using FPSShooter.Game.Gameplay.Impact;
 using FPSShooter.Game.Gameplay.Units.Player;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
@@ -13,6 +14,10 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         [SerializeField] private UnitView _view;
         [SerializeField] private ObjectState _objectState;
         [SerializeField] private ParticleType _hitParticle;
+        [SerializeField] private Animator _viewAnimator;
+        
+        //TODO: DummyConfig
+        //TODO: TearApartDeathConfig
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -20,11 +25,16 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .WithParameter(_view)
                 .WithParameter(_objectState)
                 .WithParameter(_hitParticle)
+                .WithParameter(_viewAnimator)
                 .AsImplementedInterfaces();
 
             builder.Register<DeathObserver>(Lifetime.Scoped)
                 .WithParameter(_view)
+                .AsImplementedInterfaces();
+            
+            builder.Register<TearingApartOnDeathMechanic>(Lifetime.Scoped)
                 .WithParameter(_objectState)
+                .AsSelf()
                 .AsImplementedInterfaces();
         }
     }

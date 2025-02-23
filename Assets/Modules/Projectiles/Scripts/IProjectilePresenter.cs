@@ -5,7 +5,8 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
     public interface IProjectilePresenter
     {
         void Initialize();
-        void Hit(GameObject target, Vector3 hitPoint, Vector3 hitNormal);
+        void Hit(Collision other);
+        
         ProjectileType GetProjectileType();
     }
 

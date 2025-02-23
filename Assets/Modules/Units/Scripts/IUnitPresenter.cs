@@ -17,7 +17,8 @@ namespace Modules.Units.Scripts.Presenters
         void AddWeapon(IWeapon weapon);
         void SetNextWeapon();
         void SetPreviousWeapon();
-        void Affect(Impact impact);
+        void Affect(ImpactData impactData);
+        void TearApartDeath();
         void Die();
     }
 }
