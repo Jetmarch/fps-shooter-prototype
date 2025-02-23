@@ -37,10 +37,10 @@ namespace FPSShooter.Core.Installers
         
         private void ConfigureTasks(IContainerBuilder builder)
         {
-            builder.Register<TaskRunner>(Lifetime.Scoped)
+            builder.Register<TaskRunner>(Lifetime.Singleton)
                 .WithParameter(_loadingTaskConfig);
 
-            builder.Register<TaskRunnerController>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<TaskRunnerController>(Lifetime.Singleton).AsImplementedInterfaces();
         }
         
         private void ConfigureManagers(IContainerBuilder builder)

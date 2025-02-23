@@ -92,7 +92,12 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             // Object.Destroy(_view.gameObject);
             _animator.SetTrigger(_deathTrigger);
         }
-        
+
+        public ObjectState GetObjectStateData()
+        {
+            return _objectState;
+        }
+
         public void TearApartDeath()
         {
             _particlesManager?.SpawnParticles(_deathParticle, _view.transform.position, _view.transform.rotation);

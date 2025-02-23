@@ -20,5 +20,6 @@ namespace Modules.Units.Scripts.Presenters
         void Affect(ImpactData impactData);
         void TearApartDeath();
         void Die();
+        ObjectState GetObjectStateData();
     }
 }

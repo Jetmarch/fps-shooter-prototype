@@ -79,5 +79,10 @@ namespace FPSShooter.Modules.Units
         {
             _presenter.Die();
         }
+
+        public ObjectState GetObjectStateData()
+        {
+            return _presenter.GetObjectStateData();
+        }
     }
 }

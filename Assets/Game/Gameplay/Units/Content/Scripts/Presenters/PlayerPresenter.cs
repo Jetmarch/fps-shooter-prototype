@@ -92,6 +92,11 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             //Not used
         }
 
+        public ObjectState GetObjectStateData()
+        {
+            return null;
+        }
+
         public void OnUpdate(float deltaTime)
         {
             _movementController.UpdateBody(deltaTime);
