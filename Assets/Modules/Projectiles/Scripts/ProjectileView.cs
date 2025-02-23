@@ -11,7 +11,6 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         public Rigidbody Rigidbody => _rigidbody;
         
         [SerializeField] private ParticleSystem _moveVFX;
-        [SerializeField] private ParticleSystem _hitVFX;
         [SerializeField] private Rigidbody _rigidbody;
 
         private IProjectilePresenter _presenter;
@@ -24,9 +23,7 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         
         private void OnCollisionEnter(Collision other)
         {
-            var hitPoint = other.contacts[0].point;
-            var hitNormal = other.contacts[0].normal;
-            _presenter.Hit(other.gameObject, hitPoint, hitNormal);
+            _presenter.Hit(other);
         }
 
         public void Initialize()
@@ -42,11 +39,6 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         public void PlayMoveVFX()
         {
             _moveVFX.Play();
-        }
-
-        public void PlayHitVFX()
-        {
-            _hitVFX.Play();
         }
     }
 }

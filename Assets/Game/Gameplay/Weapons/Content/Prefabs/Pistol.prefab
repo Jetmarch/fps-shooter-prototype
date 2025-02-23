@@ -115,7 +115,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 6590651346712451549}
-  _pistolConfig: {fileID: 11400000, guid: 2499d5b8d41e9c2418ca7deb3cb6e34a, type: 2}
+  _config: {fileID: 11400000, guid: 2499d5b8d41e9c2418ca7deb3cb6e34a, type: 2}
   _view: {fileID: 6590651346712451551}
 --- !u!114 &6590651346712451551
 MonoBehaviour:

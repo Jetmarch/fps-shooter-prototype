@@ -24,6 +24,11 @@ namespace FPSShooter.Core.Utils
             _currentValue = clampedIntValue.CurrentValue;
         }
 
+        public void Reset()
+        {
+            _currentValue = _maxValue;
+        }
+
         public int MaxValue
         {
             get => _maxValue;

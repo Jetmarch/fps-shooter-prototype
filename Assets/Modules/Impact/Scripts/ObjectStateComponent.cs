@@ -16,10 +16,10 @@ namespace FPSShooter.Modules.Gameplay.Impact
             _objectState.Initialize();
         }
 
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impactData)
         {
-            _objectState.Affect(impact);
-            _particlesManager?.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
+            _objectState.Affect(impactData);
+            _particlesManager?.SpawnParticles(_hitParticle, impactData.HitPoint, impactData.HitRotation);
         }
     }
 }

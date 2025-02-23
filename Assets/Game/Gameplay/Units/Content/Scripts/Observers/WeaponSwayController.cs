@@ -1,8 +1,9 @@
 using System;
 using FPSShooter.Core.Systems;
+using FPSShooter.Modules.Units;
 using VContainer.Unity;
 
-namespace FPSShooter.Modules.Units
+namespace FPSShooter.Game.Gameplay.Units
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class WeaponSwayController : IInitializable, IDisposable

@@ -1,4 +1,5 @@
 using System;
+using FPSShooter.Core.Utils;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Impact
@@ -6,19 +7,30 @@ namespace FPSShooter.Modules.Gameplay.Impact
     [Serializable]
     public sealed class ObjectState
     {
-        [SerializeField] private int _maxHealth;
-        [SerializeField] private int _minHealth;
-        [SerializeField] private int _currentHealth;
+        public event Action<ImpactData> OnHealthChanged;
+        public event Action OnObjectDestroyed;
+        public int CurrentHealth => _health.CurrentValue;
+        public int MaxHealth => _health.MaxValue;
+        [SerializeField] private ClampedIntValue _health;
+        [SerializeField] private bool _isDead;
 
         public void Initialize()
         {
-            _currentHealth = _maxHealth;
+            _health.Reset();
+            _isDead = false;
         }
         
-        public void Affect(Impact impact)
+        public void Affect(ImpactData impactData)
         {
-            _currentHealth += impact.HealthDelta;
-            _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+            if (_isDead) return;
+            _health.CurrentValue += impactData.HealthDelta;
+            OnHealthChanged?.Invoke(impactData);
+
+            if (_health.CurrentValue <= _health.MinValue)
+            {
+                OnObjectDestroyed?.Invoke();
+                _isDead = true;
+            }
         }
     }
 }

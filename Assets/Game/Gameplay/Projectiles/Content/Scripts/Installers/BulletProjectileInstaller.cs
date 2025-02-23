@@ -1,4 +1,4 @@
-using FPSShooter.Game.Gameplay.Units.Installers;
+using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using UnityEngine;
 using VContainer;

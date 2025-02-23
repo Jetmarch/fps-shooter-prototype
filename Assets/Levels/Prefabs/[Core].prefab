@@ -130,11 +130,11 @@ MonoBehaviour:
     - Name: _particlePools
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[FPSShooter.Core.Managers.ParticleType,
-        Game],[FPSShooter.Gameplay.Utils.GameObjectPool, Game]], mscorlib
+        VFX],[FPSShooter.Modules.Utils.GameObjectPool, Utils]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FPSShooter.Core.Managers.ParticleType,
-        Game]], mscorlib
+        VFX]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 2|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 2|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 3|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 3|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 2
@@ -203,7 +203,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 4|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 4|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 4
@@ -227,7 +227,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: 5|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 5|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 6
@@ -310,6 +310,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2888429760453867893}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5361327631874789479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262209921038421277}
+  m_Layer: 0
+  m_Name: RevolverBulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262209921038421277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361327631874789479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9007633968459431386}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6295007280852818993
 GameObject:
@@ -547,6 +578,7 @@ Transform:
   - {fileID: 9007633968349339706}
   - {fileID: 8971244355432604208}
   - {fileID: 6889667524496222115}
+  - {fileID: 1262209921038421277}
   m_Father: {fileID: 9007633969769245508}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -572,6 +604,8 @@ MonoBehaviour:
     - {fileID: 9007633968349339706}
     - {fileID: 6968183971612725951, guid: 3d0cb06d58ea2d248a80992717f13d73, type: 3}
     - {fileID: 6889667524496222115}
+    - {fileID: 6968183971612725951, guid: 8480ff6ab0843774eadd1a97cfb1ca64, type: 3}
+    - {fileID: 1262209921038421277}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -579,12 +613,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _projectilePools
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FPSShooter.Gameplay.Projectiles.ProjectileType,
-        Game],[FPSShooter.Gameplay.Utils.GameObjectPool, Game]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[FPSShooter.Modules.Gameplay.Projectiles.ProjectileType,
+        Projectiles],[FPSShooter.Modules.Utils.GameObjectPool, Utils]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FPSShooter.Gameplay.Projectiles.ProjectileType,
-        Game]], mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FPSShooter.Modules.Gameplay.Projectiles.ProjectileType,
+        Projectiles]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -596,7 +630,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -605,7 +639,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 2|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 2|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 0
@@ -626,10 +660,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 4
     - Name: $v
       Entry: 7
-      Data: 3|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 3|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 2
@@ -653,7 +687,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 4|FPSShooter.Gameplay.Utils.GameObjectPool, Game
+      Data: 4|FPSShooter.Modules.Utils.GameObjectPool, Utils
     - Name: _prefab
       Entry: 10
       Data: 4
@@ -663,6 +697,30 @@ MonoBehaviour:
     - Name: _poolSize
       Entry: 3
       Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 5|FPSShooter.Modules.Utils.GameObjectPool, Utils
+    - Name: _prefab
+      Entry: 10
+      Data: 6
+    - Name: _parent
+      Entry: 10
+      Data: 7
+    - Name: _poolSize
+      Entry: 3
+      Data: 20
     - Name: 
       Entry: 8
       Data: 
@@ -769,6 +827,8 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 0}
   - {fileID: 9007633969769245511}
+  _loadingTaskConfig: {fileID: 0}
+  _fadeImage: {fileID: 0}
   _weaponPack: {fileID: 11400000, guid: 3846ad717d89dce49bc8febe3bd88376, type: 2}
   _gameLoopManager: {fileID: 9007633968497838610}
   _playerManager: {fileID: 9007633967854523823}
@@ -821,7 +881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefabs: []
-  _gameLoopManager: {fileID: 0}
 --- !u!1 &9007633969769245511
 GameObject:
   m_ObjectHideFlags: 0

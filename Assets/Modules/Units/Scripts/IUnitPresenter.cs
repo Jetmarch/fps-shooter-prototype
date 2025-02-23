@@ -1,8 +1,10 @@
+using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;
 using UnityEngine;
 
 namespace Modules.Units.Scripts.Presenters
 {
+    //TODO: move shoot logic to (?)
     public interface IUnitPresenter
     {
         void Shoot();
@@ -15,5 +17,8 @@ namespace Modules.Units.Scripts.Presenters
         void AddWeapon(IWeapon weapon);
         void SetNextWeapon();
         void SetPreviousWeapon();
+        void Affect(ImpactData impactData);
+        void TearApartDeath();
+        void Die();
     }
 }

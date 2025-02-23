@@ -4,6 +4,8 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
     {
         Bullet = 0,
         Rocket = 1,
-        Ray = 2
+        Ray = 2,
+        RevolverBullet = 3,
+        MachineGunBullet = 4
     }
 }

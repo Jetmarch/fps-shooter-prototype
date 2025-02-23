@@ -1,8 +1,9 @@
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Movement;
+using FPSShooter.Modules.Units;
 using UnityEngine;
 
-namespace FPSShooter.Modules.Units
+namespace FPSShooter.Game.Gameplay.Units
 {
     [CreateAssetMenu(fileName = "PlayerConfig", menuName = "FPS Shooter/Units/Player Config")]
     public sealed class PlayerConfig : ScriptableObject
