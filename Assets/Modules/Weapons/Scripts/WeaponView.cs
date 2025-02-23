@@ -9,7 +9,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public Quaternion Rotation { get => transform.rotation; set => transform.rotation = value; }
         
         [SerializeField] private Transform _shootPoint;
-        [SerializeField] private float _rotationSpeed;
         [SerializeField] private ProceduralRecoilAnimationController _proceduralRecoil;
         
         //TODO: use particle manager

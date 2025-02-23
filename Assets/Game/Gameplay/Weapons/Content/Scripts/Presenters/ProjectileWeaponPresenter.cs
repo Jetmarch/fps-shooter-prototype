@@ -1,4 +1,5 @@
 using Audio;
+using FPSShooter.Game.Gameplay.Weapons;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
 
@@ -8,16 +9,20 @@ namespace FPSShooter.Modules.Gameplay.Weapons
     public sealed class ProjectileWeaponPresenter : IWeaponPresenter, IUpdateListener
     {
         private readonly WeaponView _view;
+        private readonly HolographicAmmoDisplay _ammoDisplay;
         private readonly Weapon _model;
         private readonly IProjectileManager _projectileManager;
         //TODO: move to model
         private bool _isAutomaticFire;
         
-        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager)
+        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay)
         {
             _view = view;
             _model = model;
             _projectileManager = projectileManager;
+            _ammoDisplay = ammoDisplay;
+            
+            UpdateAmmoDisplay();
         }
         
         public void Shoot()
@@ -40,14 +45,14 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             }
 
             _projectileManager.CreateProjectile(_model.ProjectileType, _view.ShootPoint);
-            _view.Recoil();
-            _view.PlayShotVFX();
-
-
-            TryPlaySound(_model.ShootSoundName);
-
+            
             _model.SetCurrentAmmo(_model.CurrentAmmo - 1);
             _model.SetShootDelay();
+            
+            _view.Recoil();
+            _view.PlayShotVFX();
+            TryPlaySound(_model.ShootSoundName);
+            UpdateAmmoDisplay();
         }
 
         public void StartShootAutomatic()
@@ -68,13 +73,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             //_view.Reload();
         }
         
-        private void TryPlaySound(string soundName)
-        {
-            if (AudioManager.Instance.TryGetAudioClipByName(soundName, out var audioClip))
-            {
-                AudioManager.Instance.PlaySoundOneShot(audioClip, AudioOutput.Master, pitch: UnityEngine.Random.Range(0.7f, 1f));
-            }
-        }
 
         public void OnUpdate(float deltaTime)
         {
@@ -87,6 +85,20 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             {
                 Shoot();
             }
+        }
+        
+        private void TryPlaySound(string soundName)
+        {
+            if (AudioManager.Instance.TryGetAudioClipByName(soundName, out var audioClip))
+            {
+                AudioManager.Instance.PlaySoundOneShot(audioClip, AudioOutput.Master, pitch: UnityEngine.Random.Range(0.7f, 1f));
+            }
+        }
+
+        private void UpdateAmmoDisplay()
+        {
+            var ammoText = $"{_model.CurrentAmmo.ToString()}/{_model.MaxAmmo.ToString()}";
+            _ammoDisplay.SetText(ammoText);
         }
     }
 }
