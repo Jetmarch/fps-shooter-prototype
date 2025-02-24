@@ -79,7 +79,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         private void SetCurrentWeapon(IWeapon weapon)
         {
             if (!_weapons.Contains(weapon)) return;
-            
+            _currentWeaponIndex = _weapons.IndexOf(weapon);
             PrepareNewWeapon(weapon);
         }
         
