@@ -2,6 +2,7 @@ using Audio;
 using FPSShooter.Game.Gameplay.Weapons;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
+using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
@@ -12,15 +13,19 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         private readonly HolographicAmmoDisplay _ammoDisplay;
         private readonly Weapon _model;
         private readonly IProjectileManager _projectileManager;
+        private readonly Animator _animator;
         //TODO: move to model
         private bool _isAutomaticFire;
         
-        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay)
+        private int _reloadAnimation = Animator.StringToHash("Reload");
+        
+        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay, Animator animator)
         {
             _view = view;
             _model = model;
             _projectileManager = projectileManager;
             _ammoDisplay = ammoDisplay;
+            _animator = animator;
             
             UpdateAmmoDisplay();
         }
@@ -68,9 +73,8 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public void Reload()
         {
             if (!_model.TryReload()) return;
-            //TODO: show reload animation
             TryPlaySound(_model.ReloadSoundName);
-            //_view.Reload();
+            _animator.SetTrigger(_reloadAnimation);
         }
         
 

@@ -1,4 +1,3 @@
-using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;

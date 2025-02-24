@@ -13,13 +13,14 @@ namespace FPSShooter.Game.Gameplay.Weapons
         [SerializeField] private WeaponView _view;
         
         [SerializeField] private TextMeshPro _ammoText;
-        
+        [SerializeField] private Animator _animator;
         protected override void Configure(IContainerBuilder builder)
         {
             var pistolWeapon = _config.CreateWeapon();
             builder.Register<ProjectileWeaponPresenter>(Lifetime.Scoped)
                 .WithParameter(pistolWeapon)
                 .WithParameter(_view)
+                .WithParameter(_animator)
                 .AsImplementedInterfaces();
             
             builder.Register<GameLoopController>(Lifetime.Scoped)
