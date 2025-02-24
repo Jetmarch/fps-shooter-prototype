@@ -18,6 +18,9 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         private bool _isAutomaticFire;
         
         private int _reloadAnimation = Animator.StringToHash("Reload");
+        private int _pullOutAnimation = Animator.StringToHash("PullOut");
+        private int _putAwayAnimation = Animator.StringToHash("PutAway");
+        private int _reloadSpeedMultiplier = Animator.StringToHash("ReloadSpeedMultiplier");
         
         public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay, Animator animator)
         {
@@ -75,8 +78,19 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             if (!_model.TryReload()) return;
             TryPlaySound(_model.ReloadSoundName);
             _animator.SetTrigger(_reloadAnimation);
+            UpdateAmmoDisplay();
         }
-        
+
+        public void PullOut()
+        {
+            _animator.SetTrigger(_pullOutAnimation);
+            _animator.SetFloat(_reloadSpeedMultiplier, 1 / _model.ReloadDelay.MaxValue);
+        }
+
+        public void PutAway()
+        {
+            _animator.SetTrigger(_putAwayAnimation);
+        }
 
         public void OnUpdate(float deltaTime)
         {

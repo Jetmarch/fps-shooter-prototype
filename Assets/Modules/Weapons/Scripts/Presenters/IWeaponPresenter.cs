@@ -6,5 +6,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public void StartShootAutomatic();
         public void EndShootAutomatic();
         public void Reload();
+        public void PullOut();
+        public void PutAway();
     }
 }

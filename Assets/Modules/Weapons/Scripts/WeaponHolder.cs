@@ -47,6 +47,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         
         public void NextWeapon()
         {
+            _currentWeapon.PutAway();
             _currentWeaponIndex++;
             if (_currentWeaponIndex > _weapons.Count - 1)
             {
@@ -58,6 +59,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         
         public void PreviousWeapon()
         {
+            _currentWeapon.PutAway();
             _currentWeaponIndex--;
             if (_currentWeaponIndex < 0)
             {
@@ -92,6 +94,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _currentWeapon.Position = _weaponParent.position;
             _currentWeapon.Rotation = _weaponParent.rotation;
             weapon.SetParent(_weaponParent);
+            weapon.PullOut();
         }
     }
 }

@@ -12,5 +12,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         Quaternion Rotation { get; set; }
         void SetActive(bool isActive);
         void SetParent(Transform parent);
+        void PullOut();
+        void PutAway();
     }
 }

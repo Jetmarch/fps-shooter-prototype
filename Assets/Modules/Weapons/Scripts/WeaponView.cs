@@ -62,5 +62,15 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         {
             transform.SetParent(parent);
         }
+
+        public void PullOut()
+        {
+            _presenter.PullOut();
+        }
+
+        public void PutAway()
+        {
+            _presenter.PutAway();
+        }
     }
 }
