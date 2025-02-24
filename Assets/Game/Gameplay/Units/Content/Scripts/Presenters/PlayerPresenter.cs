@@ -9,7 +9,7 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Units.Player
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class PlayerPresenter : IUnitPresenter, IUpdateListener
+    public sealed class PlayerPresenter : IUnitPresenter
     {
         private readonly IFPSCameraController _fpsCamera;
         private readonly IMovementController _movementController;
@@ -97,7 +97,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             return null;
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             _movementController.UpdateBody(deltaTime);
         }

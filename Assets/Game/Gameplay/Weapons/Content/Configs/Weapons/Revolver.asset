@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86e8cb4571ab4e41ab0d81236f1c72d2, type: 3}
-  m_Name: Pistol
+  m_Name: Revolver
   m_EditorClassIdentifier: 
   _weapon:
     _ammo:
-      _maxValue: 15
+      _maxValue: 6
       _minValue: 0
-      _currentValue: 15
+      _currentValue: 6
     _shootDelay:
       _maxValue: 0.45
       _minValue: 0

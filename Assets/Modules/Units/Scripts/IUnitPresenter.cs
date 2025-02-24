@@ -21,5 +21,6 @@ namespace Modules.Units.Scripts.Presenters
         void TearApartDeath();
         void Die();
         ObjectState GetObjectStateData();
+        void Update(float deltaTime);
     }
 }

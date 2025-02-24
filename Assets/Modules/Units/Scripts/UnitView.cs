@@ -1,3 +1,4 @@
+using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;
 using Modules.Units.Scripts.Presenters;
@@ -6,7 +7,7 @@ using VContainer;
 
 namespace FPSShooter.Modules.Units
 {
-    public sealed class UnitView : MonoBehaviour, IAffectableObject
+    public sealed class UnitView : MonoBehaviour, IAffectableObject, IUpdateListener
     {
         private IUnitPresenter _presenter;
 
@@ -83,6 +84,11 @@ namespace FPSShooter.Modules.Units
         public ObjectState GetObjectStateData()
         {
             return _presenter.GetObjectStateData();
+        }
+
+        public void OnUpdate(float deltaTime)
+        {
+            _presenter.Update(deltaTime);
         }
     }
 }

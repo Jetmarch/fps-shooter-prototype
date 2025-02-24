@@ -98,6 +98,11 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             return _objectState;
         }
 
+        public void Update(float deltaTime)
+        {
+            //Not used
+        }
+
         public void TearApartDeath()
         {
             _particlesManager?.SpawnParticles(_deathParticle, _view.transform.position, _view.transform.rotation);
