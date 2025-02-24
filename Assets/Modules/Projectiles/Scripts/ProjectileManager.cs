@@ -9,6 +9,8 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
 {
     public sealed class ProjectileManager : SerializedMonoBehaviour, IProjectileManager
     {
+        public event Action<GameObject> OnProjectileHitObject;
+        
         [OdinSerialize] private Dictionary<ProjectileType, GameObjectPool> _projectilePools;
         
         private void Awake()
@@ -42,17 +44,25 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
             projectile.transform.position = shootPoint.position;
             projectile.transform.rotation = shootPoint.rotation;
             projectile.OnProjectileDestroyed += ReturnProjectile;
+            projectile.OnHitObject += ProjectileOnOnHitObject;
             projectile.Initialize();
             return projectile;
         }
 
-        private void ReturnProjectile(ProjectileView projectileView)
+        private void ProjectileOnOnHitObject(GameObject obj)
         {
-            if (!_projectilePools.TryGetValue(projectileView.ProjectileType, out var pool))
+            OnProjectileHitObject?.Invoke(obj);
+        }
+
+        private void ReturnProjectile(ProjectileView projectile)
+        {
+            if (!_projectilePools.TryGetValue(projectile.ProjectileType, out var pool))
             {
-                throw new Exception($"Projectile pool for {projectileView.ProjectileType} could not be retrieved");
+                throw new Exception($"Projectile pool for {projectile.ProjectileType} could not be retrieved");
             }
-            pool.ReturnObject(projectileView.gameObject);
+            projectile.OnHitObject -= ProjectileOnOnHitObject;
+            projectile.OnProjectileDestroyed -= ReturnProjectile;
+            pool.ReturnObject(projectile.gameObject);
         }
     }
 }

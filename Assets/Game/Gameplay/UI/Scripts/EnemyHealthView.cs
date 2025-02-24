@@ -1,11 +1,12 @@
-using System;
+using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Units;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace FPSShooter.Game.Gameplay.UI
 {
-    public class EnemyHealthView : MonoBehaviour
+    public sealed class EnemyHealthView : MonoBehaviour
     {
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private LayerMask _raycastLayerMask;
@@ -15,32 +16,37 @@ namespace FPSShooter.Game.Gameplay.UI
         [SerializeField] private Vector3 _offsetOnTarget;
         private Camera _camera;
         
+        private IProjectileManager _projectileManager;
+
+        [Inject]
+        private void Configure(IProjectileManager projectileManager)
+        {
+            _projectileManager = projectileManager;
+        }
+
         private void Start()
         {
             _camera = Camera.main;
+            _projectileManager.OnProjectileHitObject += OnProjectileHitObject;
+        }
+
+        private void OnProjectileHitObject(GameObject obj)
+        {
+            if (obj.TryGetComponent<UnitView>(out var unit))
+            {
+                _currentTarget = unit;
+            }
         }
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                float rayDistance = Mathf.Infinity;
-                Ray ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-                if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, _raycastLayerMask))
-                {
-                    Debug.Log(hit.collider.gameObject.name);
-
-                    if (hit.collider.gameObject.TryGetComponent<UnitView>(out var unit))
-                    {
-                        _currentTarget = unit;
-                    }
-                }
-            }
-
             if (_currentTarget != null)
             {
                 FollowTarget();
+            }
+            else
+            {
+                HideFromScreen();
             }
         }
 
@@ -48,19 +54,24 @@ namespace FPSShooter.Game.Gameplay.UI
         {
             var healthBarPosition = _currentTarget.transform.position + _offsetOnTarget;
             var healthBarScreenPosition = _camera.WorldToScreenPoint(healthBarPosition);
+            _healthSlider.gameObject.SetActive(true);
+            var targetState = _currentTarget.GetObjectStateData();
+            var healthInPercent = (float)targetState.CurrentHealth / (float)targetState.MaxHealth * 100f;
+            _healthSlider.value = healthInPercent;
+            
             if (IsTargetOnScreen(healthBarScreenPosition))
             {
                 _healthSlider.transform.position = healthBarScreenPosition;
-                _healthSlider.gameObject.SetActive(true);
-                var targetState = _currentTarget.GetObjectStateData();
-                var healthInPercent = (float)targetState.CurrentHealth / (float)targetState.MaxHealth * 100f;
-                _healthSlider.value = healthInPercent;
             }
             else
             {
-                _healthSlider.gameObject.SetActive(false);
                 _healthSlider.transform.position = ClampToScreenPosition(healthBarScreenPosition);
             }
+        }
+
+        private void HideFromScreen()
+        {
+            _healthSlider.gameObject.SetActive(false);
         }
         
         private bool IsTargetOnScreen(Vector3 targetPosition)

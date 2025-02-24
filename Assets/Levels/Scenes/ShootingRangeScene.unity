@@ -10327,12 +10327,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f44edead762d5a74aa1520ca81b1dcb0, type: 2}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: autoInjectGameObjects.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: autoInjectGameObjects.Array.data[0]
       value: 
       objectReference: {fileID: 9007633969565907732}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: autoInjectGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 268340813}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
 --- !u!4 &9007633969565907731 stripped

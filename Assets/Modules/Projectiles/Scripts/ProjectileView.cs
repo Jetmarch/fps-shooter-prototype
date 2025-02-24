@@ -8,6 +8,7 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
     {
         public ProjectileType ProjectileType => _presenter.GetProjectileType();
         public event Action<ProjectileView> OnProjectileDestroyed;
+        public event Action<GameObject> OnHitObject;
         public Rigidbody Rigidbody => _rigidbody;
         
         [SerializeField] private ParticleSystem _moveVFX;
@@ -34,6 +35,11 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         public void NotifyProjectileDestroyed()
         {
             OnProjectileDestroyed?.Invoke(this);
+        }
+
+        public void NotifyHitObject(GameObject gameObject)
+        {
+            OnHitObject?.Invoke(gameObject);
         }
 
         public void PlayMoveVFX()

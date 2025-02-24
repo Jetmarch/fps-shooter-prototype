@@ -34,6 +34,7 @@ namespace FPSShooter.Game.Gameplay.Projectiles
             var impactVector = other.transform.position - _view.transform.position;
             ImpactUseCases.AffectTarget(other.gameObject, _view.gameObject, new ImpactData(_config.Damage, _config.ImpulseForce, impactVector, hitPoint, Quaternion.LookRotation(hitPoint, hitNormal)));
             
+            _view.NotifyHitObject(other.gameObject);
             _view.NotifyProjectileDestroyed();
         }
 
