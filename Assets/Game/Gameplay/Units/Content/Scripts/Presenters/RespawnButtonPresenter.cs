@@ -24,16 +24,16 @@ namespace FPSShooter.Game.Gameplay.Units
             _targetDummyRespawner.RespawnDummies();
         }
 
-        public T GetLogic<T>() where T : IUnitMechanics
+        public T GetLogic<T>() where T : IUnitMechanic
         {
             throw new System.NotImplementedException();
         }
 
-        public void AddLogic(IUnitMechanics mechanics)
+        public void AddLogic(IUnitMechanic mechanic)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<IUnitMechanics> UnitMechanics { get; }
+        public List<IUnitMechanic> UnitMechanics { get; }
     }
 }

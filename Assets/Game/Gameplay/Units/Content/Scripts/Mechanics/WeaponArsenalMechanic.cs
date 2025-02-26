@@ -3,7 +3,7 @@ using FPSShooter.Modules.Units;
 
 namespace FPSShooter.Game.Gameplay.Units.UnitLogic
 {
-    public sealed class WeaponArsenalMechanic : IUnitMechanics
+    public sealed class WeaponArsenalMechanic : IUnitMechanic
     {
         private readonly WeaponContainer _weaponContainer;
 

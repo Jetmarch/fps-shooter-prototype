@@ -19,7 +19,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         [SerializeField] private ParticleType _hitParticle;
         [SerializeField] private ParticleType _tearApartParticle;
         [SerializeField] private ParticleType _deathParticle;
-        [SerializeField] private ParticleType _ressurectParticle;
+        [SerializeField] private ParticleType _resurrectParticle;
         
         //TODO: DummyConfig
         //TODO: TearApartDeathConfig
@@ -62,7 +62,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<ImpactAffectMechanics>(Lifetime.Scoped)
+            builder.Register<ImpactAffectMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
             

@@ -9,10 +9,10 @@ namespace FPSShooter.Game.Gameplay.Units
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class HitMechanicController : IInitializable, IDisposable
     {
-        private readonly ImpactAffectMechanics _impact;
+        private readonly ImpactAffectMechanic _impact;
         private readonly HitMechanic _hitMechanic;
 
-        public HitMechanicController(ImpactAffectMechanics impact, HitMechanic hitMechanic)
+        public HitMechanicController(ImpactAffectMechanic impact, HitMechanic hitMechanic)
         {
             _impact = impact;
             _hitMechanic = hitMechanic;

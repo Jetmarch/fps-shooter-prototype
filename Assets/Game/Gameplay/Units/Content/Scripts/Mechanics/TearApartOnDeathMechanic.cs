@@ -4,7 +4,7 @@ using FPSShooter.Modules.Units;
 namespace FPSShooter.Game.Gameplay.Units.UnitLogic
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class TearApartOnDeathMechanic : IUnitMechanics
+    public sealed class TearApartOnDeathMechanic : IUnitMechanic
     {
         private readonly DieMechanic _dieMechanic;
         private readonly IParticlesManager _particlesManager;

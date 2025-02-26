@@ -24,7 +24,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         
         private readonly Collider _collider;
 
-        private readonly List<IUnitMechanics> _unitLogic;
+        private readonly List<IUnitMechanic> _unitLogic;
 
         public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator, Collider collider)
         {
@@ -66,17 +66,17 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _particlesManager?.SpawnParticles(_resurrectParticles, _view.transform.position, _view.transform.rotation);
         }
 
-        public IUnitMechanics GetLogic<T>()
+        public IUnitMechanic GetLogic<T>()
         {
             throw new NotImplementedException();
         }
 
-        public void AddLogic(IUnitMechanics mechanics)
+        public void AddLogic(IUnitMechanic mechanic)
         {
             throw new NotImplementedException();
         }
 
-        public List<IUnitMechanics> UnitMechanics { get; }
+        public List<IUnitMechanic> UnitMechanics { get; }
 
 
         public void TearApartDeath()

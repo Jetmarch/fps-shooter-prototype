@@ -8,16 +8,16 @@ namespace FPSShooter.Game.Gameplay.Units.Player
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class UnitPresenter : IUnitPresenter
     {
-        public List<IUnitMechanics> UnitMechanics => _unitMechanics;
+        public List<IUnitMechanic> UnitMechanics => _unitMechanics;
         
-        private List<IUnitMechanics> _unitMechanics;
+        private List<IUnitMechanic> _unitMechanics;
 
-        public UnitPresenter(IEnumerable<IUnitMechanics> logic)
+        public UnitPresenter(IEnumerable<IUnitMechanic> logic)
         {
             _unitMechanics = logic.ToList();
         }
 
-        public T GetLogic<T>() where T : IUnitMechanics
+        public T GetLogic<T>() where T : IUnitMechanic
         {
             //TODO: change list to dictionary
             foreach (var unitMechanic in _unitMechanics)
@@ -28,7 +28,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             return default(T);
         }
 
-        public void AddLogic(IUnitMechanics mechanics)
+        public void AddLogic(IUnitMechanic mechanic)
         {
             throw new System.NotImplementedException();
         }

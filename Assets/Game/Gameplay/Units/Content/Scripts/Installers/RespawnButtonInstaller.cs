@@ -1,5 +1,4 @@
 using FPSShooter.Game.Gameplay.Units.Player;
-using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -25,7 +24,7 @@ namespace FPSShooter.Game.Gameplay.Units
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<ImpactAffectMechanics>(Lifetime.Scoped)
+            builder.Register<ImpactAffectMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
 

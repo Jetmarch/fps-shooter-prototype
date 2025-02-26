@@ -1,6 +1,6 @@
 namespace FPSShooter.Modules.Units
 {
-    public interface IUnitMechanics
+    public interface IUnitMechanic
     {
         
     }

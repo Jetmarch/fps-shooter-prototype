@@ -5,7 +5,7 @@ using VContainer.Unity;
 namespace FPSShooter.Game.Gameplay.Units.UnitLogic
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class ObjectStateMechanic : IUnitMechanics, IInitializable
+    public sealed class ObjectStateMechanic : IUnitMechanic, IInitializable
     {
         public ObjectState ObjectState => _objectState;
         public bool IsDead => _objectState.IsDead;

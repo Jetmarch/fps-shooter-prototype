@@ -7,12 +7,12 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Units.UnitLogic
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class FirstPersonCharacterMechanics : IUnitMechanics, IUpdateListener
+    public sealed class FirstPersonCharacterMechanic : IUnitMechanic, IUpdateListener
     {
         private readonly IFPSCameraController _fpsCamera;
         private readonly IMovementController _movementController;
 
-        public FirstPersonCharacterMechanics(IFPSCameraController fpsCamera, IMovementController movementController)
+        public FirstPersonCharacterMechanic(IFPSCameraController fpsCamera, IMovementController movementController)
         {
             _fpsCamera = fpsCamera;
             _movementController = movementController;

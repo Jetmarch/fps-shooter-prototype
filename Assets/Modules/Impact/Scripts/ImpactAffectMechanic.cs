@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FPSShooter.Modules.Gameplay.Impact
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class ImpactAffectMechanics : IUnitMechanics
+    public sealed class ImpactAffectMechanic : IUnitMechanic
     {
         public event Action<GameObject, ImpactData> OnImpact;
         

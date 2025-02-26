@@ -12,7 +12,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
                 return;
             }
 
-            var affectMechanics = unitView.GetMechanic<ImpactAffectMechanics>();
+            var affectMechanics = unitView.GetMechanic<ImpactAffectMechanic>();
             if (affectMechanics == null) return;
             
             affectMechanics.Affect(affector, impactData);

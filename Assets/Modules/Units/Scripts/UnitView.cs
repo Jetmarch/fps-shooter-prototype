@@ -14,7 +14,7 @@ namespace FPSShooter.Modules.Units
             _presenter = presenter;
         }
         
-        public T GetMechanic<T>() where T : IUnitMechanics
+        public T GetMechanic<T>() where T : IUnitMechanic
         {
             return _presenter.GetLogic<T>();
         }

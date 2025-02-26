@@ -9,22 +9,22 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class RespawnDummiesController : IInitializable, IDisposable
     {
         private readonly TargetDummyRespawner _targetDummyRespawner;
-        private readonly ImpactAffectMechanics _impactAffectMechanics;
+        private readonly ImpactAffectMechanic _impactAffectMechanic;
         
-        public RespawnDummiesController(TargetDummyRespawner targetDummyRespawner, ImpactAffectMechanics impactAffectMechanics)
+        public RespawnDummiesController(TargetDummyRespawner targetDummyRespawner, ImpactAffectMechanic impactAffectMechanic)
         {
             _targetDummyRespawner = targetDummyRespawner;
-            _impactAffectMechanics = impactAffectMechanics;
+            _impactAffectMechanic = impactAffectMechanic;
         }
 
         public void Initialize()
         {
-            _impactAffectMechanics.OnImpact += OnImpact;
+            _impactAffectMechanic.OnImpact += OnImpact;
         }
 
         public void Dispose()
         {
-            _impactAffectMechanics.OnImpact -= OnImpact;
+            _impactAffectMechanic.OnImpact -= OnImpact;
         }
 
         private void OnImpact(GameObject _, ImpactData __)

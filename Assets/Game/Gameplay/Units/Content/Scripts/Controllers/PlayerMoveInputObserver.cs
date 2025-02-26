@@ -9,25 +9,25 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class PlayerMoveInputObserver : IInitializable, IDisposable
     {
         private readonly IInputSystem _inputSystem;
-        private readonly FirstPersonCharacterMechanics _fpsMechanics;
-        public PlayerMoveInputObserver(IInputSystem inputSystem, FirstPersonCharacterMechanics fpsMechanics)
+        private readonly FirstPersonCharacterMechanic _fpsMechanic;
+        public PlayerMoveInputObserver(IInputSystem inputSystem, FirstPersonCharacterMechanic fpsMechanic)
         {
             _inputSystem = inputSystem;
-            _fpsMechanics = fpsMechanics;
+            _fpsMechanic = fpsMechanic;
         }
 
         public void Initialize()
         {
-            _inputSystem.OnJump += _fpsMechanics.RequestJump;
-            _inputSystem.OnMove += _fpsMechanics.Move;
-            _inputSystem.OnLook += _fpsMechanics.Look;
+            _inputSystem.OnJump += _fpsMechanic.RequestJump;
+            _inputSystem.OnMove += _fpsMechanic.Move;
+            _inputSystem.OnLook += _fpsMechanic.Look;
         }
 
         public void Dispose()
         {
-            _inputSystem.OnLook -= _fpsMechanics.Look;
-            _inputSystem.OnMove -= _fpsMechanics.Move;
-            _inputSystem.OnJump -= _fpsMechanics.RequestJump;
+            _inputSystem.OnLook -= _fpsMechanic.Look;
+            _inputSystem.OnMove -= _fpsMechanic.Move;
+            _inputSystem.OnJump -= _fpsMechanic.RequestJump;
         }
     }
     
