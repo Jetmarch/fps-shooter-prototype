@@ -37,6 +37,8 @@ namespace FPSShooter.Core.Managers
         BulletImpact,
         MetalImpact,
         BloodImpact,
-        LittleExplosionImpact
+        LittleExplosionImpact,
+        Resurrection,
+        TearApartDeath
     }
 }

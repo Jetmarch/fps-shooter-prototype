@@ -100,5 +100,10 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         {
             _movementController.UpdateBody(deltaTime);
         }
+
+        public void Resurrect()
+        {
+            //Not used
+        }
     }
 }

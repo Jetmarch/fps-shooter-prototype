@@ -2,6 +2,7 @@ using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
 using FPSShooter.Game.Core.Tasks;
+using FPSShooter.Game.Gameplay.Units;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Core.Tasks;
 using FPSShooter.Modules.Gameplay.Projectiles;
@@ -26,6 +27,7 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private WeaponManager _weaponManager;
         [SerializeField] private ProjectileManager _projectileManager;
         [SerializeField] private ParticlesManager _particlesManager;
+        [SerializeField] private TargetDummyManager _targetDummyManager;
         [SerializeField] private Camera _camera;
 
         protected override void Configure(IContainerBuilder builder)
@@ -51,6 +53,7 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_particlesManager).AsImplementedInterfaces();
             builder.RegisterInstance(_weaponPack);
             builder.RegisterInstance(_playerManager);
+            builder.RegisterInstance(_targetDummyManager);
             builder.RegisterInstance(_camera);
             
             

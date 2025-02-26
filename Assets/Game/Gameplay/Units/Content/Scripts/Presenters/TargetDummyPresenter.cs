@@ -14,13 +14,16 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         private readonly ObjectState _objectState;
         private readonly IParticlesManager _particlesManager;
         private readonly ParticleType _hitParticle;
-        private readonly ParticleType _deathParticle = ParticleType.LittleExplosionImpact;
+        private readonly ParticleType _deathParticles = ParticleType.TearApartDeath;
+        private readonly ParticleType _resurrectParticles = ParticleType.Resurrection;
         
         private readonly Animator _animator;
         private readonly int _hitTrigger = Animator.StringToHash("Hit");
         private readonly int _deathTrigger = Animator.StringToHash("Death");
+        
+        private readonly Collider _collider;
 
-        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator)
+        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator, Collider collider)
         {
             _view = view;
             _objectState = objectState;
@@ -28,6 +31,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _hitParticle = hitParticle;
             _objectState.Initialize();
             _animator = animator;
+            _collider = collider;
         }
         
         public void Shoot()
@@ -82,6 +86,8 @@ namespace FPSShooter.Game.Gameplay.Units.Player
 
         public void Affect(ImpactData impact)
         {
+            if (_objectState.IsDead) return;
+            
             _objectState.Affect(impact);
             _particlesManager?.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
             _animator.SetTrigger(_hitTrigger);
@@ -89,7 +95,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
 
         public void Die()
         {
-            // Object.Destroy(_view.gameObject);
+            _collider.enabled = false;
             _animator.SetTrigger(_deathTrigger);
         }
 
@@ -103,10 +109,19 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             //Not used
         }
 
+        public void Resurrect()
+        {
+            _objectState.Initialize();
+            _animator.Rebind();
+            _animator.Update(0f);
+            _collider.enabled = true;
+            _particlesManager?.SpawnParticles(_resurrectParticles, _view.transform.position, _view.transform.rotation);
+        }
+
         public void TearApartDeath()
         {
-            _particlesManager?.SpawnParticles(_deathParticle, _view.transform.position, _view.transform.rotation);
-            _animator.SetTrigger(_deathTrigger);
+            _particlesManager?.SpawnParticles(_deathParticles, _view.transform.position, _view.transform.rotation);
+            Die();
         }
     }
 }

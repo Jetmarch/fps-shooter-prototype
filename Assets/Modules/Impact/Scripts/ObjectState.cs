@@ -9,6 +9,9 @@ namespace FPSShooter.Modules.Gameplay.Impact
     {
         public event Action<ImpactData> OnHealthChanged;
         public event Action OnObjectDestroyed;
+        
+        public bool IsDead => _isDead;
+        
         public int CurrentHealth => _health.CurrentValue;
         public int MaxHealth => _health.MaxValue;
         [SerializeField] private ClampedIntValue _health;

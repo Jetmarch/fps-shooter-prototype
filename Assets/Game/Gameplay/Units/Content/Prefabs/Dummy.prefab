@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &4713593690585155762
 CapsuleCollider:
@@ -187,6 +187,7 @@ MonoBehaviour:
     _isDead: 0
   _hitParticle: 2
   _viewAnimator: {fileID: 3905897275572676094}
+  _collider: {fileID: 4713593690585155762}
 --- !u!1 &1912241773582162899
 GameObject:
   m_ObjectHideFlags: 0

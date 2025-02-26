@@ -12,12 +12,13 @@ namespace FPSShooter.Game.Gameplay.Units
         private readonly ObjectState _objectState;
 
         private readonly float _respawnEnemiesCooldown;
-        //private readonly EnemySpawner _enemySpawner;
+        private readonly TargetDummyRespawner _targetDummyRespawner;
 
-        public RespawnButtonPresenter(UnitView view, ObjectState objectState)
+        public RespawnButtonPresenter(UnitView view, ObjectState objectState, TargetDummyRespawner targetDummyRespawner)
         {
             _view = view;
             _objectState = objectState;
+            _targetDummyRespawner = targetDummyRespawner;
         }
         
         public void Shoot()
@@ -75,6 +76,7 @@ namespace FPSShooter.Game.Gameplay.Units
             //Not used
             //_enemySpawner.RespawnEnemies();
             Debug.Log("Respawn enemies");
+            _targetDummyRespawner.RespawnDummies();
         }
 
         public void TearApartDeath()
@@ -95,6 +97,11 @@ namespace FPSShooter.Game.Gameplay.Units
         public void Update(float deltaTime)
         {
             
+        }
+
+        public void Resurrect()
+        {
+            //Not used
         }
     }
 }

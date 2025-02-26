@@ -15,6 +15,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         [SerializeField] private ObjectState _objectState;
         [SerializeField] private ParticleType _hitParticle;
         [SerializeField] private Animator _viewAnimator;
+        [SerializeField] private Collider _collider;
         
         //TODO: DummyConfig
         //TODO: TearApartDeathConfig
@@ -36,6 +37,8 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .WithParameter(_objectState)
                 .AsSelf()
                 .AsImplementedInterfaces();
+
+            builder.RegisterInstance(_collider);
         }
     }
 }

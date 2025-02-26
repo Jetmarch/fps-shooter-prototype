@@ -90,5 +90,10 @@ namespace FPSShooter.Modules.Units
         {
             _presenter.Update(deltaTime);
         }
+
+        public void Resurrect()
+        {
+            _presenter.Resurrect();
+        }
     }
 }

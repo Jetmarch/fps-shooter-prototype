@@ -1,4 +1,3 @@
-
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -12,11 +11,18 @@ namespace FPSShooter.Game.Gameplay.Units
         [SerializeField] private UnitView _view;
         [SerializeField] private ObjectState _objectState;
         
+        [SerializeField] private Transform[] _respawnPositions;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<RespawnButtonPresenter>(Lifetime.Scoped)
                 .WithParameter(_view)
                 .WithParameter(_objectState)
+                .AsImplementedInterfaces();
+            
+            builder.Register<TargetDummyRespawner>(Lifetime.Scoped)
+                .WithParameter(_respawnPositions)
+                .AsSelf()
                 .AsImplementedInterfaces();
         }
     }

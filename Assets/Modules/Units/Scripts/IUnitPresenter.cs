@@ -22,5 +22,6 @@ namespace Modules.Units.Scripts.Presenters
         void Die();
         ObjectState GetObjectStateData();
         void Update(float deltaTime);
+        void Resurrect();
     }
 }
