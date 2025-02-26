@@ -14,35 +14,70 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
     {
         [SerializeField] private UnitView _view;
         [SerializeField] private ObjectState _objectState;
-        [SerializeField] private ParticleType _hitParticle;
         [SerializeField] private Animator _viewAnimator;
         [SerializeField] private Collider _collider;
+        [SerializeField] private ParticleType _hitParticle;
+        [SerializeField] private ParticleType _tearApartParticle;
+        [SerializeField] private ParticleType _deathParticle;
+        [SerializeField] private ParticleType _ressurectParticle;
         
         //TODO: DummyConfig
         //TODO: TearApartDeathConfig
         
         protected override void Configure(IContainerBuilder builder)
         {
+            _objectState.Initialize();
+            builder.RegisterInstance(_view);
+            builder.RegisterInstance(_collider);
+            builder.RegisterInstance(_objectState);
+            builder.RegisterInstance(_viewAnimator);
+            
             builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
-            builder.Register<DieResurrectMechanic>(Lifetime.Scoped)
-                .AsSelf()
-                .AsImplementedInterfaces();
-            
-            builder.Register<TearApartDeathMechanic>(Lifetime.Scoped)
-                .AsSelf()
-                .AsImplementedInterfaces();
-            
             builder.Register<TearApartDeathService>(Lifetime.Scoped)
-                .WithParameter(_objectState)
                 .AsSelf()
                 .AsImplementedInterfaces();
             
+            ConfigureMechanics(builder);
+            ConfigureControllers(builder);
+        }
+
+
+        private void ConfigureMechanics(IContainerBuilder builder)
+        {
+            builder.Register<ObjectStateMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<DieMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<ResurrectMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<TearApartOnDeathMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<ImpactAffectMechanics>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<HitMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
+        
+        private void ConfigureControllers(IContainerBuilder builder)
+        {
             builder.Register<DeathObserver>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
-
-            builder.RegisterInstance(_collider);
+            
+            builder.Register<HitMechanicController>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
         }
     }
 }

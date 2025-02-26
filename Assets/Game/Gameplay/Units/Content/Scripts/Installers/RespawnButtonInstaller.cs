@@ -29,7 +29,7 @@ namespace FPSShooter.Game.Gameplay.Units
                 .AsSelf()
                 .AsImplementedInterfaces();
 
-            builder.Register<RespawnDummiesOnAffect>(Lifetime.Scoped)
+            builder.Register<RespawnDummiesController>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
     }

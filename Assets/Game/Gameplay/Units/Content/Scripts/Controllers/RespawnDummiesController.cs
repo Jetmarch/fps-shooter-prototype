@@ -6,12 +6,12 @@ using VContainer.Unity;
 namespace FPSShooter.Game.Gameplay.Units
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class RespawnDummiesOnAffect : IInitializable, IDisposable
+    public sealed class RespawnDummiesController : IInitializable, IDisposable
     {
         private readonly TargetDummyRespawner _targetDummyRespawner;
         private readonly ImpactAffectMechanics _impactAffectMechanics;
         
-        public RespawnDummiesOnAffect(TargetDummyRespawner targetDummyRespawner, ImpactAffectMechanics impactAffectMechanics)
+        public RespawnDummiesController(TargetDummyRespawner targetDummyRespawner, ImpactAffectMechanics impactAffectMechanics)
         {
             _targetDummyRespawner = targetDummyRespawner;
             _impactAffectMechanics = impactAffectMechanics;

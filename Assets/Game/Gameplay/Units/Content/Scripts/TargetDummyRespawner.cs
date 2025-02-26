@@ -27,7 +27,7 @@ namespace FPSShooter.Game.Gameplay.Units
                 
                 respawnedDummy.transform.position = _spawnPoints[i].position;
                 respawnedDummy.transform.rotation = _spawnPoints[i].rotation;
-                var dieResurrectMechanic = respawnedDummy.GetMechanic<DieResurrectMechanic>();
+                var dieResurrectMechanic = respawnedDummy.GetMechanic<ResurrectMechanic>();
                 dieResurrectMechanic.Resurrect();
                 _activeDummies.Add(respawnedDummy);
             }
@@ -37,7 +37,7 @@ namespace FPSShooter.Game.Gameplay.Units
         {
             for (int i = 0; i < _activeDummies.Count; i++)
             {
-                var dieResurrectMechanic = _activeDummies[i].GetMechanic<DieResurrectMechanic>();
+                var dieResurrectMechanic = _activeDummies[i].GetMechanic<DieMechanic>();
                 dieResurrectMechanic.Die();
                 _targetDummyManager.ReturnTargetDummy(_activeDummies[i]);
             }
