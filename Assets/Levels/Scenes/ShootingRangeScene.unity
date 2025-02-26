@@ -342,6 +342,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1001 &411983669
 PrefabInstance:
@@ -2361,6 +2362,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &678199392 stripped
 Transform:
@@ -6467,10 +6469,11 @@ MonoBehaviour:
   _view: {fileID: 1212548844}
   _objectState:
     _health:
-      _maxValue: 2147483647
+      _maxValue: 0
       _minValue: 0
-      _currentValue: 2147483647
+      _currentValue: 0
     _isDead: 0
+    _isInvincible: 1
   _respawnPositions:
   - {fileID: 1639779765}
   - {fileID: 1801293913}
@@ -6488,6 +6491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a3f66e51f274c469e905b10a5d4694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1261873354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7220360608768157696, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1359695000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6618,6 +6626,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1 &1432407640
 GameObject:
@@ -7041,6 +7050,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1 &1801293912
 GameObject:
@@ -9574,6 +9584,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!23 &5062470729311714746
 MeshRenderer:
@@ -9693,6 +9704,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &5236425074292994754
 Transform:
@@ -9774,6 +9786,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &5985429144464139328
 Transform:
@@ -9881,6 +9894,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &7222144199345902121
 Transform:
@@ -9927,6 +9941,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!33 &7243847560713604854
 MeshFilter:
@@ -10066,6 +10081,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!23 &8162711757949238671
 MeshRenderer:
@@ -10139,6 +10155,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1 &8548255515516917307
 GameObject:
@@ -10189,6 +10206,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &8648807169880700031
 Transform:
@@ -10235,6 +10253,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!4 &8751478972911971990
 Transform:
@@ -10281,6 +10300,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1 &8942728252603539527
 GameObject:
@@ -10331,6 +10351,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0
 --- !u!1001 &9007633969565907730
 PrefabInstance:
@@ -10365,7 +10386,7 @@ PrefabInstance:
       objectReference: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
@@ -10384,8 +10405,12 @@ PrefabInstance:
       value: '"path":"_particlePools.{3es}._parent","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"_particlePools.{4es}._parent","value":$eref:4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -10403,6 +10428,10 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
       objectReference: {fileID: 9007633969565907731}
+    - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1261873354}
     - target: {fileID: 9007633967854523823, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: _playerContainer
       value: 
@@ -10642,4 +10671,5 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _isDead: 0
+    _isInvincible: 0
   _hitParticle: 0

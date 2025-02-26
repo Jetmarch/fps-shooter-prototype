@@ -16,6 +16,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
         public int MaxHealth => _health.MaxValue;
         [SerializeField] private ClampedIntValue _health;
         [SerializeField] private bool _isDead;
+        [SerializeField] private bool _isInvincible;
 
         public void Initialize()
         {
@@ -25,6 +26,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
         
         public void Affect(ImpactData impactData)
         {
+            if (_isInvincible) return;
             if (_isDead) return;
             _health.CurrentValue += impactData.HealthDelta;
             OnHealthChanged?.Invoke(impactData);

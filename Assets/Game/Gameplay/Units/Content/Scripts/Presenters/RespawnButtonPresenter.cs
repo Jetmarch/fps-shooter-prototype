@@ -9,15 +9,13 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class RespawnButtonPresenter : IUnitPresenter
     {
         private readonly UnitView _view;
-        private readonly ObjectState _objectState;
 
         private readonly float _respawnEnemiesCooldown;
         private readonly TargetDummyRespawner _targetDummyRespawner;
 
-        public RespawnButtonPresenter(UnitView view, ObjectState objectState, TargetDummyRespawner targetDummyRespawner)
+        public RespawnButtonPresenter(UnitView view, TargetDummyRespawner targetDummyRespawner)
         {
             _view = view;
-            _objectState = objectState;
             _targetDummyRespawner = targetDummyRespawner;
         }
         
@@ -91,7 +89,7 @@ namespace FPSShooter.Game.Gameplay.Units
 
         public ObjectState GetObjectStateData()
         {
-            return _objectState;
+            return null;
         }
 
         public void Update(float deltaTime)
