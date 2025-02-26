@@ -1,8 +1,9 @@
+using System;
+using System.Collections.Generic;
 using FPSShooter.Core.Managers;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Units;
-using Modules.Units.Scripts.Presenters;
 using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Units.Player
@@ -23,6 +24,8 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         
         private readonly Collider _collider;
 
+        private readonly List<IUnitMechanics> _unitLogic;
+
         public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator, Collider collider)
         {
             _view = view;
@@ -32,56 +35,6 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _objectState.Initialize();
             _animator = animator;
             _collider = collider;
-        }
-        
-        public void Shoot()
-        {
-            //Not used
-        }
-
-        public void ShootStartAutomatic()
-        {
-            //Not used
-        }
-
-        public void ShootEndAutomatic()
-        {
-            //Not used
-        }
-
-        public void Reload()
-        {
-            //Not used
-        }
-
-        public void Move(Vector2 movementVector)
-        {
-            //Not used
-        }
-
-        public void Look(Vector2 lookVector)
-        {
-            //Not used
-        }
-
-        public void RequestJump()
-        {
-            //Not used
-        }
-
-        public void AddWeapon(IWeapon weapon)
-        {
-            //Not used
-        }
-
-        public void SetNextWeapon()
-        {
-            //Not used
-        }
-
-        public void SetPreviousWeapon()
-        {
-            //Not used
         }
 
         public void Affect(ImpactData impact)
@@ -104,11 +57,6 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             return _objectState;
         }
 
-        public void Update(float deltaTime)
-        {
-            //Not used
-        }
-
         public void Resurrect()
         {
             _objectState.Initialize();
@@ -118,10 +66,28 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _particlesManager?.SpawnParticles(_resurrectParticles, _view.transform.position, _view.transform.rotation);
         }
 
+        public IUnitMechanics GetLogic<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLogic(IUnitMechanics mechanics)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<IUnitMechanics> UnitMechanics { get; }
+
+
         public void TearApartDeath()
         {
             _particlesManager?.SpawnParticles(_deathParticles, _view.transform.position, _view.transform.rotation);
             Die();
+        }
+
+        T IUnitPresenter.GetLogic<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

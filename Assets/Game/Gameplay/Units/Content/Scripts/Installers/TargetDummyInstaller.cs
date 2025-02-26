@@ -1,6 +1,7 @@
 using FPSShooter.Core.Managers;
 using FPSShooter.Game.Gameplay.Impact;
 using FPSShooter.Game.Gameplay.Units.Player;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -22,20 +23,23 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<TargetDummyPresenter>(Lifetime.Scoped)
-                .WithParameter(_view)
-                .WithParameter(_objectState)
-                .WithParameter(_hitParticle)
-                .WithParameter(_viewAnimator)
-                .AsImplementedInterfaces();
-
-            builder.Register<DeathObserver>(Lifetime.Scoped)
-                .WithParameter(_view)
+            builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
-            builder.Register<TearingApartOnDeathMechanic>(Lifetime.Scoped)
+            builder.Register<DieResurrectMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<TearApartDeathMechanic>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<TearApartDeathService>(Lifetime.Scoped)
                 .WithParameter(_objectState)
                 .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<DeathObserver>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
 
             builder.RegisterInstance(_collider);

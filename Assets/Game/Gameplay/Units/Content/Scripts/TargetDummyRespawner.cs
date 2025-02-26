@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Units;
 using UnityEngine;
 
@@ -23,9 +24,11 @@ namespace FPSShooter.Game.Gameplay.Units
             for (int i = 0; i < _spawnPoints.Length; i++)
             {
                 var respawnedDummy = _targetDummyManager.GetTargetDummy();
+                
                 respawnedDummy.transform.position = _spawnPoints[i].position;
                 respawnedDummy.transform.rotation = _spawnPoints[i].rotation;
-                respawnedDummy.Resurrect();
+                var dieResurrectMechanic = respawnedDummy.GetMechanic<DieResurrectMechanic>();
+                dieResurrectMechanic.Resurrect();
                 _activeDummies.Add(respawnedDummy);
             }
         }
@@ -34,7 +37,8 @@ namespace FPSShooter.Game.Gameplay.Units
         {
             for (int i = 0; i < _activeDummies.Count; i++)
             {
-                _activeDummies[i].SimpleDeath();
+                var dieResurrectMechanic = _activeDummies[i].GetMechanic<DieResurrectMechanic>();
+                dieResurrectMechanic.Die();
                 _targetDummyManager.ReturnTargetDummy(_activeDummies[i]);
             }
             _activeDummies.Clear();

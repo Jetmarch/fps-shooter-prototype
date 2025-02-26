@@ -1,3 +1,4 @@
+using FPSShooter.Modules.Units;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Impact
@@ -6,13 +7,15 @@ namespace FPSShooter.Modules.Gameplay.Impact
     {
         public static void AffectTarget(GameObject target, GameObject affector, ImpactData impactData)
         {
-            if (!target.TryGetComponent<IAffectableObject>(out var objectState))
+            if (!target.TryGetComponent<UnitView>(out var unitView))
             {
-                Debug.LogWarning("Target object cannot be affected by impact");
                 return;
             }
+
+            var affectMechanics = unitView.GetMechanic<ImpactAffectMechanics>();
+            if (affectMechanics == null) return;
             
-            objectState.Affect(impactData);
+            affectMechanics.Affect(affector, impactData);
         }
     }
 }

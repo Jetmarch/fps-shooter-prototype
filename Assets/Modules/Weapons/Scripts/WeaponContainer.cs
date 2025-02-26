@@ -5,14 +5,14 @@ using UnityEngine;
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
     [Serializable]
-    public sealed class WeaponHolder
+    public sealed class WeaponContainer
     {
         [SerializeField] private Transform _weaponParent;
         [SerializeField] private int _currentWeaponIndex;
         private IWeapon _currentWeapon;
         private List<IWeapon> _weapons;
 
-        public WeaponHolder(Transform weaponParent)
+        public WeaponContainer(Transform weaponParent)
         {
             _weaponParent = weaponParent;
             _weapons = new List<IWeapon>();

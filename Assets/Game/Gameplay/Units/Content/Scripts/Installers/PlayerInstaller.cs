@@ -1,5 +1,6 @@
 using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Game.Gameplay.Units.Player;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Movement;
@@ -34,8 +35,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
             ConfigureInput(builder);
             ConfigurePlayerHands(builder);
             
-            builder.Register<PlayerPresenter>(Lifetime.Scoped)
-                .WithParameter(_view)
+            ConfigureMechanics(builder);
+            
+            builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
             builder.Register<GameLoopController>(Lifetime.Scoped)
@@ -48,8 +50,10 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
 
         private void ConfigureInput(IContainerBuilder builder)
         {
-            builder.Register<PlayerInputObserver>(Lifetime.Scoped)
-                .WithParameter(_view)
+            builder.Register<PlayerMoveInputObserver>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
+            
+            builder.Register<PlayerWeaponInputObserver>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
 
@@ -73,7 +77,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
 
         private void ConfigurePlayerHands(IContainerBuilder builder)
         {
-            builder.Register<WeaponHolder>(Lifetime.Scoped)
+            builder.Register<WeaponContainer>(Lifetime.Scoped)
                 .WithParameter(_weaponParent);
             builder.Register<HandsFollowCameraLook>(Lifetime.Scoped)
                 .WithParameter(_cameraTarget)
@@ -92,6 +96,17 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
             builder.Register<WeaponSwayController>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
+        }
+        
+        private void ConfigureMechanics(IContainerBuilder builder)
+        {
+            builder.Register<FirstPersonCharacterMechanics>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<WeaponArsenalMechanic>(Lifetime.Scoped)
+                .AsSelf()
                 .AsImplementedInterfaces();
         }
     }

@@ -2,12 +2,10 @@
     "name": "Units",
     "rootNamespace": "",
     "references": [
-        "GUID:3733d0758bc222448b1ecbbea8c2d5da",
         "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
         "GUID:032df6e929252564fb435c934cb1cd35",
         "GUID:a25f3080795b57c4587b0afda61628d6",
-        "GUID:510c6a03f7070b0428f1d184905a405a",
-        "GUID:d39fbd197b854e943817d1a86d6bf764"
+        "GUID:510c6a03f7070b0428f1d184905a405a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

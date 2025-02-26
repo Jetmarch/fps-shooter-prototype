@@ -1,3 +1,5 @@
+using FPSShooter.Game.Gameplay.Units.Player;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -15,14 +17,19 @@ namespace FPSShooter.Game.Gameplay.Units
         
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<RespawnButtonPresenter>(Lifetime.Scoped)
-                .WithParameter(_view)
-                .WithParameter(_objectState)
+            builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
             builder.Register<TargetDummyRespawner>(Lifetime.Scoped)
                 .WithParameter(_respawnPositions)
                 .AsSelf()
+                .AsImplementedInterfaces();
+            
+            builder.Register<ImpactAffectMechanics>(Lifetime.Scoped)
+                .AsSelf()
+                .AsImplementedInterfaces();
+
+            builder.Register<RespawnDummiesOnAffect>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
     }

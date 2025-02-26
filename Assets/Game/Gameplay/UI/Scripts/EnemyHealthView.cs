@@ -1,3 +1,4 @@
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -55,8 +56,16 @@ namespace FPSShooter.Game.Gameplay.UI
             var healthBarPosition = _currentTarget.transform.position + _offsetOnTarget;
             var healthBarScreenPosition = _camera.WorldToScreenPoint(healthBarPosition);
             _healthSlider.gameObject.SetActive(true);
-            var targetState = _currentTarget.GetObjectStateData();
-            var healthInPercent = (float)targetState.CurrentHealth / (float)targetState.MaxHealth * 100f;
+            var objectStateMechanic = _currentTarget.GetMechanic<ObjectStateMechanic>();
+            if (objectStateMechanic == null)
+            {
+                _currentTarget = null;
+                HideFromScreen();
+                return;
+            }
+            var objectState = objectStateMechanic.ObjectState;
+            
+            var healthInPercent = (float)objectState.CurrentHealth / (float)objectState.MaxHealth * 100f;
             _healthSlider.value = healthInPercent;
             
             if (IsTargetOnScreen(healthBarScreenPosition))

@@ -1,27 +1,11 @@
-using FPSShooter.Modules.Gameplay.Impact;
-using FPSShooter.Modules.Gameplay.Weapons;
-using UnityEngine;
+using System.Collections.Generic;
 
-namespace Modules.Units.Scripts.Presenters
+namespace FPSShooter.Modules.Units
 {
-    //TODO: move shoot logic to (?)
     public interface IUnitPresenter
     {
-        void Shoot();
-        void ShootStartAutomatic();
-        void ShootEndAutomatic();
-        void Reload();
-        void Move(Vector2 movementVector);
-        void Look(Vector2 lookVector);
-        void RequestJump();
-        void AddWeapon(IWeapon weapon);
-        void SetNextWeapon();
-        void SetPreviousWeapon();
-        void Affect(ImpactData impactData);
-        void TearApartDeath();
-        void Die();
-        ObjectState GetObjectStateData();
-        void Update(float deltaTime);
-        void Resurrect();
+        T GetLogic<T>() where T : IUnitMechanics;
+        void AddLogic(IUnitMechanics mechanics);
+        List<IUnitMechanics> UnitMechanics { get; }
     }
 }

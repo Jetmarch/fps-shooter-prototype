@@ -1,6 +1,5 @@
 using System;
 using System.Timers;
-using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Impact;
 using UnityEngine;
 using VContainer.Unity;
@@ -8,7 +7,8 @@ using VContainer.Unity;
 namespace FPSShooter.Game.Gameplay.Impact
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public class TearingApartOnDeathMechanic : IInitializable, IDisposable
+    //TODO: global service
+    public class TearApartDeathService : IInitializable, IDisposable
     {
         public event Action OnTearApart; 
         public event Action OnSimpleDeath;
@@ -20,7 +20,7 @@ namespace FPSShooter.Game.Gameplay.Impact
         private float _amountOfRecentDamage;
         
 
-        public TearingApartOnDeathMechanic(ObjectState objectState)
+        public TearApartDeathService(ObjectState objectState)
         {
             _objectState = objectState;
             _resetRecentDamageTimer = new Timer(_resetToZeroDelayMs);
