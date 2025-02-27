@@ -4888,7 +4888,8 @@ GameObject:
   - component: {fileID: 3795638553602139649}
   - component: {fileID: 8824629023682511375}
   - component: {fileID: 6494788567603705275}
-  - component: {fileID: 8080991885070923632}
+  - component: {fileID: 254537192620193374}
+  - component: {fileID: 6005542689019197563}
   - component: {fileID: 5884864621582643400}
   m_Layer: 7
   m_Name: RevolverBullet
@@ -4943,7 +4944,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &8080991885070923632
+--- !u!114 &254537192620193374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4955,8 +4956,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563103efedb4f148ae4d9bf735bf65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveVFX: {fileID: 673613485924929012}
-  _rigidbody: {fileID: 6494788567603705275}
+--- !u!114 &6005542689019197563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968183971612725951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a3f66e51f274c469e905b10a5d4694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5884864621582643400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4974,8 +4985,10 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 6968183971612725951}
+  _unitView: {fileID: 6005542689019197563}
   _projectileConfig: {fileID: 11400000, guid: 3c109393b085feb4aa73bfd96edffd36, type: 2}
-  _projectileView: {fileID: 8080991885070923632}
+  _collisionDetectorComponent: {fileID: 254537192620193374}
+  _rigidbody: {fileID: 6494788567603705275}
 --- !u!1001 &3633462801709297293
 PrefabInstance:
   m_ObjectHideFlags: 0

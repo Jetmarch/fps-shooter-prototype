@@ -4889,6 +4889,7 @@ GameObject:
   - component: {fileID: 8824629023682511375}
   - component: {fileID: 6494788567603705275}
   - component: {fileID: 8080991885070923632}
+  - component: {fileID: 955326000497775783}
   - component: {fileID: 5884864621582643400}
   m_Layer: 7
   m_Name: MachineGunBullet
@@ -4955,9 +4956,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0563103efedb4f148ae4d9bf735bf65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveVFX: {fileID: 673613485924929012}
-  _hitVFX: {fileID: 8133709478395973939}
-  _rigidbody: {fileID: 6494788567603705275}
+--- !u!114 &955326000497775783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968183971612725951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a3f66e51f274c469e905b10a5d4694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5884864621582643400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4975,8 +4985,10 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 6968183971612725951}
+  _unitView: {fileID: 955326000497775783}
   _projectileConfig: {fileID: 11400000, guid: e6644fe1846053340874db6690d3e611, type: 2}
-  _projectileView: {fileID: 8080991885070923632}
+  _collisionDetectorComponent: {fileID: 8080991885070923632}
+  _rigidbody: {fileID: 6494788567603705275}
 --- !u!1001 &3633462801709297293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5105,11 +5117,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
---- !u!198 &8133709478395973939 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198029139897396496, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
-  m_PrefabInstance: {fileID: 8241367249278450723}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8237247658052275293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4401083419488382, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
