@@ -14,10 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clips:
   - Name: machineGunShoot
-    Clip: {fileID: 8300000, guid: 58dc2e645b97255419084420522f4ec0, type: 3}
+    Clip: {fileID: 8300000, guid: e4a2a98ee03890d40a06b28d95d492a0, type: 3}
   - Name: revolverShoot
-    Clip: {fileID: 8300000, guid: c9078c3724d980347b7b29c5e846c2bb, type: 3}
+    Clip: {fileID: 8300000, guid: 38d95e38f52f6a54b888d9fd555fa1e3, type: 3}
   - Name: machineGunReload
     Clip: {fileID: 8300000, guid: f90a266b299a2b045911e7e2594e5461, type: 3}
   - Name: revolverReload
     Clip: {fileID: 8300000, guid: 545088b964de0de4fb19e920043eb65e, type: 3}
+  - Name: dummyHit
+    Clip: {fileID: 8300000, guid: 23a49aa9152038347950a61882be798a, type: 3}
+  - Name: dummyDeath
+    Clip: {fileID: 8300000, guid: 8c6a2a82ab6b97e40a63e5fac33bb998, type: 3}
+  - Name: dummyTearApartDeath
+    Clip: {fileID: 8300000, guid: e0f8074327731a947b02c18d90cc7085, type: 3}
+  - Name: dummyResurrect
+    Clip: {fileID: 8300000, guid: 0ff5352034593c4498bc5d5210e3abd7, type: 3}
+  - Name: rocketExplosion
+    Clip: {fileID: 8300000, guid: c63c97718a9532c45903f33e38d138ce, type: 3}
+  - Name: bulletImpact
+    Clip: {fileID: 8300000, guid: 321feb9f51af885488e5ed433aecd467, type: 3}
+  - Name: rocketShoot
+    Clip: {fileID: 8300000, guid: 31d4354cef3a92a4481b8c1464e22afd, type: 3}

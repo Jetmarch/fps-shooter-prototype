@@ -1,5 +1,6 @@
 using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Game.Gameplay.Units.Player;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Units;
 using UnityEngine;
@@ -25,11 +26,12 @@ namespace FPSShooter.Game.Gameplay.Projectiles
             builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
+            builder.Register<SoundPlayer>(Lifetime.Scoped)
+                .AsSelf();
+            
             ConfigureMechanics(builder);
             ConfigureControllers(builder);
-           
         }
-
 
         private void ConfigureMechanics(IContainerBuilder builder)
         {
@@ -37,11 +39,11 @@ namespace FPSShooter.Game.Gameplay.Projectiles
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<AffectTargetMechanic>(Lifetime.Scoped)
+            builder.Register<ProjectileAffectTargetMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<DestroyMechanic>(Lifetime.Scoped)
+            builder.Register<ProjectileDestroyMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
             
@@ -55,7 +57,7 @@ namespace FPSShooter.Game.Gameplay.Projectiles
             builder.Register<DestroyOnAffectTargetController>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
-            builder.Register<BulletCollisionController>(Lifetime.Scoped)
+            builder.Register<ProjectileCollisionController>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
             builder.Register<GameLoopController>(Lifetime.Scoped)

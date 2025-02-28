@@ -9,14 +9,15 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Units.Player
 {
     // ReSharper disable once ClassNeverInstantiated.Global
+    [Obsolete]
     public sealed class TargetDummyPresenter : IUnitPresenter
     {
         private readonly UnitView _view;
         private readonly ObjectState _objectState;
         private readonly IParticlesManager _particlesManager;
-        private readonly ParticleType _hitParticle;
-        private readonly ParticleType _deathParticles = ParticleType.TearApartDeath;
-        private readonly ParticleType _resurrectParticles = ParticleType.Resurrection;
+        private readonly string _hitParticle = "boneExplosion";
+        private readonly string _deathParticles = "bigBoneExplosion";
+        private readonly string _resurrectParticles = "resurrection";
         
         private readonly Animator _animator;
         private readonly int _hitTrigger = Animator.StringToHash("Hit");
@@ -26,12 +27,11 @@ namespace FPSShooter.Game.Gameplay.Units.Player
 
         private readonly List<IUnitMechanic> _unitLogic;
 
-        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, ParticleType hitParticle, Animator animator, Collider collider)
+        public TargetDummyPresenter(UnitView view, ObjectState objectState, IParticlesManager particlesManager, Animator animator, Collider collider)
         {
             _view = view;
             _objectState = objectState;
             _particlesManager = particlesManager;
-            _hitParticle = hitParticle;
             _objectState.Initialize();
             _animator = animator;
             _collider = collider;
@@ -85,7 +85,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             Die();
         }
 
-        T IUnitPresenter.GetLogic<T>()
+        T IUnitPresenter.GetMechanic<T>()
         {
             throw new NotImplementedException();
         }

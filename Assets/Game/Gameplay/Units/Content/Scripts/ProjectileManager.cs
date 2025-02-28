@@ -45,15 +45,15 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
             
             projectile.transform.position = shootPoint.position;
             projectile.transform.rotation = shootPoint.rotation;
-            var destroyMechanic = projectile.GetMechanic<DestroyMechanic>();
+            var destroyMechanic = projectile.GetMechanic<ProjectileDestroyMechanic>();
             if (destroyMechanic == null)
             {
                 throw new MissingComponentException("Projectile object is missing a DestroyMechanic component.");
             }
 
-            destroyMechanic.NotifyUnitDestroyed += ReturnProjectile;
+            destroyMechanic.NotifyProjectileDestroyed += ReturnProjectile;
             
-            var affectTargetMechanic = projectile.GetMechanic<AffectTargetMechanic>();
+            var affectTargetMechanic = projectile.GetMechanic<IAffectTargetMechanic>();
             if (affectTargetMechanic == null)
             {
                 throw new MissingComponentException("Projectile object is missing a AffectTargetMechanic component.");
@@ -96,14 +96,14 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
                 throw new Exception($"Projectile pool for {projectileMechanic.ProjectileType} could not be retrieved");
             }
 
-            var destroyMechanic = unitView.GetMechanic<DestroyMechanic>();
+            var destroyMechanic = unitView.GetMechanic<ProjectileDestroyMechanic>();
             if (destroyMechanic == null)
             {
                 throw new MissingComponentException("Projectile object is missing a DestroyMechanic component.");
             }
-            destroyMechanic.NotifyUnitDestroyed -= ReturnProjectile;
+            destroyMechanic.NotifyProjectileDestroyed -= ReturnProjectile;
 
-            var affectTargetMechanic = unitView.GetMechanic<AffectTargetMechanic>();
+            var affectTargetMechanic = unitView.GetMechanic<IAffectTargetMechanic>();
             if (affectTargetMechanic == null)
             {
                 throw new MissingComponentException("Projectile object is missing a AffectTargetMechanic component.");

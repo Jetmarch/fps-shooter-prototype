@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FPSShooter.Modules.Gameplay.Impact;
 using FPSShooter.Modules.Units;
@@ -6,6 +7,7 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Units
 {
     // ReSharper disable once ClassNeverInstantiated.Global
+    [Obsolete]
     public sealed class RespawnButtonPresenter : IUnitPresenter
     {
         private readonly float _respawnEnemiesCooldown;
@@ -24,7 +26,7 @@ namespace FPSShooter.Game.Gameplay.Units
             _targetDummyRespawner.RespawnDummies();
         }
 
-        public T GetLogic<T>() where T : IUnitMechanic
+        public T GetMechanic<T>() where T : IUnitMechanic
         {
             throw new System.NotImplementedException();
         }

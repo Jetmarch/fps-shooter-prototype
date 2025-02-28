@@ -37,7 +37,7 @@ namespace FPSShooter.Game.Gameplay.Units
         {
             for (int i = 0; i < _activeDummies.Count; i++)
             {
-                var dieResurrectMechanic = _activeDummies[i].GetMechanic<DieMechanic>();
+                var dieResurrectMechanic = _activeDummies[i].GetMechanic<DeathMechanic>();
                 dieResurrectMechanic.Die();
                 _targetDummyManager.ReturnTargetDummy(_activeDummies[i]);
             }

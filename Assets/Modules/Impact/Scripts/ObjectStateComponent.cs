@@ -7,7 +7,7 @@ namespace FPSShooter.Modules.Gameplay.Impact
     public sealed class ObjectStateComponent : SerializedMonoBehaviour
     {
         [SerializeField] private ObjectState _objectState;
-        [SerializeField] private ParticleType _hitParticle;
+        [SerializeField] private string _hitParticle;
         
         [SerializeField] private IParticlesManager _particlesManager;
 

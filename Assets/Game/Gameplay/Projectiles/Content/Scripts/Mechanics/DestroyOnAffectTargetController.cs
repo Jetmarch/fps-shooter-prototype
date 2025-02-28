@@ -4,31 +4,32 @@ using VContainer.Unity;
 
 namespace FPSShooter.Game.Gameplay.Projectiles
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class DestroyOnAffectTargetController : IInitializable, IDisposable
     {
-        private readonly AffectTargetMechanic _affectTargetMechanic;
-        private readonly DestroyMechanic _destroyMechanic;
+        private readonly IAffectTargetMechanic _affectTargetMechanic;
+        private readonly ProjectileDestroyMechanic _projectileDestroyMechanic;
 
 
-        public DestroyOnAffectTargetController(AffectTargetMechanic affectTargetMechanic, DestroyMechanic destroyMechanic)
+        public DestroyOnAffectTargetController(IAffectTargetMechanic affectTargetMechanic, ProjectileDestroyMechanic projectileDestroyMechanic)
         {
             _affectTargetMechanic = affectTargetMechanic;
-            _destroyMechanic = destroyMechanic;
+            _projectileDestroyMechanic = projectileDestroyMechanic;
         }
 
         public void Initialize()
         {
-            _affectTargetMechanic.NotifyAffectTarget += OnAffectTarget;
+            _affectTargetMechanic.NotifyTargetAffectEnd += OnAffectTarget;
         }
         
         public void Dispose()
         {
-            _affectTargetMechanic.NotifyAffectTarget -= OnAffectTarget;
+            _affectTargetMechanic.NotifyTargetAffectEnd -= OnAffectTarget;
         }
         
-        private void OnAffectTarget(GameObject obj)
+        private void OnAffectTarget()
         {
-            _destroyMechanic.Destroy();
+            _projectileDestroyMechanic.Destroy();
         }
     }
 }

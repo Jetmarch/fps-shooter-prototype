@@ -10,12 +10,12 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class HitMechanicController : IInitializable, IDisposable
     {
         private readonly ImpactAffectMechanic _impact;
-        private readonly HitMechanic _hitMechanic;
+        private readonly UnitHitMechanic _unitHitMechanic;
 
-        public HitMechanicController(ImpactAffectMechanic impact, HitMechanic hitMechanic)
+        public HitMechanicController(ImpactAffectMechanic impact, UnitHitMechanic unitHitMechanic)
         {
             _impact = impact;
-            _hitMechanic = hitMechanic;
+            _unitHitMechanic = unitHitMechanic;
         }
 
         public void Initialize()
@@ -30,7 +30,7 @@ namespace FPSShooter.Game.Gameplay.Units
         
         private void OnImpact(GameObject affector, ImpactData data)
         {
-            _hitMechanic.Hit(data);
+            _unitHitMechanic.Hit(data);
         }
     }
 }

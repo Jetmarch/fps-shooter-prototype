@@ -22,7 +22,7 @@ MonoBehaviour:
       _minValue: 0
       _currentValue: 0
     _reloadDelay:
-      _maxValue: 2
+      _maxValue: 0.5
       _minValue: 0
       _currentValue: 0
     _reloadMechanic:

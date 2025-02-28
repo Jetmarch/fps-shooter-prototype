@@ -8,7 +8,7 @@ namespace FPSShooter.Core.Managers
 {
     public sealed class ParticlesManager : SerializedMonoBehaviour, IParticlesManager
     {
-        [OdinSerialize] private Dictionary<ParticleType, GameObjectPool> _particlePools;
+        [OdinSerialize] private Dictionary<string, GameObjectPool> _particlePools;
 
         private void Awake()
         {
@@ -18,7 +18,7 @@ namespace FPSShooter.Core.Managers
             }
         }
 
-        public void SpawnParticles(ParticleType particleType, Vector3 position, Quaternion rotation)
+        public void SpawnParticles(string particleType, Vector3 position, Quaternion rotation)
         {
             if (!_particlePools.TryGetValue(particleType, out GameObjectPool pool))
             {
@@ -30,15 +30,5 @@ namespace FPSShooter.Core.Managers
             particle.transform.rotation = rotation;
 
         }
-    }
-
-    public enum ParticleType
-    {
-        BulletImpact,
-        MetalImpact,
-        BloodImpact,
-        LittleExplosionImpact,
-        Resurrection,
-        TearApartDeath
     }
 }

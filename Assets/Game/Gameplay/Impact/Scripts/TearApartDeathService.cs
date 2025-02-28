@@ -45,12 +45,10 @@ namespace FPSShooter.Game.Gameplay.Impact
         {
             if (_amountOfRecentDamage > _objectState.MaxHealth * _percentOfMaxHealthToTearApart)
             {
-                Debug.Log("Tear apart!");
                 OnTearApart?.Invoke();
             }
             else
             {
-                Debug.Log("Simple death");
                 OnSimpleDeath?.Invoke();
             }
         }

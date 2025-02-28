@@ -6,22 +6,27 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class TearApartOnDeathMechanic : IUnitMechanic
     {
-        private readonly DieMechanic _dieMechanic;
+        private readonly DeathMechanic _deathMechanic;
         private readonly IParticlesManager _particlesManager;
-        private readonly ParticleType _deathParticles = ParticleType.TearApartDeath;
         private readonly UnitView _view;
+        private readonly SoundPlayer _soundPlayer;
+        private readonly string _deathParticles = "bigBoneExplosion";
+        private readonly string _tearApartDeathSound;
 
-        public TearApartOnDeathMechanic(DieMechanic dieMechanic, IParticlesManager particlesManager, UnitView view)
+        public TearApartOnDeathMechanic(DeathMechanic deathMechanic, IParticlesManager particlesManager, UnitView view, SoundPlayer soundPlayer)
         {
-            _dieMechanic = dieMechanic;
+            _deathMechanic = deathMechanic;
             _particlesManager = particlesManager;
             _view = view;
+            _tearApartDeathSound = "dummyTearApartDeath";
+            _soundPlayer = soundPlayer;
         }
 
         public void TearApartDeath()
         {
             _particlesManager?.SpawnParticles(_deathParticles, _view.transform.position, _view.transform.rotation);
-            _dieMechanic.Die();
+            _soundPlayer.TryPlaySound(_tearApartDeathSound);
+            _deathMechanic.Die();
         }
     }
 }

@@ -16,10 +16,6 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         [SerializeField] private ObjectState _objectState;
         [SerializeField] private Animator _viewAnimator;
         [SerializeField] private Collider _collider;
-        [SerializeField] private ParticleType _hitParticle;
-        [SerializeField] private ParticleType _tearApartParticle;
-        [SerializeField] private ParticleType _deathParticle;
-        [SerializeField] private ParticleType _resurrectParticle;
         
         //TODO: DummyConfig
         //TODO: TearApartDeathConfig
@@ -38,6 +34,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
             builder.Register<TearApartDeathService>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
+
+            builder.Register<SoundPlayer>(Lifetime.Scoped)
+                .AsSelf();
             
             ConfigureMechanics(builder);
             ConfigureControllers(builder);
@@ -50,7 +49,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<DieMechanic>(Lifetime.Scoped)
+            builder.Register<DeathMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
             
@@ -66,7 +65,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
             
-            builder.Register<HitMechanic>(Lifetime.Scoped)
+            builder.Register<UnitHitMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
         }

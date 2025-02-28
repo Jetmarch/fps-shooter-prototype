@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffb7c4df30e45888f9050d950c8529d, type: 3}
   m_Name: RocketProjectileConfig
   m_EditorClassIdentifier: 
-  _initialSpeed: 50
+  _initialSpeed: 60
   _mass: 2
   _drag: 0.1
   _gravityMultiplier: 0.5
   _damage: -50
   _impulseForce: 100
-  _projectileType: 0
+  _projectileType: 1
+  _affectRadius: 2
+  _maxAffectedTargets: 16
+  _destroySound: rocketExplosion
+  _destroyParticle: rocketExplosion

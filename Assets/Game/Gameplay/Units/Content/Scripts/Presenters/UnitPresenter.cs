@@ -10,14 +10,14 @@ namespace FPSShooter.Game.Gameplay.Units.Player
     {
         public List<IUnitMechanic> UnitMechanics => _unitMechanics;
         
-        private List<IUnitMechanic> _unitMechanics;
+        private readonly List<IUnitMechanic> _unitMechanics;
 
         public UnitPresenter(IEnumerable<IUnitMechanic> logic)
         {
             _unitMechanics = logic.ToList();
         }
 
-        public T GetLogic<T>() where T : IUnitMechanic
+        public T GetMechanic<T>() where T : IUnitMechanic
         {
             //TODO: change list to dictionary
             foreach (var unitMechanic in _unitMechanics)

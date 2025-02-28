@@ -19,3 +19,7 @@ MonoBehaviour:
   _damage: -10
   _impulseForce: 100
   _projectileType: 3
+  _affectRadius: 2
+  _maxAffectedTargets: 16
+  _destroySound: bulletImpact
+  _destroyParticle: bulletExplosion

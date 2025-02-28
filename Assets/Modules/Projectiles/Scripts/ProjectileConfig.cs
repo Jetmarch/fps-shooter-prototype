@@ -14,7 +14,12 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         [SerializeField] private int _damage;
         [SerializeField] private float _impulseForce = 100f;
         [SerializeField] private ProjectileType _projectileType;
+        [SerializeField] private float _affectRadius = 2f;
+        [SerializeField] private int _maxAffectedTargets = 16;
         
+        [SerializeField] private string _destroySound;
+        [SerializeField] private string _destroyParticle;
+
         public float InitialSpeed => _initialSpeed;
         public float Mass => _mass;
         public float Drag => _drag;
@@ -22,6 +27,11 @@ namespace FPSShooter.Modules.Gameplay.Projectiles
         public int Damage => _damage;
         public float ImpulseForce => _impulseForce;
         public ProjectileType ProjectileType => _projectileType;
+        public float AffectRadius => _affectRadius;
+        public int MaxAffectedTargets => _maxAffectedTargets;
+        public string DestroySound => _destroySound;
+
+        public string DestroyParticle => _destroyParticle;
 
 #if UNITY_EDITOR
         private void OnValidate()

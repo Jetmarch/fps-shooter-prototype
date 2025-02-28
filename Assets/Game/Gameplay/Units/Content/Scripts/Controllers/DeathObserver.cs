@@ -10,9 +10,9 @@ namespace FPSShooter.Game.Gameplay.Units
     {
         private readonly TearApartDeathService _tearApartDeathService;
         private readonly TearApartOnDeathMechanic _tearApartOnDeathMechanic;
-        private readonly DieMechanic _dieMechanic;
+        private readonly DeathMechanic _dieMechanic;
 
-        public DeathObserver(TearApartDeathService tearApartDeathService, TearApartOnDeathMechanic tearApartOnDeathMechanic, DieMechanic dieMechanic)
+        public DeathObserver(TearApartDeathService tearApartDeathService, TearApartOnDeathMechanic tearApartOnDeathMechanic, DeathMechanic dieMechanic)
         {
             _tearApartDeathService = tearApartDeathService;
             _tearApartOnDeathMechanic = tearApartOnDeathMechanic;

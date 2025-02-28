@@ -45,12 +45,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
                 return;
             }
             
-            if (_model.NeedToReload())
-            {
-                //TODO: click sound
-                Reload();
-                return;
-            }
+            
 
             _projectileManager.CreateProjectile(_model.ProjectileType, _view.ShootPoint);
             
@@ -61,6 +56,12 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _view.PlayShotVFX();
             TryPlaySound(_model.ShootSoundName);
             UpdateAmmoDisplay();
+            
+            if (_model.NeedToReload())
+            {
+                //TODO: click sound
+                Reload();
+            }
         }
 
         public void StartShootAutomatic()

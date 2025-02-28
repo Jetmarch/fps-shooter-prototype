@@ -343,7 +343,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1001 &411983669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2363,7 +2363,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &678199392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 678199392, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
@@ -5946,37 +5946,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1912241772172634655, guid: df81c40b3c9c11e40a35a540ab77ab30, type: 3}
   m_PrefabInstance: {fileID: 828029586}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &857888025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 857888026}
-  m_Layer: 0
-  m_Name: MachineGunBulletPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &857888026
+--- !u!4 &857888026 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 857888026, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857888025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9007633969565907734}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &904721748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2462883461378823275, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+  m_PrefabInstance: {fileID: 9007633969565907730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &952925346
 GameObject:
   m_ObjectHideFlags: 0
@@ -6627,7 +6606,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1 &1432407640
 GameObject:
   m_ObjectHideFlags: 0
@@ -7051,7 +7030,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1 &1801293912
 GameObject:
   m_ObjectHideFlags: 0
@@ -9585,7 +9564,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!23 &5062470729311714746
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9705,7 +9684,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &5236425074292994754
 Transform:
   m_ObjectHideFlags: 0
@@ -9787,7 +9766,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &5985429144464139328
 Transform:
   m_ObjectHideFlags: 0
@@ -9895,7 +9874,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &7222144199345902121
 Transform:
   m_ObjectHideFlags: 0
@@ -9942,7 +9921,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!33 &7243847560713604854
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10082,7 +10061,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!23 &8162711757949238671
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10156,7 +10135,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1 &8548255515516917307
 GameObject:
   m_ObjectHideFlags: 0
@@ -10207,7 +10186,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &8648807169880700031
 Transform:
   m_ObjectHideFlags: 0
@@ -10254,7 +10233,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!4 &8751478972911971990
 Transform:
   m_ObjectHideFlags: 0
@@ -10301,7 +10280,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1 &8942728252603539527
 GameObject:
   m_ObjectHideFlags: 0
@@ -10352,7 +10331,7 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
 --- !u!1001 &9007633969565907730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10390,23 +10369,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"_particlePools.{0es}._parent","value":$eref:0'
+      value: '"path":"_particlePools.{\"bigBoneExplosion\"}._parent","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"_particlePools.{1es}._parent","value":$eref:1'
+      value: '"path":"_particlePools.{\"boneExplosion\"}._parent","value":$eref:1'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"_particlePools.{2es}._parent","value":$eref:2'
+      value: '"path":"_particlePools.{\"bulletExplosion\"}._parent","value":$eref:2'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"_particlePools.{3es}._parent","value":$eref:3'
+      value: '"path":"_particlePools.{\"resurrection\"}._parent","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"_particlePools.{4es}._parent","value":$eref:4'
+      value: '"path":"_particlePools.{\"rocketExplosion\"}._parent","value":$eref:4'
       objectReference: {fileID: 0}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
@@ -10415,11 +10394,11 @@ PrefabInstance:
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 9007633969565907736}
+      objectReference: {fileID: 9007633969565907731}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1776066527}
+      objectReference: {fileID: 904721748}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
@@ -10427,11 +10406,11 @@ PrefabInstance:
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 9007633969565907731}
+      objectReference: {fileID: 1261873354}
     - target: {fileID: 4016261650926510981, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
       value: 
-      objectReference: {fileID: 1261873354}
+      objectReference: {fileID: 1776066527}
     - target: {fileID: 9007633967854523823, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: _playerContainer
       value: 
@@ -10490,7 +10469,7 @@ PrefabInstance:
       objectReference: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
@@ -10498,27 +10477,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"_projectilePools.{2es}._parent","value":$eref:1'
+      value: '"path":"_projectilePools.{1es}._prefab","value":$eref:1'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"_projectilePools.{3es}._parent","value":$eref:2'
+      value: '"path":"_projectilePools.{2es}._parent","value":$eref:2'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"_projectilePools.{3es}._prefab","value":$eref:3'
+      value: '"path":"_projectilePools.{2es}._prefab","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"_projectilePools.{4es}._parent","value":$eref:4'
+      value: '"path":"_projectilePools.{3es}._parent","value":$eref:4'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"_projectilePools.{4es}._prefab","value":$eref:5'
+      value: '"path":"_projectilePools.{3es}._prefab","value":$eref:5'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
+      value: '"path":"_projectilePools.{4es}._parent","value":$eref:6'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[7]
+      value: '"path":"_projectilePools.{4es}._prefab","value":$eref:7'
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -10527,21 +10514,29 @@ PrefabInstance:
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1895776912}
+      objectReference: {fileID: 6968183971612725951, guid: 8633e7ef4d21fc0459c3d020fbc62847, type: 3}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 9007633969565907733}
+      objectReference: {fileID: 1895776912}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 6968183971612725951, guid: 8480ff6ab0843774eadd1a97cfb1ca64, type: 3}
+      objectReference: {fileID: 6968183971612725951, guid: 3d0cb06d58ea2d248a80992717f13d73, type: 3}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
       value: 
-      objectReference: {fileID: 857888026}
+      objectReference: {fileID: 9007633969565907733}
     - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 6968183971612725951, guid: 8480ff6ab0843774eadd1a97cfb1ca64, type: 3}
+    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 857888026}
+    - target: {fileID: 9007633968459431387, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[7]
       value: 
       objectReference: {fileID: 6968183971612725951, guid: 380280d2fe30b564786f6821a16a930d, type: 3}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
@@ -10553,22 +10548,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1432407642}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: _playerContainer
-      value: 
-      objectReference: {fileID: 211119878}
-    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: _loadingTaskConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: f44edead762d5a74aa1520ca81b1dcb0, type: 2}
-    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: autoInjectGameObjects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-      propertyPath: autoInjectGameObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 9007633969565907732}
-    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: autoInjectGameObjects.Array.data[1]
       value: 
       objectReference: {fileID: 268340813}
@@ -10579,24 +10558,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3265198092432793134, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
   m_PrefabInstance: {fileID: 9007633969565907730}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9007633969565907732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9007633969769245511, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-  m_PrefabInstance: {fileID: 9007633969565907730}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9007633969565907733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1262209921038421277, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-  m_PrefabInstance: {fileID: 9007633969565907730}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9007633969565907734 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9007633968459431386, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
-  m_PrefabInstance: {fileID: 9007633969565907730}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9007633969565907736 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8167377096254222598, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
   m_PrefabInstance: {fileID: 9007633969565907730}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &9147987615701027912
@@ -10672,4 +10636,4 @@ MonoBehaviour:
       _currentValue: 0
     _isDead: 0
     _isInvincible: 0
-  _hitParticle: 0
+  _hitParticle: 
