@@ -1,4 +1,5 @@
 using System;
+using FPSShooter.Core.Systems;
 using VContainer.Unity;
 
 namespace FPSShooter.Game.Gameplay.UI
@@ -8,11 +9,13 @@ namespace FPSShooter.Game.Gameplay.UI
     {
         private readonly MenuView _menuView;
         private readonly MenuButtons _menuButtons;
+        private readonly IInputSystem _inputSystem;
 
-        public MenuController(MenuView menuView, MenuButtons menuButtons)
+        public MenuController(MenuView menuView, MenuButtons menuButtons, IInputSystem inputSystem)
         {
             _menuView = menuView;
             _menuButtons = menuButtons;
+            _inputSystem = inputSystem;
         }
 
         public void Initialize()
@@ -21,7 +24,7 @@ namespace FPSShooter.Game.Gameplay.UI
             _menuButtons.OnLoadClicked.AddListener(_menuView.LoadGame);
             _menuButtons.OnExitClicked.AddListener(_menuView.ExitGame);
             _menuButtons.OnToggleClicked.AddListener(_menuView.Toggle);
-            
+            _inputSystem.OnMenu += _menuView.Toggle;
         }
 
         public void Dispose()
@@ -30,6 +33,7 @@ namespace FPSShooter.Game.Gameplay.UI
             _menuButtons.OnLoadClicked.RemoveListener(_menuView.LoadGame);
             _menuButtons.OnExitClicked.RemoveListener(_menuView.ExitGame);
             _menuButtons.OnToggleClicked.RemoveListener(_menuView.Toggle);
+            _inputSystem.OnMenu -= _menuView.Toggle;
         }
     }
 }

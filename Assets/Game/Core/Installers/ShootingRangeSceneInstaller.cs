@@ -57,7 +57,7 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_camera);
             
             
-            builder.Register<CursorToggler>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<CursorToggler>(Lifetime.Singleton).AsSelf();
             
             builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
         }

@@ -7,30 +7,18 @@ using VContainer.Unity;
 
 namespace FPSShooter.Core.Utils
 {
-    public sealed class CursorToggler : IInitializable, IDisposable
+    public sealed class CursorToggler
     {
-        private readonly IInputSystem _inputSystem;
-
-        public CursorToggler(IInputSystem inputSystem)
+        public void ShowCursor()
         {
-            _inputSystem = inputSystem;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
-        public void Initialize()
+        public void HideCursor()
         {
-            _inputSystem.OnMenu += ToggleCursor;
-        }
-
-        public void Dispose()
-        {
-            _inputSystem.OnMenu -= ToggleCursor;
-        }
-
-        private void ToggleCursor()
-        {
-            Debug.Log("Cursor toggled");
-            Cursor.visible = !Cursor.visible;
-            Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

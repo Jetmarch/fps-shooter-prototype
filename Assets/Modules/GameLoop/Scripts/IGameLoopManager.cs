@@ -4,5 +4,7 @@ namespace FPSShooter.Modules.Core.GameLoop
     {
         void AddListener(IGameLoopListener listener);
         void RemoveListener(IGameLoopListener listener);
+        void PauseGame();
+        void ResumeGame();
     }
 }
