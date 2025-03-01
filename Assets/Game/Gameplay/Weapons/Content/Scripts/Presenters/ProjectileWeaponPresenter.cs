@@ -10,7 +10,7 @@ using UnityEngine;
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class ProjectileWeaponPresenter : IWeaponPresenter, IUpdateListener
+    public sealed class ProjectileWeaponPresenter : IWeaponPresenter, IUpdateListener, IPauseListener
     {
         private readonly WeaponView _view;
         private readonly HolographicAmmoDisplay _ammoDisplay;
@@ -138,6 +138,16 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         {
             var ammoText = $"{_model.CurrentAmmo.ToString()}/{_model.MaxAmmo.ToString()}";
             _ammoDisplay.SetText(ammoText);
+        }
+
+        public void OnPause()
+        {
+            _animator.speed = 0f;
+        }
+
+        public void OnResume()
+        {
+            _animator.speed = 1f;
         }
     }
 }

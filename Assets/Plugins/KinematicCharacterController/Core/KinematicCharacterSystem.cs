@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using FPSShooter.Modules.Core.GameLoop;
 using UnityEngine;
 
 namespace KinematicCharacterController
@@ -8,8 +9,7 @@ namespace KinematicCharacterController
     /// <summary>
     /// The system that manages the simulation of KinematicCharacterMotor and PhysicsMover
     /// </summary>
-    [DefaultExecutionOrder(-100)]
-    public class KinematicCharacterSystem : MonoBehaviour
+    public class KinematicCharacterSystem : IFixedUpdateListener, ILateUpdateListener
     {
         private static KinematicCharacterSystem _instance;
 
@@ -28,15 +28,8 @@ namespace KinematicCharacterController
         {
             if (_instance == null)
             {
-                GameObject systemGameObject = new GameObject("KinematicCharacterSystem");
-                _instance = systemGameObject.AddComponent<KinematicCharacterSystem>();
-
-                systemGameObject.hideFlags = HideFlags.NotEditable;
-                _instance.hideFlags = HideFlags.NotEditable;
-
+                _instance = new KinematicCharacterSystem();
                 Settings = ScriptableObject.CreateInstance<KCCSettings>();
-
-                GameObject.DontDestroyOnLoad(systemGameObject);
             }
         }
 
@@ -107,12 +100,6 @@ namespace KinematicCharacterController
         public static void UnregisterPhysicsMover(PhysicsMover mover)
         {
             PhysicsMovers.Remove(mover);
-        }
-
-        // This is to prevent duplicating the singleton gameobject on script recompiles
-        private void OnDisable()
-        {
-            Destroy(this.gameObject);
         }
 
         private void Awake()
@@ -288,6 +275,33 @@ namespace KinematicCharacterController
                 mover.RotationDeltaFromInterpolation = Quaternion.Inverse(mover.LatestInterpolationRotation) * newRot;
                 mover.LatestInterpolationPosition = newPos;
                 mover.LatestInterpolationRotation = newRot;
+            }
+        }
+
+        public void OnFixedUpdate(float deltaTime)
+        {
+            if (Settings.AutoSimulation)
+            {
+
+                if (Settings.Interpolate)
+                {
+                    PreSimulationInterpolationUpdate(deltaTime);
+                }
+
+                Simulate(deltaTime, CharacterMotors, PhysicsMovers);
+
+                if (Settings.Interpolate)
+                {
+                    PostSimulationInterpolationUpdate(deltaTime);
+                }
+            }
+        }
+
+        public void OnLateUpdate(float deltaTime)
+        {
+            if (Settings.Interpolate)
+            {
+                CustomInterpolationUpdate();
             }
         }
     }

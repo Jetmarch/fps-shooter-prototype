@@ -8,7 +8,6 @@ using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Core.Tasks;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Gameplay.Weapons;
-using FPSShooter.Modules.Meta.Upgrades;
 using FPSShooter.Modules.Meta.Upgrades.Presenters;
 using FPSShooter.Modules.Meta.Upgrades.UI;
 using FPSShooter.Modules.Units;
@@ -44,6 +43,7 @@ namespace FPSShooter.Core.Installers
             ConfigureTasks(builder);
             ConfigureManagers(builder);
             ConfigureUI(builder);
+            ConfigureCurrencyStorages(builder);
         }
         
         private void ConfigureTasks(IContainerBuilder builder)
@@ -69,8 +69,6 @@ namespace FPSShooter.Core.Installers
             builder.Register<CursorToggler>(Lifetime.Singleton).AsSelf();
             
             builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
-            
-            ConfigureCurrencyStorages(builder);
         }
         
         private void ConfigureUI(IContainerBuilder builder)

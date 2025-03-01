@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Units
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class TargetDummyRespawner
     {
         private readonly TargetDummyManager _targetDummyManager;

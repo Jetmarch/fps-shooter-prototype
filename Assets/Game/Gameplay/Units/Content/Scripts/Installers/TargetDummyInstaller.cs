@@ -1,4 +1,5 @@
 using FPSShooter.Core.Managers;
+using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Game.Gameplay.Impact;
 using FPSShooter.Game.Gameplay.Units.Player;
 using FPSShooter.Game.Gameplay.Units.UnitLogic;
@@ -40,6 +41,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
             
             ConfigureMechanics(builder);
             ConfigureControllers(builder);
+
+            builder.Register<GameLoopController>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
         }
 
 

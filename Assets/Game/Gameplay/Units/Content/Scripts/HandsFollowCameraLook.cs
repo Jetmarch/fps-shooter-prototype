@@ -9,7 +9,7 @@ namespace FPSShooter.Game.Gameplay.Units
     {
         private readonly Transform _hands;
         private readonly IFPSCameraController _fpsCamera;
-
+        
         public HandsFollowCameraLook(Transform hands, IFPSCameraController fpsCamera)
         {
             _hands = hands;

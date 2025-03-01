@@ -1,3 +1,16 @@
 {
-	"name": "KinematicCharacterController"
+    "name": "KinematicCharacterController",
+    "rootNamespace": "",
+    "references": [
+        "GUID:032df6e929252564fb435c934cb1cd35"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

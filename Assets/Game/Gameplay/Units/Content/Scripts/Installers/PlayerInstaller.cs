@@ -5,6 +5,7 @@ using FPSShooter.Modules.FPSCamera;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Movement;
 using FPSShooter.Modules.Units;
+using KinematicCharacterController;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -68,6 +69,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .WithParameter(_movementParams)
                 .AsSelf()
                 .AsImplementedInterfaces();
+            
+            
+            builder.Register<KinematicCharacterSystem>(Lifetime.Singleton).AsImplementedInterfaces();
         }
         
         private void ConfigureCamera(IContainerBuilder builder)

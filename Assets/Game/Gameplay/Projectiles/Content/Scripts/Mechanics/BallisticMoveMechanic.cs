@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Projectiles
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class BallisticMoveMechanic : IUnitMechanic, IFixedUpdateListener
+    public sealed class BallisticMoveMechanic : IUnitMechanic, IFixedUpdateListener, IPauseListener
     {
         private readonly Rigidbody _rigidbody;
         private readonly ProjectileConfig _config;
@@ -31,6 +31,19 @@ namespace FPSShooter.Game.Gameplay.Projectiles
             _rigidbody.mass = _config.Mass;
             _rigidbody.drag = _config.Drag;
             _rigidbody.velocity = _rigidbody.transform.forward * _config.InitialSpeed;
+        }
+
+        public void OnPause()
+        {
+            _velocity = _rigidbody.velocity;
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.useGravity = false;
+        }
+
+        public void OnResume()
+        {
+            _rigidbody.velocity = _velocity;
+            _rigidbody.useGravity = true;
         }
     }
 }
