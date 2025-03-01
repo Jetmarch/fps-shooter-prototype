@@ -30,35 +30,4 @@ namespace FPSShooter.Game.Gameplay.Units
             _inputSystem.OnJump -= _fpsMechanic.RequestJump;
         }
     }
-    
-    public sealed class PlayerWeaponInputObserver : IInitializable, IDisposable
-    {
-        private readonly IInputSystem _inputSystem;
-        private readonly WeaponArsenalMechanic _weaponArsenalMechanic;
-        public PlayerWeaponInputObserver(IInputSystem inputSystem, WeaponArsenalMechanic weaponArsenalMechanic)
-        {
-            _inputSystem = inputSystem;
-            _weaponArsenalMechanic = weaponArsenalMechanic;
-        }
-
-        public void Initialize()
-        {
-            _inputSystem.OnFire += _weaponArsenalMechanic.Shoot;
-            _inputSystem.OnStartAutomaticFire += _weaponArsenalMechanic.ShootStartAutomatic;
-            _inputSystem.OnEndAutomaticFire += _weaponArsenalMechanic.ShootEndAutomatic;
-            _inputSystem.OnReload += _weaponArsenalMechanic.Reload;
-            _inputSystem.OnMouseWheelUp += _weaponArsenalMechanic.SetNextWeapon;
-            _inputSystem.OnMouseWheelDown += _weaponArsenalMechanic.SetPreviousWeapon;
-        }
-
-        public void Dispose()
-        {
-            _inputSystem.OnMouseWheelDown -= _weaponArsenalMechanic.SetPreviousWeapon;
-            _inputSystem.OnMouseWheelUp -= _weaponArsenalMechanic.SetNextWeapon;
-            _inputSystem.OnReload -= _weaponArsenalMechanic.Reload;
-            _inputSystem.OnEndAutomaticFire -= _weaponArsenalMechanic.ShootEndAutomatic;
-            _inputSystem.OnStartAutomaticFire -= _weaponArsenalMechanic.ShootStartAutomatic;
-            _inputSystem.OnFire -= _weaponArsenalMechanic.Shoot;
-        }
-    }
 }

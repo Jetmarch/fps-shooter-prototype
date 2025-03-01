@@ -22,7 +22,7 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
             _soundPlayer = soundPlayer;
         }
 
-        public void TearApartDeath()
+        public void Death()
         {
             _particlesManager?.SpawnParticles(_deathParticles, _view.transform.position, _view.transform.rotation);
             _soundPlayer.TryPlaySound(_tearApartDeathSound);

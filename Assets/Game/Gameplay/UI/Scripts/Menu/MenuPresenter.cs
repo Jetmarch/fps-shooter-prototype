@@ -16,6 +16,7 @@ namespace FPSShooter.Game.Gameplay.UI
             _view = view;
             _gameLoopManager = gameLoopManager;
             _cursorToggler = cursorToggler;
+            _view.gameObject.SetActive(false);
         }
         
         public void SaveGame()

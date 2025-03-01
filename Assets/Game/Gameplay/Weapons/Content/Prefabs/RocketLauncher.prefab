@@ -407,6 +407,7 @@ MonoBehaviour:
   _view: {fileID: 6590651346712451551}
   _ammoText: {fileID: 4576931932823994030}
   _animator: {fileID: 494415887220968785}
+  _upgradeConfigBundle: {fileID: 11400000, guid: 29000abe546bb024c8e69aef0d6cd788, type: 2}
 --- !u!114 &6590651346712451551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,17 +654,33 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198428776881719184, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198532094657036970, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198532094657036970, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198577286912964678, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198577286912964678, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198768279373052790, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198768279373052790, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199129262375531920, guid: d101388f5eb9cf34497d768f73795a3a, type: 3}
       propertyPath: m_Materials.Array.size

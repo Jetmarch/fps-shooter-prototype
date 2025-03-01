@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a3f31d7f7b4b95935cfd1cbc5634f9, type: 3}
+  m_Name: WeaponAttackSpeedUpgrade
+  m_EditorClassIdentifier: 
+  _id: 44751ed7-4cd1-4db9-ae03-90e820094cae
+  _displayName: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438
+    \u0430\u0442\u0430\u043A\u0438"
+  _maxLevel: 3
+  _priceTableValue:
+    _baseValue: 1
+    _values: 000000000200000004000000
+  _attackSpeedTableValue:
+    _baseValue: 1
+    _values: 000000000200000004000000

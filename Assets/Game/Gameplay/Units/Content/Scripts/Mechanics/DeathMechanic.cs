@@ -8,6 +8,7 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
     {
         private readonly Animator _animator;
         private readonly int _deathAnimationTrigger = Animator.StringToHash("Death");
+        //private readonly AnimationLayer _animationPlayer;
         private readonly Collider _collider;
         private readonly SoundPlayer _soundPlayer;
         private readonly string _deathSound;
@@ -24,6 +25,7 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
         {
             _collider.enabled = false;
             _animator.SetTrigger(_deathAnimationTrigger);
+            //_animationPlayer.PlayDeathAnimation();
             _soundPlayer.TryPlaySound(_deathSound);
         }
     }

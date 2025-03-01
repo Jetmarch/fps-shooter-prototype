@@ -12,6 +12,8 @@ namespace FPSShooter.Modules.FPSCamera
         private readonly Camera _camera;
         private readonly FPSCameraSettings _settings;
         private readonly SpringMotion _springMotion;
+
+        private bool _isEnabled;
         
         private float _xRotation;
         private float _yRotation;
@@ -23,10 +25,13 @@ namespace FPSShooter.Modules.FPSCamera
             _settings = settings;
             _camera = camera;
             _springMotion = new SpringMotion(cameraTarget, _camera.transform, _settings.SpringMotionSettings);
+            _isEnabled = true;
         }
 
         public void Look(Vector2 lookVector)
         {
+            if (!_isEnabled) return;
+            
             _yRotation += lookVector.x;
             _xRotation += -lookVector.y;
             _xRotation = Mathf.Clamp(_xRotation, _settings.CameraMinVerticalAngle, _settings.CameraMaxVerticalAngle);
@@ -35,8 +40,20 @@ namespace FPSShooter.Modules.FPSCamera
 
         public void OnLateUpdate(float deltaTime)
         {
+            if (!_isEnabled) return;
+            
             _camera.transform.rotation = Quaternion.Euler(_lookRotation);
             _springMotion.UpdateSpring(deltaTime, _camera.transform.up);
+        }
+
+        public void Enable()
+        {
+            _isEnabled = true;
+        }
+
+        public void Disable()
+        {
+            _isEnabled = false;
         }
     }
 }

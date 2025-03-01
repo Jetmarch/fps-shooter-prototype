@@ -3,10 +3,14 @@ using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
 using FPSShooter.Game.Core.Tasks;
 using FPSShooter.Game.Gameplay.Units;
+using FPSShooter.Game.Meta.Upgrades.Scripts.Installers;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Core.Tasks;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Gameplay.Weapons;
+using FPSShooter.Modules.Meta.Upgrades;
+using FPSShooter.Modules.Meta.Upgrades.Presenters;
+using FPSShooter.Modules.Meta.Upgrades.UI;
 using FPSShooter.Modules.Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +33,11 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private ParticlesManager _particlesManager;
         [SerializeField] private TargetDummyManager _targetDummyManager;
         [SerializeField] private Camera _camera;
+        
+        [Header("Upgrades")]
+        [SerializeField] private UpgradePanelList _upgradePanelList;
+        [SerializeField] private Transform _panelContainer;
+        [SerializeField] private UpgradePanel _panelPrefab;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -60,11 +69,30 @@ namespace FPSShooter.Core.Installers
             builder.Register<CursorToggler>(Lifetime.Singleton).AsSelf();
             
             builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
+            
+            ConfigureCurrencyStorages(builder);
         }
         
         private void ConfigureUI(IContainerBuilder builder)
         {
             builder.RegisterInstance(_fadeImage);
+            
+            ConfigureUpgradesUI(builder);
+        }
+
+        private void ConfigureCurrencyStorages(IContainerBuilder builder)
+        {
+            builder.Register<MoneyStorage>(Lifetime.Scoped).AsImplementedInterfaces();
+        }
+        
+        private void ConfigureUpgradesUI(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_upgradePanelList);
+            builder.Register<UpgradeListPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+
+            builder.Register<UpgradePanelFactory>(Lifetime.Scoped)
+                .WithParameter(_panelContainer)
+                .WithParameter(_panelPrefab);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
             builder.Register<UnitPresenter>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
             
-            builder.Register<TearApartDeathService>(Lifetime.Scoped)
+            builder.Register<DeathService>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
 

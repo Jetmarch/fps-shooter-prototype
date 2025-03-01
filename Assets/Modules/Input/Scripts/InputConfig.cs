@@ -16,6 +16,7 @@ namespace FPSShooter.Core.Systems
         [SerializeField] private string _mouseY = "Mouse Y";
         [SerializeField] private string _mouseScroll = "Mouse ScrollWheel";
         [SerializeField] private KeyCode _menuKey = KeyCode.Escape;
+        [SerializeField] private KeyCode _upgradesKey = KeyCode.U;
         
         public KeyCode Fire => _fire;
         public KeyCode MoveForward => _moveForward;
@@ -28,5 +29,6 @@ namespace FPSShooter.Core.Systems
         public string MouseScroll => _mouseScroll;
         public KeyCode Reload => _reload;
         public KeyCode MenuKey => _menuKey;
+        public KeyCode UpgradesKey => _upgradesKey;
     }
 }

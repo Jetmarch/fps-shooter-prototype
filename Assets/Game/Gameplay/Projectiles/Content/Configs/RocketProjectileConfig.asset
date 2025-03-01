@@ -15,7 +15,7 @@ MonoBehaviour:
   _initialSpeed: 60
   _mass: 2
   _drag: 0.1
-  _gravityMultiplier: 0.5
+  _gravityMultiplier: 0
   _damage: -50
   _impulseForce: 100
   _projectileType: 1

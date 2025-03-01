@@ -8,7 +8,7 @@ namespace FPSShooter.Game.Gameplay.Impact
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     //TODO: global service
-    public class TearApartDeathService : IInitializable, IDisposable
+    public class DeathService : IInitializable, IDisposable
     {
         public event Action OnTearApart; 
         public event Action OnSimpleDeath;
@@ -20,7 +20,7 @@ namespace FPSShooter.Game.Gameplay.Impact
         private float _amountOfRecentDamage;
         
 
-        public TearApartDeathService(ObjectState objectState)
+        public DeathService(ObjectState objectState)
         {
             _objectState = objectState;
             _resetRecentDamageTimer = new Timer(_resetToZeroDelayMs);

@@ -1,5 +1,7 @@
 using FPSShooter.Game.Core.GameLoop;
+using FPSShooter.Game.Gameplay.Units;
 using FPSShooter.Modules.Gameplay.Weapons;
+using FPSShooter.Modules.Meta.Upgrades;
 using TMPro;
 using UnityEngine;
 using VContainer;
@@ -14,11 +16,14 @@ namespace FPSShooter.Game.Gameplay.Weapons
         
         [SerializeField] private TextMeshPro _ammoText;
         [SerializeField] private Animator _animator;
+
+        [SerializeField] private UpgradeConfigBundle _upgradeConfigBundle;
         protected override void Configure(IContainerBuilder builder)
         {
-            var pistolWeapon = _config.CreateWeapon();
+            var projectileWeapon = _config.CreateWeapon();
+            builder.RegisterInstance(projectileWeapon);
+            
             builder.Register<ProjectileWeaponPresenter>(Lifetime.Scoped)
-                .WithParameter(pistolWeapon)
                 .WithParameter(_view)
                 .WithParameter(_animator)
                 .AsImplementedInterfaces();
@@ -28,6 +33,17 @@ namespace FPSShooter.Game.Gameplay.Weapons
 
             builder.Register<HolographicAmmoDisplay>(Lifetime.Scoped)
                 .WithParameter(_ammoText);
+
+            ConfigureUpgrades(builder);
+        }
+
+        private void ConfigureUpgrades(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_upgradeConfigBundle);
+            builder.Register<UpgradeFactory>(Lifetime.Scoped)
+                .AsSelf();
+            builder.Register<UpgradeMechanic>(Lifetime.Scoped)
+                .AsSelf();
         }
     }
 }

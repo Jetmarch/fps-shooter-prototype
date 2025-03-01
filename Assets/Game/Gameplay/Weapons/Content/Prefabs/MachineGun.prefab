@@ -407,6 +407,7 @@ MonoBehaviour:
   _view: {fileID: 6590651346712451551}
   _ammoText: {fileID: 4576931932823994030}
   _animator: {fileID: 494415887220968785}
+  _upgradeConfigBundle: {fileID: 11400000, guid: 29000abe546bb024c8e69aef0d6cd788, type: 2}
 --- !u!114 &6590651346712451551
 MonoBehaviour:
   m_ObjectHideFlags: 0

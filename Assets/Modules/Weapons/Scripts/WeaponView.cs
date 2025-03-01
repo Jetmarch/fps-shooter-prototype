@@ -1,3 +1,4 @@
+using FPSShooter.Modules.Meta.Upgrades;
 using UnityEngine;
 using VContainer;
 
@@ -71,6 +72,21 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public void PutAway()
         {
             _presenter.PutAway();
+        }
+
+        public void StartUpgrading()
+        {
+            _presenter.StartUpgrading();
+        }
+
+        public void StopUpgrading()
+        {
+            _presenter.StopUpgrading();
+        }
+
+        public Upgrade[] GetAvailableUpgrades()
+        {
+            return _presenter.GetAvailableUpgrades();
         }
     }
 }

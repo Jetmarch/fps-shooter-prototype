@@ -69,6 +69,16 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             SetCurrentWeapon(_currentWeaponIndex);
         }
         
+        public void StopUpgrading()
+        {
+            _currentWeapon.StopUpgrading();
+        }
+
+        public void StartUpgrading()
+        {
+            _currentWeapon.StartUpgrading();
+        }
+        
         private void SetCurrentWeapon(int weaponIndex)
         {
             if (weaponIndex >= _weapons.Count || weaponIndex < 0) return;
@@ -95,6 +105,12 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _currentWeapon.Rotation = _weaponParent.rotation;
             weapon.SetParent(_weaponParent);
             weapon.PullOut();
+        }
+
+
+        public IWeapon GetCurrentWeapon()
+        {
+            return _currentWeapon;
         }
     }
 }

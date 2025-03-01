@@ -1,7 +1,10 @@
 using Audio;
+using FPSShooter.Game.Gameplay.Units;
 using FPSShooter.Game.Gameplay.Weapons;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
+using FPSShooter.Modules.Meta.Upgrades;
+using FPSShooter.Modules.Meta.Upgrades.UI;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
@@ -14,22 +17,25 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         private readonly Weapon _model;
         private readonly IProjectileManager _projectileManager;
         private readonly Animator _animator;
+        private readonly Upgrade[] _availableUpgrades;
+        
         //TODO: move to model
         private bool _isAutomaticFire;
         
         private int _reloadAnimation = Animator.StringToHash("Reload");
         private int _pullOutAnimation = Animator.StringToHash("PullOut");
         private int _putAwayAnimation = Animator.StringToHash("PutAway");
+        private int _upgradingAnimation = Animator.StringToHash("IsInspecting");
         private int _reloadSpeedMultiplier = Animator.StringToHash("ReloadSpeedMultiplier");
         
-        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay, Animator animator)
+        public ProjectileWeaponPresenter(WeaponView view, Weapon model, IProjectileManager projectileManager, HolographicAmmoDisplay ammoDisplay, Animator animator, UpgradeFactory upgradeFactory)
         {
             _view = view;
             _model = model;
             _projectileManager = projectileManager;
             _ammoDisplay = ammoDisplay;
             _animator = animator;
-            
+            _availableUpgrades = upgradeFactory.CreateUpgrades();
             UpdateAmmoDisplay();
         }
         
@@ -44,9 +50,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             {
                 return;
             }
-            
-            
-
             _projectileManager.CreateProjectile(_model.ProjectileType, _view.ShootPoint);
             
             _model.SetCurrentAmmo(_model.CurrentAmmo - 1);
@@ -91,6 +94,23 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         public void PutAway()
         {
             _animator.SetTrigger(_putAwayAnimation);
+        }
+
+        public void StartUpgrading()
+        {
+            _animator.SetBool(_upgradingAnimation, true);
+        }
+
+        public void StopUpgrading()
+        {
+            _animator.SetBool(_upgradingAnimation, false);
+            _animator.SetFloat(_reloadSpeedMultiplier, 1 / _model.ReloadDelay.MaxValue);
+            UpdateAmmoDisplay();
+        }
+
+        public Upgrade[] GetAvailableUpgrades()
+        {
+            return _availableUpgrades;
         }
 
         public void OnUpdate(float deltaTime)

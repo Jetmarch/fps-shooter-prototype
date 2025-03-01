@@ -5,6 +5,7 @@ namespace FPSShooter.Core.Systems
 {
     public interface IInputSystem
     {
+        public event Action OnUpgrades;
         public event Action OnMenu;
         public event Action OnFire;
         public event Action OnStartAutomaticFire;

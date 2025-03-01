@@ -1,3 +1,4 @@
+using FPSShooter.Modules.Meta.Upgrades;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
@@ -14,5 +15,8 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         void SetParent(Transform parent);
         void PullOut();
         void PutAway();
+        void StartUpgrading();
+        void StopUpgrading();
+        Upgrade[] GetAvailableUpgrades();
     }
 }

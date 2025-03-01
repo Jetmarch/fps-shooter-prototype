@@ -30,6 +30,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
+            //TODO: Move to mechanics
             ConfigureMovement(builder);
             ConfigureCamera(builder);
             ConfigureInput(builder);
@@ -54,6 +55,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsImplementedInterfaces();
             
             builder.Register<PlayerWeaponInputObserver>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
+            
+            builder.Register<PlayerUpgradesInputObserver>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
 
@@ -108,6 +112,9 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
             builder.Register<WeaponArsenalMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
+
+            builder.Register<UpgradeMechanic>(Lifetime.Scoped)
+                .AsSelf();
         }
     }
 }
