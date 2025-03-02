@@ -40,9 +40,9 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
             _weaponContainer.ReloadCurrentWeapon();
         }
 
-        public void AddWeapon(IWeapon weapon)
+        public bool TryAddWeapon(IWeapon weapon)
         {
-            _weaponContainer.AddWeapon(weapon);
+            return _weaponContainer.TryAddWeapon(weapon);
         }
 
         public void SetNextWeapon()

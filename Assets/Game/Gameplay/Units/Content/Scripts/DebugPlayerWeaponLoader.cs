@@ -18,11 +18,11 @@ namespace FPSShooter.Game.Gameplay.Units
         
         public void Initialize()
         {
-            var weapons = _weaponManager.GetWeapons();
-            foreach (var weapon in weapons)
-            {
-                _weaponArsenalMechanic.AddWeapon(weapon);
-            }
+            // var weapons = _weaponManager.GetWeapons();
+            // foreach (var weapon in weapons.Values)
+            // {
+            //     _weaponArsenalMechanic.AddWeapon(weapon);
+            // }
         }
     }
 }

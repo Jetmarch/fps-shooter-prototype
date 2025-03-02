@@ -9,7 +9,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
 
         public Weapon CreateWeapon()
         {
-            return  _weapon.Clone();
+            return _weapon.Clone();
         }
     }
 }

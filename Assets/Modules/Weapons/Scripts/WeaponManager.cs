@@ -1,28 +1,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
-    public sealed class WeaponManager : MonoBehaviour, IWeaponManager
+    public sealed class WeaponManager : MonoBehaviour, IWeaponManager, IInitializable
     {
-        [SerializeField] private List<WeaponView> _weaponPrefabs;
+        private Dictionary<string, WeaponView> _weaponPrefabs;
+        private WeaponPack _weaponPack;
 
         [Inject]
         private void Configure(WeaponPack weaponPack)
         {
-            _weaponPrefabs = weaponPack.GetWeapons();
+            _weaponPack = weaponPack;
+        }
+        
+        public void Initialize()
+        {
+            PrepareWeapons(_weaponPack);
         }
 
-        public List<WeaponView> GetWeapons()
+        private void PrepareWeapons(WeaponPack weaponPack)
         {
-            var weapons = new List<WeaponView>();
-            foreach (var weaponPrefab in _weaponPrefabs)
+            _weaponPrefabs = new Dictionary<string, WeaponView>();
+            foreach (var weaponKeyValue in weaponPack.GetWeapons())
             {
-                var newWeapon = Instantiate(weaponPrefab, transform);
-                weapons.Add(newWeapon);
+                var newWeapon = Instantiate(weaponKeyValue.Value, transform);
+                _weaponPrefabs[weaponKeyValue.Key] = newWeapon;
             }
-            return weapons;
+        }
+
+        public Dictionary<string, WeaponView> GetWeapons()
+        {
+            return _weaponPrefabs;
+        }
+
+        public WeaponView GetWeapon(string key)
+        {
+            return _weaponPrefabs[key];
         }
     }
 }

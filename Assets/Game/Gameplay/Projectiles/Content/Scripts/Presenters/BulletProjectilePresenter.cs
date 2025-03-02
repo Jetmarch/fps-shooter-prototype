@@ -1,5 +1,6 @@
 
 using FPSShooter.Modules.Gameplay.Projectiles;
+using FPSShooter.Modules.Utils;
 using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Projectiles

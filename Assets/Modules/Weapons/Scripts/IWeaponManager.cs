@@ -4,6 +4,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
 {
     public interface IWeaponManager
     {
-        List<WeaponView> GetWeapons();
+        Dictionary<string, WeaponView> GetWeapons();
     }
 }

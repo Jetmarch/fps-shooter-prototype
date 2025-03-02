@@ -20,34 +20,35 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         
         public void ShootCurrentWeapon()
         {
-            _currentWeapon.RequestShoot();
+            _currentWeapon?.RequestShoot();
         }
 
         public void StartShootAutomaticCurrentWeapon()
         {
-            _currentWeapon.RequestStartAutomaticShoot();
+            _currentWeapon?.RequestStartAutomaticShoot();
         }
 
         public void EndShotAutomaticCurrentWeapon()
         {
-            _currentWeapon.RequestEndAutomaticShoot();
+            _currentWeapon?.RequestEndAutomaticShoot();
         }
 
         public void ReloadCurrentWeapon()
         {
-            _currentWeapon.RequestReload();
+            _currentWeapon?.RequestReload();
         }
         
-        public void AddWeapon(IWeapon weapon)
+        public bool TryAddWeapon(IWeapon weapon)
         {
-            if (_weapons.Contains(weapon)) return;
+            if (_weapons.Contains(weapon)) return false;
             _weapons.Add(weapon);
             SetCurrentWeapon(weapon);
+            return true;
         }
         
         public void NextWeapon()
         {
-            _currentWeapon.PutAway();
+            _currentWeapon?.PutAway();
             _currentWeaponIndex++;
             if (_currentWeaponIndex > _weapons.Count - 1)
             {
@@ -59,7 +60,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         
         public void PreviousWeapon()
         {
-            _currentWeapon.PutAway();
+            _currentWeapon?.PutAway();
             _currentWeaponIndex--;
             if (_currentWeaponIndex < 0)
             {
@@ -71,12 +72,12 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         
         public void StopUpgrading()
         {
-            _currentWeapon.StopUpgrading();
+            _currentWeapon?.StopUpgrading();
         }
 
         public void StartUpgrading()
         {
-            _currentWeapon.StartUpgrading();
+            _currentWeapon?.StartUpgrading();
         }
         
         private void SetCurrentWeapon(int weaponIndex)

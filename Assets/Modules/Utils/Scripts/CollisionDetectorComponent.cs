@@ -1,7 +1,8 @@
 using System;
+using Codice.Client.BaseCommands;
 using UnityEngine;
 
-namespace FPSShooter.Modules.Gameplay.Projectiles
+namespace FPSShooter.Modules.Utils
 {
     public sealed class CollisionDetectorComponent : MonoBehaviour
     {
