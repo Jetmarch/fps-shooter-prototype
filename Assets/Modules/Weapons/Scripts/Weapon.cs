@@ -74,7 +74,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _ammo.CurrentValue = ammo;
         }
 
-        //TODO: rename it
         public void SetShootDelay()
         {
             _shootDelay.CurrentValue = _shootDelay.MaxValue;

@@ -88,5 +88,10 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         {
             return _presenter.GetAvailableUpgrades();
         }
+
+        public string GetWeaponName()
+        {
+            return _presenter.GetWeaponName();
+        }
     }
 }

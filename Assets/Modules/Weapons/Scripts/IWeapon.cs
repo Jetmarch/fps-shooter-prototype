@@ -18,5 +18,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         void StartUpgrading();
         void StopUpgrading();
         Upgrade[] GetAvailableUpgrades();
+        string GetWeaponName();
     }
 }

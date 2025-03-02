@@ -4,12 +4,13 @@ namespace FPSShooter.Modules.Gameplay.Weapons
 {
     public interface IWeaponPresenter
     {
-        public void Shoot();
-        public void StartShootAutomatic();
-        public void EndShootAutomatic();
-        public void Reload();
-        public void PullOut();
-        public void PutAway();
+        string GetWeaponName();
+        void Shoot();
+        void StartShootAutomatic();
+        void EndShootAutomatic();
+        void Reload();
+        void PullOut();
+        void PutAway();
         void StartUpgrading();
         void StopUpgrading();
         Upgrade[] GetAvailableUpgrades();

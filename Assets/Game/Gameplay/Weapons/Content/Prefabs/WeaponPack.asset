@@ -16,9 +16,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 6590651346712451551, guid: ae96d03ce442ec44780f2058f270cd00, type: 3}
-    - {fileID: 6590651346712451551, guid: 1836ff5d607999f43a770ad81ff0be20, type: 3}
     - {fileID: 6590651346712451551, guid: ee856914920a82d4190ba8755b607479, type: 3}
+    - {fileID: 6590651346712451551, guid: 1836ff5d607999f43a770ad81ff0be20, type: 3}
+    - {fileID: 6590651346712451551, guid: ae96d03ce442ec44780f2058f270cd00, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -43,7 +43,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: machineGun
+      Data: revolver
     - Name: $v
       Entry: 10
       Data: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: revolver
+      Data: machineGun
     - Name: $v
       Entry: 10
       Data: 2

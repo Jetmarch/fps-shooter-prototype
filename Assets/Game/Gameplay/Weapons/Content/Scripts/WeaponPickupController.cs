@@ -5,21 +5,20 @@ using FPSShooter.Modules.Units;
 using FPSShooter.Modules.Utils;
 using UnityEngine;
 using VContainer.Unity;
+using Object = System.Object;
 
 namespace FPSShooter.Game.Gameplay.Weapons
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class WeaponPickupController : IInitializable, IDisposable
     {
-        private readonly WeaponManager _weaponManager;
         private readonly TriggerDetectorComponent _triggerDetectorComponent;
-        private readonly string _weaponId;
+        private readonly string _weaponName;
 
-        public WeaponPickupController(WeaponManager weaponManager, TriggerDetectorComponent triggerDetectorComponent, string weaponId)
+        public WeaponPickupController(TriggerDetectorComponent triggerDetectorComponent, string weaponName)
         {
-            _weaponManager = weaponManager;
             _triggerDetectorComponent = triggerDetectorComponent;
-            _weaponId = weaponId;
+            _weaponName = weaponName;
         }
 
         public void Initialize()
@@ -38,12 +37,11 @@ namespace FPSShooter.Game.Gameplay.Weapons
             if (!unitView) return;
             var weaponArsenal = unitView.GetMechanic<WeaponArsenalMechanic>();
             if (weaponArsenal == null) return;
-            var weapon = _weaponManager.GetWeapon(_weaponId);
 
-            if (weaponArsenal.TryAddWeapon(weapon))
+            if (weaponArsenal.TryAddWeapon(_weaponName))
             {
                 //TODO: fix bug with removing inputSystem from gameLoop 
-                _triggerDetectorComponent.gameObject.SetActive(false);
+                UnityEngine.Object.Destroy(_triggerDetectorComponent.gameObject);
             }
         }
     }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Units;
 
@@ -7,12 +9,14 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
     public sealed class WeaponArsenalMechanic : IUnitMechanic
     {
         private readonly WeaponContainer _weaponContainer;
+        private readonly WeaponManager _weaponManager;
 
         private bool _isEnabled;
 
-        public WeaponArsenalMechanic(WeaponContainer weaponContainer)
+        public WeaponArsenalMechanic(WeaponContainer weaponContainer, WeaponManager weaponManager)
         {
             _weaponContainer = weaponContainer;
+            _weaponManager = weaponManager;
             EnableUseWeapon();
         }
         
@@ -40,9 +44,24 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
             _weaponContainer.ReloadCurrentWeapon();
         }
 
-        public bool TryAddWeapon(IWeapon weapon)
+        public bool TryAddWeapon(string weaponName)
         {
+            var weapon = _weaponManager.GetWeapon(weaponName);
+            if (weapon == null)
+            {
+                throw new NullReferenceException($"WeaponArsenalMechanic: Cannot find weapon with name {weaponName}");
+            }
             return _weaponContainer.TryAddWeapon(weapon);
+        }
+
+        public void RemoveWeapon(string weaponName)
+        {
+            _weaponContainer.RemoveWeapon(weaponName);
+        }
+        
+        public void RemoveAllWeapons()
+        {
+            _weaponContainer.RemoveAllWeapons();
         }
 
         public void SetNextWeapon()
@@ -69,6 +88,11 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
         public IWeapon GetCurrentWeapon()
         {
             return _weaponContainer.GetCurrentWeapon();
+        }
+
+        public List<IWeapon> GetWeapons()
+        {
+            return _weaponContainer.GetWeapons();
         }
 
         public void EnableUseWeapon()

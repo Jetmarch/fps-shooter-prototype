@@ -38,7 +38,12 @@ namespace FPSShooter.Modules.Gameplay.Weapons
             _availableUpgrades = upgradeFactory.CreateUpgrades();
             UpdateAmmoDisplay();
         }
-        
+
+        public string GetWeaponName()
+        {
+            return _model.ItemMetadata.Name;
+        }
+
         public void Shoot()
         {
             if (_model.IsDelayBetweenShots())

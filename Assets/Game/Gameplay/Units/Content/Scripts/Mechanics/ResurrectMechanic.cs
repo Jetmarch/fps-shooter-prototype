@@ -35,5 +35,13 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
             _particlesManager?.SpawnParticles(_resurrectParticles, _view.transform.position, _view.transform.rotation);
             _soundPlayer.TryPlaySound(_resurrectSound);
         }
+
+        public void ResurrectWithoutNotify()
+        {
+            _objectStateMechanic.Initialize();
+            _animator.Rebind();
+            _animator.Update(0f);
+            _collider.enabled = true;
+        }
     }
 }

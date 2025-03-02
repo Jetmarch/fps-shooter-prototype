@@ -20,14 +20,6 @@ namespace FPSShooter.Game.Gameplay.Weapons
                 .WithParameter(_triggerDetectorComponent)
                 .WithParameter(_weaponId)
                 .AsImplementedInterfaces();
-
-            builder.Register<ObjectRotator>(Lifetime.Scoped)
-                .WithParameter(_viewTransform)
-                .WithParameter(_rotationSpeed)
-                .AsImplementedInterfaces();
-
-            builder.Register<GameLoopController>(Lifetime.Scoped)
-                .AsImplementedInterfaces();
         }
     }
 }

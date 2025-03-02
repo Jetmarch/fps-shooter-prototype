@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: FPSShooter.Core.Installers.ShootingRangeSceneInstaller
+    TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
   _triggerDetectorComponent: {fileID: 612052333}
@@ -2511,7 +2511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: FPSShooter.Core.Installers.ShootingRangeSceneInstaller
+    TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
   _triggerDetectorComponent: {fileID: 1155983427}
@@ -3670,7 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: FPSShooter.Core.Installers.ShootingRangeSceneInstaller
+    TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
   _triggerDetectorComponent: {fileID: 1619897036}

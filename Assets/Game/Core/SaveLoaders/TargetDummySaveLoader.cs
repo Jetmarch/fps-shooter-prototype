@@ -39,6 +39,13 @@ namespace FPSShooter.Game.Core.SaveLoaders
                 throw new NullReferenceException("TargetDummySaveLoader: Object state mechanic component is missing on target dummy prefab.");
             }
             
+            var resurrectMechanic = targetDummy.GetMechanic<ResurrectMechanic>();
+            if (resurrectMechanic == null)
+            {
+                throw new NullReferenceException("TargetDummySaveLoader: Resurrect mechanic component is missing on target dummy prefab.");
+            }
+
+            resurrectMechanic.ResurrectWithoutNotify();
             objectStateMechanic.CurrentHealth = data.CurrentHealth;
         }
 

@@ -11,6 +11,6 @@ namespace FPSShooter.Modules.Gameplay.Weapons
     {
         [OdinSerialize] private Dictionary<string, WeaponView> _weapons; 
         
-        public Dictionary<string, WeaponView> GetWeapons() => _weapons; 
+        public Dictionary<string, WeaponView> GetWeapons() => _weapons;
     }
 }
