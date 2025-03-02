@@ -7,35 +7,34 @@ namespace FPSShooter.Modules.Gameplay.Impact
     [Serializable]
     public sealed class ObjectState
     {
-        public event Action<ImpactData> OnHealthChanged;
-        public event Action OnObjectDestroyed;
-        
-        public bool IsDead => _isDead;
-        
-        public int CurrentHealth => _health.CurrentValue;
+        public bool IsDead
+        {
+            get => _isDead;
+            set => _isDead = value;
+        }
+
+        public int CurrentHealth
+        {
+            get => _health.CurrentValue;
+            set => _health.CurrentValue = value;
+        }
+
+        public bool IsInvincible
+        {
+            get => _isInvincible;
+            set => _isInvincible = value;
+        }
         public int MaxHealth => _health.MaxValue;
+        public int MinHealth => _health.MinValue;
+        
         [SerializeField] private ClampedIntValue _health;
         [SerializeField] private bool _isDead;
         [SerializeField] private bool _isInvincible;
 
-        public void Initialize()
+        public void Reset()
         {
             _health.Reset();
             _isDead = false;
-        }
-        
-        public void Affect(ImpactData impactData)
-        {
-            if (_isInvincible) return;
-            if (_isDead) return;
-            _health.CurrentValue += impactData.HealthDelta;
-            OnHealthChanged?.Invoke(impactData);
-
-            if (_health.CurrentValue <= _health.MinValue)
-            {
-                OnObjectDestroyed?.Invoke();
-                _isDead = true;
-            }
         }
     }
 }

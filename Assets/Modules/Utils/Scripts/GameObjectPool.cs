@@ -8,6 +8,8 @@ namespace FPSShooter.Modules.Utils
     [Serializable]
     public sealed class GameObjectPool : IInitializable
     {
+        public Queue<GameObject> Pool => _pool;
+        
         [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private int _poolSize;

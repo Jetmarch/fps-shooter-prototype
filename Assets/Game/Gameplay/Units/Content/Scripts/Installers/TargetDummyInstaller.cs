@@ -23,7 +23,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         
         protected override void Configure(IContainerBuilder builder)
         {
-            _objectState.Initialize();
+            _objectState.Reset();
             builder.RegisterInstance(_view);
             builder.RegisterInstance(_collider);
             builder.RegisterInstance(_objectState);

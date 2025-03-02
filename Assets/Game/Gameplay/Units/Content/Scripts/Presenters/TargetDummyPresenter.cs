@@ -32,7 +32,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             _view = view;
             _objectState = objectState;
             _particlesManager = particlesManager;
-            _objectState.Initialize();
+            _objectState.Reset();
             _animator = animator;
             _collider = collider;
         }
@@ -41,7 +41,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
         {
             if (_objectState.IsDead) return;
             
-            _objectState.Affect(impact);
+            // _objectState.Affect(impact);
             _particlesManager?.SpawnParticles(_hitParticle, impact.HitPoint, impact.HitRotation);
             _animator.SetTrigger(_hitTrigger);
         }
@@ -59,7 +59,7 @@ namespace FPSShooter.Game.Gameplay.Units.Player
 
         public void Resurrect()
         {
-            _objectState.Initialize();
+            _objectState.Reset();
             _animator.Rebind();
             _animator.Update(0f);
             _collider.enabled = true;

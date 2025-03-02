@@ -15,11 +15,9 @@ namespace FPSShooter.Game.Core.SaveLoaders
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class PlayerSaveLoader : SaveLoader<PlayerData, PlayerManager>
     {
-        private const string PlayerPrefabPath = "Gameplay/Units/Content/Prefabs/[Player]";
-        
-        protected override void SetupData(PlayerManager playerManager, PlayerData data)
+        protected override void SetupData(PlayerManager service, PlayerData data)
         {
-            var player = playerManager.GetPlayer();
+            var player = service.GetPlayer();
             SetupPlayer(player, data);
         }
 
@@ -35,9 +33,9 @@ namespace FPSShooter.Game.Core.SaveLoaders
             fpsCharacterMechanic.SetRotation(data.Rotation);
         }
 
-        protected override PlayerData ConvertToData(PlayerManager playerManager)
+        protected override PlayerData ConvertToData(PlayerManager service)
         {
-            var player = playerManager.GetPlayer();
+            var player = service.GetPlayer();
             return new PlayerData()
             {
                 Position = player.transform.position,

@@ -1,5 +1,6 @@
 using System;
 using System.Timers;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Impact;
 using UnityEngine;
@@ -14,32 +15,32 @@ namespace FPSShooter.Game.Gameplay.Impact
         public event Action OnTearApart; 
         public event Action OnSimpleDeath;
         
-        private readonly ObjectState _objectState;
+        private readonly ObjectStateMechanic _objectStateMechanic;
         private readonly float _percentOfMaxHealthToTearApart = 0.5f;
         private readonly float _resetAmountRecentDamageDelay = 1f;
         private float _currentResetDelay;
         private float _amountOfRecentDamage;
 
-        public DeathService(ObjectState objectState)
+        public DeathService(ObjectStateMechanic objectStateMechanic)
         {
-            _objectState = objectState;
+            _objectStateMechanic = objectStateMechanic;
         }
 
         public void Initialize()
         {
-            _objectState.OnObjectDestroyed += Death;
-            _objectState.OnHealthChanged += AccumulateDamage;
+            _objectStateMechanic.OnObjectDestroyed += Death;
+            _objectStateMechanic.OnObjectStateAffected += AccumulateDamage;
         }
 
         public void Dispose()
         {
-            _objectState.OnHealthChanged -= AccumulateDamage;
-            _objectState.OnObjectDestroyed -= Death;
+            _objectStateMechanic.OnObjectStateAffected -= AccumulateDamage;
+            _objectStateMechanic.OnObjectDestroyed -= Death;
         }
 
         private void Death()
         {
-            if (_amountOfRecentDamage > _objectState.MaxHealth * _percentOfMaxHealthToTearApart)
+            if (_amountOfRecentDamage > _objectStateMechanic.ObjectState.MaxHealth * _percentOfMaxHealthToTearApart)
             {
                 OnTearApart?.Invoke();
             }

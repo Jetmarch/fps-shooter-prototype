@@ -22,10 +22,11 @@ namespace FPSShooter.Core.Installers
 {
     public sealed class ShootingRangeSceneInstaller : LifetimeScope
     {
+        [Header("Loading screen and tasks")]
         [SerializeField] private LoadingTaskConfig _loadingTaskConfig;
         [SerializeField] private Image _fadeImage;
         
-        [SerializeField] private WeaponPack _weaponPack;
+        [Header("Managers")]
         [SerializeField] private GameLoopManager _gameLoopManager;
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private WeaponManager _weaponManager;
@@ -34,6 +35,9 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private TargetDummyManager _targetDummyManager;
         [SerializeField] private SaveLoadManager _saveLoadManager;
         [SerializeField] private Camera _camera;
+        
+        [Header("Available weapons")]
+        [SerializeField] private WeaponPack _weaponPack;
         
         [Header("Upgrades")]
         [SerializeField] private UpgradePanelList _upgradePanelList;
@@ -83,6 +87,9 @@ namespace FPSShooter.Core.Installers
                 .AsImplementedInterfaces();
             
             builder.Register<PlayerSaveLoader>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+            
+            builder.Register<TargetDummySaveLoader>(Lifetime.Singleton)
                 .AsImplementedInterfaces();
         }
 
