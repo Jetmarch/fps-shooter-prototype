@@ -1087,9 +1087,8 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 9007633969769245511}
   - {fileID: 0}
-  _loadingTaskConfig: {fileID: 11400000, guid: f44edead762d5a74aa1520ca81b1dcb0, type: 2}
+  _taskRunnerConfig: {fileID: 11400000, guid: f44edead762d5a74aa1520ca81b1dcb0, type: 2}
   _fadeImage: {fileID: 0}
-  _weaponPack: {fileID: 11400000, guid: 3846ad717d89dce49bc8febe3bd88376, type: 2}
   _gameLoopManager: {fileID: 9007633968497838610}
   _playerManager: {fileID: 9007633967854523823}
   _weaponManager: {fileID: 9007633969107211317}
@@ -1098,6 +1097,10 @@ MonoBehaviour:
   _targetDummyManager: {fileID: 3736565033358054215}
   _saveLoadManager: {fileID: 2034175134895197414}
   _camera: {fileID: 0}
+  _saveLoadTasks:
+    SavePipeline: {fileID: 11400000, guid: 7b7c340aac80eec4ba28cbde989e33a1, type: 2}
+    LoadPipeline: {fileID: 11400000, guid: 8c9fec1cb0fef9a45820425dff216501, type: 2}
+  _weaponPack: {fileID: 11400000, guid: 3846ad717d89dce49bc8febe3bd88376, type: 2}
   _upgradePanelList: {fileID: 0}
   _panelContainer: {fileID: 0}
   _panelPrefab: {fileID: 0}
@@ -1145,7 +1148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45484977bd17f9d48a4706113679d3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponPrefabs: []
 --- !u!1 &9007633969769245511
 GameObject:
   m_ObjectHideFlags: 0

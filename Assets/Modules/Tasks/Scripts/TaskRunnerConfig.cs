@@ -5,8 +5,8 @@ using SerializedScriptableObject = Sirenix.OdinInspector.SerializedScriptableObj
 
 namespace FPSShooter.Modules.Core.Tasks
 {
-    [CreateAssetMenu(fileName = "LoadingTaskConfig", menuName = "FPS Shooter/System/LoadingTaskConfig")]
-    public sealed class LoadingTaskConfig : SerializedScriptableObject
+    [CreateAssetMenu(fileName = "TaskRunnerConfig", menuName = "FPS Shooter/System/TaskRunnerConfig")]
+    public sealed class TaskRunnerConfig : SerializedScriptableObject
     {
         [OdinSerialize] private List<IAsyncTask> _tasks;
         

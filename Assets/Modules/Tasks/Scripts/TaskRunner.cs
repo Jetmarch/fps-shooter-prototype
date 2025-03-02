@@ -12,9 +12,9 @@ namespace FPSShooter.Modules.Core.Tasks
         private readonly List<IAsyncTask> _tasks;
         private readonly IObjectResolver _resolver;
         
-        public TaskRunner(LoadingTaskConfig config, IObjectResolver resolver)
+        public TaskRunner(TaskRunnerConfig runnerConfig, IObjectResolver resolver)
         {
-            _tasks = config.Tasks;
+            _tasks = runnerConfig.Tasks;
             _resolver = resolver;
         }
         

@@ -59,6 +59,7 @@ namespace FPSShooter.Modules.FPSCamera
         public void SetPosition(Vector3 position)
         {
             _camera.transform.position = position;
+            _springMotion.SetPosition(position);
         }
 
         public void SetRotation(Vector3 rotation)

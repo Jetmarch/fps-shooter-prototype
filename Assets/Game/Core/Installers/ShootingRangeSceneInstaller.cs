@@ -14,6 +14,7 @@ using FPSShooter.Modules.Meta.Upgrades.UI;
 using FPSShooter.Modules.Units;
 using HomeworkSaveLoad.SaveSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VContainer;
 using VContainer.Unity;
@@ -22,8 +23,9 @@ namespace FPSShooter.Core.Installers
 {
     public sealed class ShootingRangeSceneInstaller : LifetimeScope
     {
+        [FormerlySerializedAs("_loadingTaskConfig")]
         [Header("Loading screen and tasks")]
-        [SerializeField] private LoadingTaskConfig _loadingTaskConfig;
+        [SerializeField] private TaskRunnerConfig _taskRunnerConfig;
         [SerializeField] private Image _fadeImage;
         
         [Header("Managers")]
@@ -35,6 +37,9 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private TargetDummyManager _targetDummyManager;
         [SerializeField] private SaveLoadManager _saveLoadManager;
         [SerializeField] private Camera _camera;
+        
+        [Header("Save load")]
+        [SerializeField] private SaveLoadTasks _saveLoadTasks;
         
         [Header("Available weapons")]
         [SerializeField] private WeaponPack _weaponPack;
@@ -55,7 +60,7 @@ namespace FPSShooter.Core.Installers
         private void ConfigureTasks(IContainerBuilder builder)
         {
             builder.Register<TaskRunner>(Lifetime.Singleton)
-                .WithParameter(_loadingTaskConfig);
+                .WithParameter(_taskRunnerConfig);
 
             builder.Register<TaskRunnerController>(Lifetime.Singleton).AsImplementedInterfaces();
         }
@@ -91,6 +96,10 @@ namespace FPSShooter.Core.Installers
             
             builder.Register<TargetDummySaveLoader>(Lifetime.Singleton)
                 .AsImplementedInterfaces();
+            
+            builder.Register<SaveLoadPipeline>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+            builder.RegisterInstance(_saveLoadTasks);
         }
 
         private void ConfigureUI(IContainerBuilder builder)

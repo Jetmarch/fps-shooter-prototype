@@ -1,5 +1,8 @@
 using FPSShooter.Core.Utils;
+using FPSShooter.Game.Core.SaveLoaders;
 using FPSShooter.Modules.Core.GameLoop;
+using HomeworkSaveLoad.SaveSystem;
+using UnityEditor;
 using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.UI
@@ -10,28 +13,35 @@ namespace FPSShooter.Game.Gameplay.UI
         private readonly MenuView _view;
         private readonly IGameLoopManager _gameLoopManager;
         private readonly CursorToggler _cursorToggler;
+        private readonly ISaveLoadPipeline _saveLoadPipeline;
         
-        public MenuPresenter(MenuView view, IGameLoopManager gameLoopManager, CursorToggler cursorToggler)
+        public MenuPresenter(MenuView view, IGameLoopManager gameLoopManager, CursorToggler cursorToggler, ISaveLoadPipeline saveLoadPipeline)
         {
             _view = view;
             _gameLoopManager = gameLoopManager;
             _cursorToggler = cursorToggler;
+            _saveLoadPipeline = saveLoadPipeline;
             _view.gameObject.SetActive(false);
         }
         
         public void SaveGame()
         {
-            Debug.LogError("Save game feature is not implemented.");
+            _saveLoadPipeline.Save();
+            Toggle();
         }
 
         public void LoadGame()
         {
-            Debug.LogError("Load game feature is not implemented.");
+            _saveLoadPipeline.Load();
+            Toggle();
         }
 
         public void ExitGame()
         {
-            Debug.LogError("Exit game feature is not implemented.");
+            #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+            #endif 
+            Application.Quit();
         }
 
         public void Toggle()

@@ -37,6 +37,12 @@ namespace FPSShooter.Modules.Utils
             _follower.position += springPositionDiff * _springMotionSettings.LinearDisplacement;
         }
 
+        public void SetPosition(Vector3 position)
+        {
+            _springPosition = position;
+            _springVelocity = Vector3.zero;
+        }
+
         // https://allenchou.net/2015/04/game-math-more-on-numeric-springing/
         private void Spring(ref Vector3 current, ref Vector3 velocity, Vector3 target, float halfLife, float frequency, float timeStep)
         {

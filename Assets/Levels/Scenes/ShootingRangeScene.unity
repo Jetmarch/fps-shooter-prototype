@@ -3422,7 +3422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439233389
 Transform:
   m_ObjectHideFlags: 0
@@ -6476,6 +6476,14 @@ PrefabInstance:
       propertyPath: parentReference.TypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: _saveLoadTasks.LoadPipeline
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b7c340aac80eec4ba28cbde989e33a1, type: 2}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: _saveLoadTasks.SavePipeline
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c9fec1cb0fef9a45820425dff216501, type: 2}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: autoInjectGameObjects.Array.size
       value: 3
