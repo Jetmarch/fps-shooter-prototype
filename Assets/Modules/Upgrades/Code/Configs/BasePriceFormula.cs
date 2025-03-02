@@ -7,11 +7,11 @@ namespace FPSShooter.Modules.Meta.Upgrades
     public sealed class BasePriceFormula : TableFormula
     {
         [SerializeField] private int _someCoefficient = 2;
-        public override int CalculateValue(int baseValue, int level)
+        public override float CalculateValue(int baseValue, int level)
         {
             if (_someCoefficient == 0) return 0;
             
-            return baseValue * (level * level) / _someCoefficient;
+            return (float)baseValue * (level * level) / _someCoefficient;
         }
     }
 }

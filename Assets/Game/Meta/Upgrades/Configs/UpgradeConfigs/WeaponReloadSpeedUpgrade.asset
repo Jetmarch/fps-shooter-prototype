@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a3f31d7f7b4b95935cfd1cbc5634f9, type: 3}
-  m_Name: WeaponAttackSpeedUpgrade
+  m_Script: {fileID: 11500000, guid: 4adf8077209a4144b1cc212d6c53f4eb, type: 3}
+  m_Name: WeaponReloadSpeedUpgrade
   m_EditorClassIdentifier: 
-  _id: 44751ed7-4cd1-4db9-ae03-90e820094cae
-  _displayName: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0430\u0442\u0430\u043A\u0438"
+  _id: 9b5f38d7-87d0-401e-8a53-6a49e53f08bb
+  _displayName: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0438"
   _maxLevel: 3
   _priceTableValue:
     _baseValue: 10
@@ -21,9 +21,9 @@ MonoBehaviour:
     - 5
     - 20
     - 45
-  _attackSpeedTableValue:
-    _baseValue: 10
+  _reloadSpeedTableValue:
+    _baseValue: 1
     _values:
-    - 0.083333336
-    - 0.07692308
-    - 0.071428575
+    - 0.33333334
+    - 0.25
+    - 0.2

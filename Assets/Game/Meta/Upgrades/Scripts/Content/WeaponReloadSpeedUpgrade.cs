@@ -1,15 +1,16 @@
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Meta.Upgrades;
+using UnityEngine.Serialization;
 using VContainer;
 
 namespace FPSShooter.Game.Meta.Upgrades
 {
-    public sealed class WeaponAttackSpeedUpgrade : Upgrade
+    public sealed class WeaponReloadSpeedUpgrade : Upgrade
     {
-        private readonly WeaponAttackSpeedUpgradeConfig _config;
+        private readonly WeaponReloadSpeedUpgradeConfig _config;
         private Weapon _weapon;
         
-        public WeaponAttackSpeedUpgrade(WeaponAttackSpeedUpgradeConfig config) : base(config)
+        public WeaponReloadSpeedUpgrade(WeaponReloadSpeedUpgradeConfig config) : base(config)
         {
             _config = config;
         }
@@ -32,16 +33,16 @@ namespace FPSShooter.Game.Meta.Upgrades
                 return 0;
             }
 
-            var valueIncrement = _config.AttackSpeedTableValue.GetValue(_currentLevel + 1) -
-                                 _config.AttackSpeedTableValue.GetValue(_currentLevel);
+            var valueIncrement = _config.ReloadSpeedTableValue.GetValue(_currentLevel + 1) -
+                                 _config.ReloadSpeedTableValue.GetValue(_currentLevel);
             return (int)valueIncrement;
         }
         
         public override void LevelUp()
         {
             base.LevelUp();
-            var newSpeedValue = _config.AttackSpeedTableValue.GetValue(_currentLevel);
-            _weapon.ShootDelay.MaxValue = newSpeedValue;
+            var newSpeedValue = _config.ReloadSpeedTableValue.GetValue(_currentLevel);
+            _weapon.ReloadDelay.MaxValue = newSpeedValue;
         }
     }
 }

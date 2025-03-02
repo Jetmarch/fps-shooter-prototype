@@ -36,7 +36,7 @@ namespace FPSShooter.Modules.Meta.Upgrades
                 return;
             }
             
-            currencyStorage.Get(upgrade.CurrentPrice);
+            currencyStorage.Get((int)upgrade.CurrentPrice);
             
             upgrade.LevelUp();
         }

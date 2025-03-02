@@ -9,7 +9,7 @@ namespace FPSShooter.Modules.Meta.Upgrades
         public string DisplayName => Config.DisplayName;
         public int MaxLevel => Config.MaxLevel;
         public int CurrentLevel => _currentLevel;
-        public int CurrentPrice => Config.PriceTableValue.GetValue(_currentLevel);
+        public float CurrentPrice => Config.PriceTableValue.GetValue(_currentLevel);
         public bool CanLevelUp => _currentLevel < MaxLevel;
         
         protected int _currentLevel = 1;

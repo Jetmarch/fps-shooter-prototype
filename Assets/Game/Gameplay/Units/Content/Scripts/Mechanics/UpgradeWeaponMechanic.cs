@@ -53,7 +53,7 @@ namespace FPSShooter.Game.Gameplay.Units
             }
             else
             {
-                ShowUpgradePanel();
+                if (!TryShowUpgradePanel()) return;
                 
                 _weaponArsenalMechanic.StartUpgrading();
                 _weaponArsenalMechanic.DisableUseWeapon();
@@ -65,12 +65,14 @@ namespace FPSShooter.Game.Gameplay.Units
             }
         }
 
-        private void ShowUpgradePanel()
+        private bool TryShowUpgradePanel()
         {
             var currentWeapon = _weaponArsenalMechanic.GetCurrentWeapon();
+            if (currentWeapon == null) return false;
             var availableUpgrades = currentWeapon.GetAvailableUpgrades();
             var upgradeListPresenter = new UpgradeListPresenter(availableUpgrades, _currencyStorage);
             _upgradePanelList.Show(upgradeListPresenter);
+            return true;
         }
     }
 }
