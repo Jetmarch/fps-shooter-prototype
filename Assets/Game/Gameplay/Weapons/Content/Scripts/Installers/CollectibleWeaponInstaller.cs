@@ -1,7 +1,6 @@
-using FPSShooter.Modules.Gameplay.Projectiles;
+using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Modules.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
@@ -12,11 +11,22 @@ namespace FPSShooter.Game.Gameplay.Weapons
         [SerializeField] private TriggerDetectorComponent _triggerDetectorComponent;
         [SerializeField] private string _weaponId;
 
+        [SerializeField] private Transform _viewTransform;
+        [SerializeField] private float _rotationSpeed;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<WeaponPickupController>(Lifetime.Scoped)
                 .WithParameter(_triggerDetectorComponent)
                 .WithParameter(_weaponId)
+                .AsImplementedInterfaces();
+
+            builder.Register<ObjectRotator>(Lifetime.Scoped)
+                .WithParameter(_viewTransform)
+                .WithParameter(_rotationSpeed)
+                .AsImplementedInterfaces();
+
+            builder.Register<GameLoopController>(Lifetime.Scoped)
                 .AsImplementedInterfaces();
         }
     }

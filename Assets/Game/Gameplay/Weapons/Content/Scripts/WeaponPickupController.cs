@@ -42,7 +42,8 @@ namespace FPSShooter.Game.Gameplay.Weapons
 
             if (weaponArsenal.TryAddWeapon(weapon))
             {
-                UnityEngine.Object.Destroy(_triggerDetectorComponent.gameObject);
+                //TODO: fix bug with removing inputSystem from gameLoop 
+                _triggerDetectorComponent.gameObject.SetActive(false);
             }
         }
     }

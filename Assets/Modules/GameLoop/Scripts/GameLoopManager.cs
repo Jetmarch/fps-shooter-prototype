@@ -47,19 +47,34 @@ namespace FPSShooter.Modules.Core.GameLoop
 
         public void RemoveListener(IGameLoopListener listener)
         {
-            switch (listener)
+            if (listener is IUpdateListener updateListener)
             {
-                case IUpdateListener updateListener:
+                if (_updateListeners.Contains(updateListener))
+                {
                     _updateListeners.Remove(updateListener);
-                    break;
-                case IFixedUpdateListener fixedUpdateListener:
-                    _fixedUpdateListeners.Remove(fixedUpdateListener);
-                    break;
-                case ILateUpdateListener lateUpdateListener:
-                    _lateUpdateListeners.Remove(lateUpdateListener);
-                    break;
+                }
             }
-            _gameLoopListeners.Remove(listener);
+
+            if (listener is IFixedUpdateListener fixedUpdateListener)
+            {
+                if (_fixedUpdateListeners.Contains(fixedUpdateListener))
+                {
+                    _fixedUpdateListeners.Remove(fixedUpdateListener);
+                }
+            }
+
+            if (listener is ILateUpdateListener lateUpdateListener)
+            {
+                if (_lateUpdateListeners.Contains(lateUpdateListener))
+                {
+                    _lateUpdateListeners.Remove(lateUpdateListener);
+                }
+            }
+
+            if (_gameLoopListeners.Contains(listener))
+            {
+                _gameLoopListeners.Remove(listener);
+            }
         }
         
         private void Update()
