@@ -1,6 +1,7 @@
 using Audio;
 using FPSShooter.Core.Managers;
 using FPSShooter.Core.Utils;
+using FPSShooter.Game.Core.SaveLoaders;
 using FPSShooter.Game.Core.Tasks;
 using FPSShooter.Game.Gameplay.Units;
 using FPSShooter.Game.Meta.Upgrades.Scripts.Installers;
@@ -11,6 +12,7 @@ using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Meta.Upgrades.Presenters;
 using FPSShooter.Modules.Meta.Upgrades.UI;
 using FPSShooter.Modules.Units;
+using HomeworkSaveLoad.SaveSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -20,7 +22,6 @@ namespace FPSShooter.Core.Installers
 {
     public sealed class ShootingRangeSceneInstaller : LifetimeScope
     {
-        
         [SerializeField] private LoadingTaskConfig _loadingTaskConfig;
         [SerializeField] private Image _fadeImage;
         
@@ -31,6 +32,7 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private ProjectileManager _projectileManager;
         [SerializeField] private ParticlesManager _particlesManager;
         [SerializeField] private TargetDummyManager _targetDummyManager;
+        [SerializeField] private SaveLoadManager _saveLoadManager;
         [SerializeField] private Camera _camera;
         
         [Header("Upgrades")]
@@ -64,13 +66,26 @@ namespace FPSShooter.Core.Installers
             builder.RegisterInstance(_playerManager);
             builder.RegisterInstance(_targetDummyManager);
             builder.RegisterInstance(_camera);
-            
-            
+            builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<CursorToggler>(Lifetime.Singleton).AsSelf();
             
-            builder.Register<AudioManager>(Lifetime.Singleton).AsImplementedInterfaces();
+            ConfigureSaveLoad(builder);
         }
-        
+
+        private void ConfigureSaveLoad(IContainerBuilder builder)
+        {
+            builder.Register<VContainerGameContext>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+            
+            builder.RegisterInstance(_saveLoadManager);
+            
+            builder.Register<GameRepository>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+            
+            builder.Register<PlayerSaveLoader>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+        }
+
         private void ConfigureUI(IContainerBuilder builder)
         {
             builder.RegisterInstance(_fadeImage);

@@ -8,22 +8,22 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class PlayerUpgradesInputObserver : IInitializable, IDisposable
     {
         private readonly IInputSystem _inputSystem;
-        private readonly UpgradeMechanic _upgradeMechanic;
+        private readonly UpgradeWeaponMechanic _upgradeWeaponMechanic;
 
-        public PlayerUpgradesInputObserver(IInputSystem inputSystem, UpgradeMechanic upgradeMechanic)
+        public PlayerUpgradesInputObserver(IInputSystem inputSystem, UpgradeWeaponMechanic upgradeWeaponMechanic)
         {
             _inputSystem = inputSystem;
-            _upgradeMechanic = upgradeMechanic;
+            _upgradeWeaponMechanic = upgradeWeaponMechanic;
         }
 
         public void Initialize()
         {
-            _inputSystem.OnUpgrades += _upgradeMechanic.ToggleUpgradeState;
+            _inputSystem.OnUpgrades += _upgradeWeaponMechanic.ToggleUpgradeState;
         }
 
         public void Dispose()
         {
-            _inputSystem.OnUpgrades -= _upgradeMechanic.ToggleUpgradeState;
+            _inputSystem.OnUpgrades -= _upgradeWeaponMechanic.ToggleUpgradeState;
         }
     }
 }

@@ -1,46 +1,76 @@
+using System;
+using FPSShooter.Core.Utils;
+using FPSShooter.Game.Gameplay.Units.UnitLogic;
+using FPSShooter.Modules.CurrencyStorage;
+using FPSShooter.Modules.FPSCamera;
+using FPSShooter.Modules.Meta.Upgrades.Presenters;
 using FPSShooter.Modules.Meta.Upgrades.UI;
 using FPSShooter.Modules.Units;
-using UnityEngine;
 
-namespace FPSShooter.Game.Gameplay.Units.UnitLogic
+namespace FPSShooter.Game.Gameplay.Units
 {
-    //TODO: remove it
     // ReSharper disable once ClassNeverInstantiated.Global
-    // public sealed class UpgradeWeaponMechanic : IUnitMechanic
-    // {
-    //     private readonly Animator _animator;
-    //     private readonly int _upgradeAnimationBool = Animator.StringToHash("IsInspecting");
-    //     private readonly UpgradePanelList _upgradePanelList;
-    //
-    //     private bool _isUpgradePanelListOpened;
-    //
-    //     // public UpgradeWeaponMechanic(Animator animator, UpgradePanelList upgradePanelList)
-    //     // {
-    //     //     _animator = animator;
-    //     //     _upgradePanelList = upgradePanelList;
-    //     //     _isUpgradePanelListOpened = false;
-    //     // }
-    //     
-    //     public UpgradeWeaponMechanic(Animator animator)
-    //     {
-    //         _animator = animator;
-    //         _isUpgradePanelListOpened = false;
-    //     }
-    //
-    //     public void ToggleUpgradePanel()
-    //     {
-    //         if (_isUpgradePanelListOpened)
-    //         {
-    //             _animator.SetBool(_upgradeAnimationBool, false);
-    //             // _upgradePanelList.Hide();
-    //             _isUpgradePanelListOpened = false;
-    //         }
-    //         else
-    //         {
-    //             _animator.SetBool(_upgradeAnimationBool, true);
-    //             // _upgradePanelList.Show();
-    //             _isUpgradePanelListOpened = true;
-    //         }
-    //     }
-    // }
+    public sealed class UpgradeWeaponMechanic : IUnitMechanic
+    {
+        public event Action OnStartUpgrading;
+        public event Action OnStopUpgrading;
+        
+        private readonly WeaponArsenalMechanic _weaponArsenalMechanic;
+        private readonly FPSCameraController _fpsCamera;
+        private readonly UpgradePanelList _upgradePanelList;
+        private readonly CursorToggler _cursorToggler;
+        private readonly ICurrencyStorage _currencyStorage;
+
+        private bool _isUpgrading;
+
+        public UpgradeWeaponMechanic(WeaponArsenalMechanic weaponArsenalMechanic,
+            FPSCameraController fpsCamera,
+            UpgradePanelList upgradePanelList,
+            CursorToggler cursorToggler,
+            ICurrencyStorage currencyStorage)
+        {
+            _weaponArsenalMechanic = weaponArsenalMechanic;
+            _fpsCamera = fpsCamera;
+            _upgradePanelList = upgradePanelList;
+            _cursorToggler = cursorToggler;
+            _currencyStorage = currencyStorage;
+            _isUpgrading = false;
+        }
+
+        public void ToggleUpgradeState()
+        {
+            if (_isUpgrading)
+            {
+                _upgradePanelList.Hide();
+                _isUpgrading = false;
+                
+                _weaponArsenalMechanic.StopUpgrading();
+                _weaponArsenalMechanic.EnableUseWeapon();
+                _fpsCamera.Enable();
+                _cursorToggler.HideCursor();
+                
+                OnStartUpgrading?.Invoke();
+            }
+            else
+            {
+                ShowUpgradePanel();
+                
+                _weaponArsenalMechanic.StartUpgrading();
+                _weaponArsenalMechanic.DisableUseWeapon();
+                _fpsCamera.Disable();
+                _isUpgrading = true;
+                _cursorToggler.ShowCursor();
+                
+                OnStartUpgrading?.Invoke();
+            }
+        }
+
+        private void ShowUpgradePanel()
+        {
+            var currentWeapon = _weaponArsenalMechanic.GetCurrentWeapon();
+            var availableUpgrades = currentWeapon.GetAvailableUpgrades();
+            var upgradeListPresenter = new UpgradeListPresenter(availableUpgrades, _currencyStorage);
+            _upgradePanelList.Show(upgradeListPresenter);
+        }
+    }
 }

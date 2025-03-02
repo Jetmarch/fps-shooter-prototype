@@ -258,6 +258,11 @@ namespace FPSShooter.Modules.Movement
             }
         }
 
+        public void SetRotation(Vector3 rotation)
+        {
+            _movementParams.Motor.SetRotation(Quaternion.Euler(rotation));
+        }
+
         public CharacterState GetCurrentState() => _state;
         public CharacterState GetLastState() => _lastState;
 

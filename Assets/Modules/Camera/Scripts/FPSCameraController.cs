@@ -55,5 +55,15 @@ namespace FPSShooter.Modules.FPSCamera
         {
             _isEnabled = false;
         }
+
+        public void SetPosition(Vector3 position)
+        {
+            _camera.transform.position = position;
+        }
+
+        public void SetRotation(Vector3 rotation)
+        {
+            _camera.transform.rotation = Quaternion.Euler(_lookRotation);
+        }
     }
 }

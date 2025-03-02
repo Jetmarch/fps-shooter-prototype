@@ -9,8 +9,8 @@ namespace FPSShooter.Game.Gameplay.Units
     public sealed class PlayerMoveInputObserver : IInitializable, IDisposable
     {
         private readonly IInputSystem _inputSystem;
-        private readonly FirstPersonCharacterMechanic _fpsMechanic;
-        public PlayerMoveInputObserver(IInputSystem inputSystem, FirstPersonCharacterMechanic fpsMechanic)
+        private readonly FPSCharacterMechanic _fpsMechanic;
+        public PlayerMoveInputObserver(IInputSystem inputSystem, FPSCharacterMechanic fpsMechanic)
         {
             _inputSystem = inputSystem;
             _fpsMechanic = fpsMechanic;

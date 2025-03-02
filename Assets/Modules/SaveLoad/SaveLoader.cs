@@ -21,8 +21,8 @@ namespace HomeworkSaveLoad.SaveSystem
             SetupData(service, data);
         }
 
-        protected abstract void SetupData(TService service, TData data);
+        protected abstract void SetupData(TService playerManager, TData data);
 
-        protected abstract TData ConvertToData(TService service);
+        protected abstract TData ConvertToData(TService playerManager);
     }
 }

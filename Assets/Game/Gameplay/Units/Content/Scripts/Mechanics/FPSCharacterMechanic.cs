@@ -7,12 +7,12 @@ using UnityEngine;
 namespace FPSShooter.Game.Gameplay.Units.UnitLogic
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed class FirstPersonCharacterMechanic : IUnitMechanic
+    public sealed class FPSCharacterMechanic : IUnitMechanic
     {
         private readonly IFPSCameraController _fpsCamera;
         private readonly IMovementController _movementController;
 
-        public FirstPersonCharacterMechanic(IFPSCameraController fpsCamera, IMovementController movementController)
+        public FPSCharacterMechanic(IFPSCameraController fpsCamera, IMovementController movementController)
         {
             _fpsCamera = fpsCamera;
             _movementController = movementController;
@@ -38,9 +38,16 @@ namespace FPSShooter.Game.Gameplay.Units.UnitLogic
             _movementController.RequestJump();
         }
 
-        public void OnUpdate(float deltaTime)
+        public void SetPosition(Vector3 position)
         {
-            _movementController.UpdateBody(deltaTime);
+            _movementController.SetPosition(position);
+            _fpsCamera.SetPosition(position);
+        }
+
+        public void SetRotation(Vector3 rotation)
+        {
+            _movementController.SetRotation(rotation);
+            _fpsCamera.SetRotation(rotation);
         }
     }
 }

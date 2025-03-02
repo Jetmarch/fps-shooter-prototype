@@ -109,7 +109,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
         
         private void ConfigureMechanics(IContainerBuilder builder)
         {
-            builder.Register<FirstPersonCharacterMechanic>(Lifetime.Scoped)
+            builder.Register<FPSCharacterMechanic>(Lifetime.Scoped)
                 .AsSelf()
                 .AsImplementedInterfaces();
             
@@ -117,7 +117,7 @@ namespace FPSShooter.Game.Gameplay.Units.Installers
                 .AsSelf()
                 .AsImplementedInterfaces();
 
-            builder.Register<UpgradeMechanic>(Lifetime.Scoped)
+            builder.Register<UpgradeWeaponMechanic>(Lifetime.Scoped)
                 .AsSelf();
         }
     }

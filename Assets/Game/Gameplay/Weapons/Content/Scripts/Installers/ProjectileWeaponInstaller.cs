@@ -42,7 +42,7 @@ namespace FPSShooter.Game.Gameplay.Weapons
             builder.RegisterInstance(_upgradeConfigBundle);
             builder.Register<UpgradeFactory>(Lifetime.Scoped)
                 .AsSelf();
-            builder.Register<UpgradeMechanic>(Lifetime.Scoped)
+            builder.Register<UpgradeWeaponMechanic>(Lifetime.Scoped)
                 .AsSelf();
         }
     }

@@ -38,7 +38,7 @@ namespace FPSShooter.Modules.Utils
         }
 
         // https://allenchou.net/2015/04/game-math-more-on-numeric-springing/
-        private static void Spring(ref Vector3 current, ref Vector3 velocity, Vector3 target, float halfLife, float frequency, float timeStep)
+        private void Spring(ref Vector3 current, ref Vector3 velocity, Vector3 target, float halfLife, float frequency, float timeStep)
         {
             var dampingRatio = -Mathf.Log(0.5f) / (frequency * halfLife);
             var f = 1.0f + 2.0f * timeStep * dampingRatio * frequency;
