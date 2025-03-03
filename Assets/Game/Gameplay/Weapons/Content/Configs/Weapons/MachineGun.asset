@@ -12,27 +12,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e8cb4571ab4e41ab0d81236f1c72d2, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: 
-  _weapon:
-    _ammo:
-      _maxValue: 30
-      _minValue: 0
-      _currentValue: 30
-    _shootDelay:
-      _maxValue: 0.15
-      _minValue: 0
-      _currentValue: 0
-    _reloadDelay:
-      _maxValue: 0.5
-      _minValue: 0
-      _currentValue: 0
-    _reloadMechanic:
-      rid: 1161063811542679555
-    _projectileType: 4
-    _isAutomatic: 1
-    _shootSoundName: machineGunShoot
-    _reloadSoundName: machineGunReload
-  references:
-    version: 2
-    RefIds:
-    - rid: 1161063811542679555
-      type: {class: ReloadAllMechanic, ns: FPSShooter.Game.Gameplay.Weapons, asm: Game}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _weapon
+      Entry: 7
+      Data: 0|FPSShooter.Modules.Gameplay.Weapons.Weapon, Weapons
+    - Name: _itemMetadata
+      Entry: 7
+      Data: 1|FPSShooter.Modules.Utils.BaseItemMetadata, Utils
+    - Name: _id
+      Entry: 2
+      Data: 49e83bae00d945759b50f18b211aed36
+    - Name: _name
+      Entry: 1
+      Data: machineGun
+    - Name: _description
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _ammo
+      Entry: 7
+      Data: 2|FPSShooter.Core.Utils.ClampedIntValue, Utils
+    - Name: _maxValue
+      Entry: 3
+      Data: 30
+    - Name: _minValue
+      Entry: 3
+      Data: 0
+    - Name: _currentValue
+      Entry: 3
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _shootDelay
+      Entry: 7
+      Data: 3|FPSShooter.Core.Utils.ClampedFloatValue, Utils
+    - Name: _maxValue
+      Entry: 4
+      Data: 0.15
+    - Name: _minValue
+      Entry: 4
+      Data: 0
+    - Name: _currentValue
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _reloadDelay
+      Entry: 7
+      Data: 4|FPSShooter.Core.Utils.ClampedFloatValue, Utils
+    - Name: _maxValue
+      Entry: 4
+      Data: 0.5
+    - Name: _minValue
+      Entry: 4
+      Data: 0
+    - Name: _currentValue
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _reloadMechanic
+      Entry: 7
+      Data: 5|FPSShooter.Game.Gameplay.Weapons.ReloadAllMechanic, Game
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _projectileType
+      Entry: 3
+      Data: 4
+    - Name: _isAutomatic
+      Entry: 5
+      Data: true
+    - Name: _shootSoundName
+      Entry: 1
+      Data: machineGunShoot
+    - Name: _reloadSoundName
+      Entry: 1
+      Data: machineGunReload
+    - Name: 
+      Entry: 8
+      Data: 

@@ -12,7 +12,7 @@ namespace FPSShooter.Game.Gameplay.UI
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private LayerMask _raycastLayerMask;
         [SerializeField] private UnitView _currentTarget;
-        [SerializeField] private float _targetFollowTime = 2f;
+        // [SerializeField] private float _targetFollowTime = 2f;
         [SerializeField] private Vector3 _offsetScreenBorder;
         [SerializeField] private Vector3 _offsetOnTarget;
         private Camera _camera;

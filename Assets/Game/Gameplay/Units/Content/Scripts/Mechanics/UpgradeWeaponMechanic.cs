@@ -49,7 +49,7 @@ namespace FPSShooter.Game.Gameplay.Units
                 _fpsCamera.Enable();
                 _cursorToggler.HideCursor();
                 
-                OnStartUpgrading?.Invoke();
+                OnStopUpgrading?.Invoke();
             }
             else
             {

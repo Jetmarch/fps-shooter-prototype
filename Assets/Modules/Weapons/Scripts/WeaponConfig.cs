@@ -1,11 +1,13 @@
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
 {
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "FPS Shooter/Weapons/WeaponConfig")]
-    public sealed class WeaponConfig : ScriptableObject
+    public sealed class WeaponConfig : SerializedScriptableObject
     {
-        [SerializeField] private Weapon _weapon;
+        [OdinSerialize] private Weapon _weapon;
 
         public Weapon CreateWeapon()
         {

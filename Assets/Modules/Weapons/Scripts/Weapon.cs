@@ -2,6 +2,7 @@ using System;
 using FPSShooter.Core.Utils;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Utils;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
@@ -9,7 +10,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
     [Serializable]
     public class Weapon
     {
-        [SerializeField] private BaseItemMetadata _itemMetadata;
+        [OdinSerialize] private BaseItemMetadata _itemMetadata;
         [SerializeField] private ClampedIntValue _ammo;
         [SerializeField] private ClampedFloatValue _shootDelay;
         [SerializeField] private ClampedFloatValue _reloadDelay;
