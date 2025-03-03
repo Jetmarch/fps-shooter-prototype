@@ -1,10 +1,11 @@
 using System;
+using System.Globalization;
 using FPSShooter.Modules.CurrencyStorage;
 namespace FPSShooter.Modules.Meta.Upgrades.Presenters
 {
     public sealed class UpgradeButtonPresenter : IUpgradeButtonPresenter
     {
-        public string Price => _upgrade.CurrentPrice.ToString();
+        public string Price => _upgrade.CurrentPrice.ToString(CultureInfo.InvariantCulture);
         public bool CanLevelUp => _upgrade.CanLevelUp;
         public bool CanBuy => _moneyStorage.Amount >= _upgrade.CurrentPrice;
         public event Action OnMoneyChanged;

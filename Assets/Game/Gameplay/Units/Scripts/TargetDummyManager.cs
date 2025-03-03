@@ -4,7 +4,6 @@ using FPSShooter.Modules.Units;
 using FPSShooter.Modules.Utils;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using UnityEngine;
 
 namespace FPSShooter.Game.Gameplay.Units
 {

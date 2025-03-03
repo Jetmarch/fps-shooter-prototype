@@ -1,7 +1,6 @@
 using System;
 using FPSShooter.Modules.CurrencyStorage;
 using FPSShooter.Modules.Meta.Upgrades;
-using FPSShooter.Modules.Meta.Upgrades.Presenters;
 using FPSShooter.Modules.Meta.Upgrades.UI;
 using UnityEngine;
 using VContainer;

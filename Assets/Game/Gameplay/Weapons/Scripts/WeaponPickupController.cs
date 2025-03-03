@@ -1,11 +1,9 @@
 using System;
 using FPSShooter.Game.Gameplay.Units.UnitLogic;
-using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Units;
 using FPSShooter.Modules.Utils;
 using UnityEngine;
 using VContainer.Unity;
-using Object = System.Object;
 
 namespace FPSShooter.Game.Gameplay.Weapons
 {

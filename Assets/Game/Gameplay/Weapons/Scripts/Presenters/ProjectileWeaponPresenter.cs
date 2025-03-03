@@ -1,10 +1,8 @@
 using Audio;
-using FPSShooter.Game.Gameplay.Units;
 using FPSShooter.Game.Gameplay.Weapons;
 using FPSShooter.Modules.Core.GameLoop;
 using FPSShooter.Modules.Gameplay.Projectiles;
 using FPSShooter.Modules.Meta.Upgrades;
-using FPSShooter.Modules.Meta.Upgrades.UI;
 using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Weapons
@@ -135,7 +133,7 @@ namespace FPSShooter.Modules.Gameplay.Weapons
         {
             if (AudioManager.Instance.TryGetAudioClipByName(soundName, out var audioClip))
             {
-                AudioManager.Instance.PlaySoundOneShot(audioClip, AudioOutput.Master, pitch: UnityEngine.Random.Range(0.7f, 1f));
+                AudioManager.Instance.PlaySoundOneShot(audioClip, AudioOutput.Master, pitch: Random.Range(0.7f, 1f));
             }
         }
 

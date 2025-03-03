@@ -1,6 +1,5 @@
 using FPSShooter.Modules.Gameplay.Weapons;
 using FPSShooter.Modules.Meta.Upgrades;
-using UnityEngine.Serialization;
 using VContainer;
 
 namespace FPSShooter.Game.Meta.Upgrades

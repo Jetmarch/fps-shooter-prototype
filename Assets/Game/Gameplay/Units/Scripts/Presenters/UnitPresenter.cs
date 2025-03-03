@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using FPSShooter.Modules.Units;
@@ -26,11 +25,6 @@ namespace FPSShooter.Game.Gameplay.Units.Player
             }
 
             return default(T);
-        }
-
-        public void AddLogic(IUnitMechanic mechanic)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,4 +1,3 @@
-using FPSShooter.Game.Core.GameLoop;
 using FPSShooter.Modules.Utils;
 using UnityEngine;
 using VContainer;

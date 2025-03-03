@@ -1,4 +1,3 @@
-using UnityEngine;
 
 namespace FPSShooter.Modules.Gameplay.Projectiles
 {
