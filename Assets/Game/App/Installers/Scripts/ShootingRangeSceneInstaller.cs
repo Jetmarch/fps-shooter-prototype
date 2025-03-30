@@ -1,5 +1,6 @@
 using Audio;
 using FPSShooter.Core.Managers;
+using FPSShooter.Core.Systems;
 using FPSShooter.Core.Utils;
 using FPSShooter.Game.Core.SaveLoaders;
 using FPSShooter.Game.Core.Tasks;
@@ -48,6 +49,8 @@ namespace FPSShooter.Core.Installers
         [SerializeField] private UpgradePanelList _upgradePanelList;
         [SerializeField] private Transform _panelContainer;
         [SerializeField] private UpgradePanel _panelPrefab;
+        
+        [SerializeField] private InputConfig _inputConfig;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -55,6 +58,11 @@ namespace FPSShooter.Core.Installers
             ConfigureManagers(builder);
             ConfigureUI(builder);
             ConfigureCurrencyStorages(builder);
+            
+            builder.RegisterInstance(_inputConfig);
+            builder.Register<InputSystem>(Lifetime.Singleton)
+                .AsSelf()
+                .AsImplementedInterfaces();
         }
         
         private void ConfigureTasks(IContainerBuilder builder)

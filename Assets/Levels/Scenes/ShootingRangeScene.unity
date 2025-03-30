@@ -5007,7 +5007,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 247
   _currentTarget: {fileID: 0}
-  _targetFollowTime: 2
   _offsetScreenBorder: {x: 0, y: 0, z: 0}
   _offsetOnTarget: {x: 0, y: 1.3, z: 0}
 --- !u!33 &54700526750859504
@@ -6465,6 +6464,10 @@ PrefabInstance:
       propertyPath: _fadeImage
       value: 
       objectReference: {fileID: 1432407642}
+    - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
+      propertyPath: _inputConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 92df3b5596376e64ebdc2b9e97d019c5, type: 2}
     - target: {fileID: 9007633969057891817, guid: 5351e1a61dd403a44b87ea5408046407, type: 3}
       propertyPath: _panelPrefab
       value: 
